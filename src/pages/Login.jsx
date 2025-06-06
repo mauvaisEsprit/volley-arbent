@@ -1,14 +1,61 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import '../styles/pageStyles/Login.css';
+
 export default function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+
+
+  const handleLogin = async (e) => {
+  e.preventDefault();
+  try {
+    const res = await axios.post('http://localhost:5000/api/login', {
+      email,
+      password,
+    });
+
+    const { token, role } = res.data;
+
+    localStorage.setItem('token', token);
+    
+    
+
+    if (role === 'admin') {
+      navigate('/admin/dashboard');
+    } else {
+      alert("Unknown role"); // если вдруг придёт неизвестная роль
+    }
+
+  } catch (err) {
+    console.error(err);
+    alert("Login failed"); // сообщение об ошибке
+  }
+};
+
+
   return (
-    <div>
-      <h2>Connexion à l'administration</h2>
-      <form>
-        <input type="text" placeholder="Identifiant" />
-        <input type="password" placeholder="Mot de passe" />
-        <button type="submit">Se connecter</button>
+    <div className="login-container">
+      <form onSubmit={handleLogin} className="login-form">
+        <h1 className="login-title">Se connecter</h1>
+        <input
+          type="email"
+          placeholder='Email'
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          className="login-input"
+        />
+        <input
+          type="password"
+          placeholder='Mot de passe'
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          className="login-input"
+        />
+        <button type="submit" className="login-button">Se connecter</button>
       </form>
     </div>
   );
 }
-
-

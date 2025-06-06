@@ -37,30 +37,27 @@
   }
 
   .fullscreen-menu {
-    position: fixed;
-    top: 0;
-    right: -100vw;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgb(63, 114, 223);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    opacity: 0;
-    transform: translateX(100%);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    align-items: center;
-    transition: right 0.4s ease-in-out;
-    z-index: 2050;
-    overscroll-behavior: contain;
-    touch-action: none;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(63, 114, 223);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(100%);
+  transition: transform 0.8s ease;
+  z-index: 2050;
+  overscroll-behavior: contain;
+  touch-action: none;
+}
 
-  .fullscreen-menu.open {
-    right: 0;
-    opacity: 1;
-    transform: translateX(0);
-  }
+.fullscreen-menu.open {
+  transform: translateX(0);
+}
+
 
   .fullscreen-menu nav {
     display: flex;
@@ -205,23 +202,27 @@
   }
 
   .fullscreen-menu {
-    position: fixed;
-    top: 0;
-    right: -100vw;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgb(63, 114, 223);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: right 0.4s ease-in-out;
-    z-index: 2050;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(63, 114, 223);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(100%);
+  transition: transform 0.8s ease;
+  z-index: 2050;
+  overscroll-behavior: contain;
+  touch-action: none;
+}
 
-  .fullscreen-menu.open {
-    right: 0;
-  }
+.fullscreen-menu.open {
+  transform: translateX(0);
+}
+
 
   .fullscreen-menu nav {
     display: flex;
