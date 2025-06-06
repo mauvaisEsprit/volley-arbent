@@ -5,6 +5,9 @@ import { useRef } from "react";
 export default function Images({ images, text, buttonText }) {
   const bookingRef = useRef(null);
 
+  const isMobile = window.innerWidth <= 768;
+
+
   const scrollToBooking = () => {
     const headerHeight = window.innerWidth <= 768 ? 75 : 120;
     const offset = -headerHeight;
@@ -19,7 +22,13 @@ export default function Images({ images, text, buttonText }) {
 
   return (
     <>
-      <Parallax bgImage={images} strength={450}>
+      <Parallax 
+        bgImage={images} 
+        strength={450}
+        bgImageStyle={{ 
+          objectFit: "cover" ,
+          objectPosition: isMobile ? "right bottom" : "center center"
+        }}>
         <div className="section parallax-window">
           <h1>{text}</h1>
           <button className="buttonRes" onClick={scrollToBooking}>
