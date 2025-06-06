@@ -28,6 +28,7 @@ export default function BurgerMenu() {
       )}
       {isOpen && (
         <div className="fullscreen-menu open" onClick={toggleMenu}>
+          <div className="logoBurger">Arbent Volley</div>
           {/* Внутренний контейнер, который НЕ закрывает меню при клике */}
           <div className="menu-inner" onClick={(e) => e.stopPropagation()}>
             <div className="close-icon" onClick={toggleMenu}>

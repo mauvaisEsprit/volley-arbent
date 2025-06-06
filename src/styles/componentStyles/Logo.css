@@ -4,12 +4,14 @@
   display: flex;
   align-items: center;
   align-self: center;
+ 
 }
 
 .logoImage {
   align-self: center;
   height: 105px;
   width: 100px;
+  margin-left: 20px;
 
 }
 
@@ -26,6 +28,7 @@
   .logoImage {
     height: 75px;
     width: 75px;
+    margin: 0;
   }
 
   .logo a {
@@ -33,14 +36,28 @@
     align-self: center;
     color: white;
     font-size: 24px;
+      position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   }
 }
 @media (min-width: 769px) and (max-width: 1400px) {
-  .logo {
+  .logo a {
     width: 100%;
     text-align: center;
     align-self: center;
     color: white;
-    font-size: 24px;
+    font-size: 28px;
+      position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  }
+
+  .logoImage {
+    height: 75px;
+    width: 75px;
+    margin: 0;
   }
 }

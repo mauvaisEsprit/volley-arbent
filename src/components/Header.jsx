@@ -9,9 +9,15 @@ export default function Header() {
 
   return (
     <header>
+      <div class="header-left">
         <LogoImage />
+      </div>
+      <div class="header-center">
         <Logo />
-        <Navbar />     
+      </div>
+      <div class="header-right">
+        <Navbar />
+      </div>     
     </header>
   );
 }
