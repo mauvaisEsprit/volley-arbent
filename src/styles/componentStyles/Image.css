@@ -98,3 +98,23 @@
   75% { background-position: 50% 100%; }
   100% { background-position: 100% 50%; }
 }
+
+
+.parallax-window {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: brightness(0.85);
+  background-color: rgba(0, 0, 0, 0.4);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+.parallax-window h1,
+.parallax-window h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}

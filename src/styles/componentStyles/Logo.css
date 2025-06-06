@@ -3,24 +3,25 @@
 .logo {
   display: flex;
   align-items: center;
-  align-self: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
 }
 
 .logoImage {
-  align-self: center;
-  height: 105px;
-  width: 100px;
-  margin-left: 20px;
+  height: clamp(60px, 8vw, 100px);
+  width: auto;
 }
 
 .logo a {
-  text-align: center;
-  align-self: center;
-  text-decoration: none;
   font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(20px, 3vw, 48px);
   color: white;
-  font-size: 50px;
+  text-decoration: none;
+  margin: 0;
 }
+
 
 @media (max-width: 768px) {
   .logoImage {
@@ -66,3 +67,26 @@
     margin: 0;
   }
 }
+
+
+@media (min-width: 1400px) and (max-width: 1588px) {
+  .logo a {
+    font-size: 36px;
+    position: relative; /* убираем absolute */
+    left: unset;
+    transform: unset;
+    margin-left: 15px;
+  }
+
+  .logoImage {
+    width: 90px;
+    height: auto;
+    margin-left: 10px;
+  }
+
+  .logo {
+    gap: 10px;
+  }
+}
+
+

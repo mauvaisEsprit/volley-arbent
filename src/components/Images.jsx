@@ -1,4 +1,5 @@
 import "../styles/componentStyles/Image.css";
+import { Parallax } from "react-parallax";
 import { useRef } from "react";
 
 export default function Images({ images, text, buttonText }) {
@@ -6,7 +7,7 @@ export default function Images({ images, text, buttonText }) {
 
   const scrollToBooking = () => {
     const headerHeight = window.innerWidth <= 768 ? 75 : 120;
-    const offset = -headerHeight; // +30 для небольшого зазора
+    const offset = -headerHeight;
     const elementPosition = bookingRef.current.getBoundingClientRect().top;
     const offsetPosition = elementPosition + window.pageYOffset + offset;
 
@@ -17,18 +18,17 @@ export default function Images({ images, text, buttonText }) {
   };
 
   return (
-    <div>
-      <div className="teslaImage">
-        <img src={images} alt="image" />
-        <div className="overlay-text">
+    <>
+      <Parallax bgImage={images} strength={450}>
+        <div className="section parallax-window">
           <h1>{text}</h1>
+          <button className="buttonRes" onClick={scrollToBooking}>
+            {buttonText}
+          </button>
         </div>
-        <button className="buttonRes" onClick={scrollToBooking}>
-          {buttonText}
-        </button>
-      </div>
+      </Parallax>
 
       <div ref={bookingRef}></div>
-    </div>
+    </>
   );
 }
