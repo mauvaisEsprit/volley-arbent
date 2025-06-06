@@ -53,7 +53,7 @@ export default function BurgerMenu() {
               
 
               <div className="bottom-links">
-                <Link to="/faq" onClick={toggleMenu}>
+                {/*<Link to="/faq" onClick={toggleMenu}>
                   FAQ
                 </Link>
                 <Link to="/contact" onClick={toggleMenu}>
@@ -61,7 +61,7 @@ export default function BurgerMenu() {
                 </Link>
                 <Link to="/support" onClick={toggleMenu}>
                   Support
-                </Link>
+                </Link>*/}
                 <Link to="/login" onClick={toggleMenu}>
                   Login
                 </Link>
