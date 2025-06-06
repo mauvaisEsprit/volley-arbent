@@ -79,7 +79,7 @@
   padding: clamp(10px, 2vh, 15px) clamp(25px, 6vw, 45px);
   border-radius: clamp(15px, 3vw, 25px);
   color: white;
-  background: linear-gradient(90deg, rgb(144, 144, 144), rgb(0, 0, 0), rgb(144, 144, 144));
+  background: linear-gradient(90deg, #007BFF, #000000, #007BFF); /* синий - черный - синий */
   background-size: 200% 200%;
   font-family: 'Space Grotesk', sans-serif;
   cursor: pointer;

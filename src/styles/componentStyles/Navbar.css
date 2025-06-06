@@ -3,6 +3,28 @@
   z-index: 1000;
 }
 
+.nav-menu .nav-item a,
+.dropdown-menu a {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 28px;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  min-width: 160px;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 10px 20px;
+  transition: background 0.3s ease;
+}
+
+.dropdown-menu a {
+  font-size: 16px; /* поменьше, если в подменю */
+  min-width: 160px;
+}
+
+
+
 /* Только для десктопа */
 @media (min-width: 1400px) {
   .nav-menu {
@@ -55,7 +77,7 @@
   top: 100%;
   left: 0;
   min-width: 150px;
-  background-color: black;
+  background: linear-gradient(135deg, #005f99, #3399ff);
   border: 1px solid #333;
   display: none;
   flex-direction: column;
