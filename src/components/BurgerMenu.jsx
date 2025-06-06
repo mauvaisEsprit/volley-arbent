@@ -1,6 +1,7 @@
 import "../styles/componentStyles/BurgerMenu.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import LogoImage from "./LogoImage";
 
 
 export default function BurgerMenu() {
@@ -67,6 +68,8 @@ export default function BurgerMenu() {
                 </Link>
               </div>
             </nav>
+              <LogoImage />
+              
           </div>
         </div>
       )}
