@@ -42,7 +42,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(135deg, #0A0F2C 0%, #1E90FF 100%);
+    background: linear-gradient(135deg, #0a0f2c 0%, #1e90ff 100%);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -80,7 +80,6 @@
   .fullscreen-menu nav a:hover {
     background-color: rgba(51, 51, 51, 0.8);
   }
-
 
   .bottom-links {
     display: flex;
@@ -196,7 +195,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(135deg, #0A0F2C 0%, #1E90FF 100%);
+    background: linear-gradient(135deg, #0a0f2c 0%, #1e90ff 100%);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -292,7 +291,6 @@
   }
 }
 
-
 @media (max-height: 750px) {
   .logoBurger {
     font-size: 18px;
@@ -301,12 +299,11 @@
   .fullscreen-menu nav a {
     font-size: 28px;
   }
-
-
 }
 
 .burger-itemDropdown {
   position: relative;
+  width: 100%;
 }
 
 .burger-itemDropdown-toggle {
@@ -331,7 +328,6 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
-  margin-top: 10px;
   text-align: center;
 }
 
