@@ -1,13 +1,253 @@
+import "../styles/pageStyles/Schedule.css";
+import { useEffect } from "react";
 import Images from "../components/Images";
-function Schedule() {
-  const imageHome = "https://ca-times.brightspotcdn.com/dims4/default/2aaf5f0/2147483647/strip/true/crop/4256x2832+0+0/resize/1200x798!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F52%2Ff7%2F283a4f1343e19226def7445faf7d%2Fhttps-delivery.gettyimages.com%2Fdownloads%2F171247618.jpg";
+import Hero from "../assets/4R5KFUBYIRD23OJOG4NCZ6FWEA.avif";
+import "react-big-calendar/lib/css/react-big-calendar.css";
+
+import { useState } from "react";
+import { Calendar, momentLocalizer, Views } from "react-big-calendar";
+import moment from "moment";
+import "moment/locale/fr";
+import Modal from "react-modal";
+
+import {
+  FaChevronLeft,
+  FaChevronRight,
+  FaCalendarDay,
+  FaCalendarWeek,
+  FaCalendarAlt,
+  FaStream,
+  FaHome,
+} from "react-icons/fa";
+
+// Устанавливаем французскую локаль для moment
+moment.locale("fr");
+console.log("Current moment locale:", moment.locale());
+
+// Обновляем локаль, чтобы неделя начиналась с понедельника и форматы даты под франц.
+moment.updateLocale("fr", {
+  week: {
+    dow: 1, // Понедельник - первый день недели
+  },
+  longDateFormat: {
+    LT: "HH:mm",
+    LTS: "HH:mm:ss",
+    L: "DD/MM/YYYY",
+    LL: "D MMMM YYYY",
+    LLL: "D MMMM YYYY HH:mm",
+    LLLL: "dddd D MMMM YYYY HH:mm",
+  },
+})
+console.log("Current moment locale:", moment.locale());
+console.log("Formatted date test:", moment().format("dddd D MMMM YYYY"));
+
+
+
+const localizer = momentLocalizer(moment);
+
+const eventColors = {
+  match: "#FF6B6B",
+  tournament: "#4ECDC4",
+  party: "#556270",
+};
+
+function CustomToolbar({ label, onNavigate, onView, view }) {
   return (
-    <div>
-      <Images images={imageHome} text="Arbent Volley" buttonText="Decouvrir" />
-      <h2>Calendrier des matchs</h2>
-      <p>Prochains matchs à venir...</p>
+    <div className="calendar-toolbar">
+      <div className="calendar-toolbar-nav">
+        <button onClick={() => onNavigate("TODAY")} title="Aujourd’hui">
+          <FaHome />
+        </button>
+        <button onClick={() => onNavigate("PREV")} title="Précédent">
+          <FaChevronLeft />
+        </button>
+        <span className="calendar-toolbar-label">{label}</span>
+        <button onClick={() => onNavigate("NEXT")} title="Suivant">
+          <FaChevronRight />
+        </button>
+      </div>
+      <div className="calendar-toolbar-views">
+        <button
+          onClick={() => onView("month")}
+          className={view === "month" ? "active" : ""}
+          title="Mois"
+        >
+          <FaCalendarAlt />
+        </button>
+        <button
+          onClick={() => onView("week")}
+          className={view === "week" ? "active" : ""}
+          title="Semaine"
+        >
+          <FaCalendarWeek />
+        </button>
+        <button
+          onClick={() => onView("day")}
+          className={view === "day" ? "active" : ""}
+          title="Jour"
+        >
+          <FaCalendarDay />
+        </button>
+        <button
+          onClick={() => onView("agenda")}
+          className={view === "agenda" ? "active" : ""}
+          title="Agenda"
+        >
+          <FaStream />
+        </button>
+      </div>
     </div>
   );
 }
 
-export default Schedule;
+function Event({ event }) {
+  const color = eventColors[event.type] || "#333";
+  return (
+    <div
+      style={{
+        backgroundColor: color,
+        padding: "6px 10px",
+        borderRadius: 8,
+        color: "white",
+        fontWeight: "600",
+        boxShadow: "0 2px 5px rgba(0,0,0,0.15)",
+        cursor: "pointer",
+        transition: "transform 0.2s ease",
+      }}
+      className="rbc-event-content"
+    >
+      {event.title}
+    </div>
+  );
+}
+
+export default function MatchCalendar() {
+  const [view, setView] = useState(Views.MONTH);
+  const [date, setDate] = useState(new Date());
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState(null);
+
+  const events = [
+    {
+      title: "Match Arbent VS Oyonnax",
+      start: new Date(2025, 5, 22, 18, 0),
+      end: new Date(2025, 5, 22, 20, 0),
+      desc: "Salle Municipale",
+      type: "match",
+    },
+    {
+      title: "Tournoi régional",
+      start: new Date(2025, 5, 15, 14, 0),
+      end: new Date(2025, 5, 15, 18, 0),
+      type: "tournament",
+    },
+    {
+      title: "Soirée conviviale",
+      start: new Date(2025, 5, 30, 19, 0),
+      end: new Date(2025, 5, 30, 23, 0),
+      type: "party",
+    },
+  ];
+
+  const messages = {
+    allDay: "Toute la journée",
+    previous: "Précédent",
+    next: "Suivant",
+    today: "Aujourd'hui",
+    month: "Mois",
+    week: "Semaine",
+    day: "Jour",
+    agenda: "Agenda",
+    noEventsInRange: "Pas d'événements dans cette période.",
+    showMore: (total) => `+ ${total} de plus`,
+  };
+
+  const handleSelectEvent = (event) => {
+    setSelectedEvent(event);
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+    setSelectedEvent(null);
+  };
+
+  // Форматы дат для отображения на французском
+  const formats = {
+    dayFormat: (date) => moment(date).format("ddd DD/MM"),       // lun. 22/06
+    weekdayFormat: (date) => moment(date).format("dddd"),        // lundi, mardi...
+    monthHeaderFormat: (date) => moment(date).format("MMMM YYYY"),  // juin 2025
+    dayHeaderFormat: (date) => moment(date).format("dddd D MMMM"),   // lundi 22 juin
+    agendaDateFormat: (date) => moment(date).format("dddd D MMMM"),  // lundi 22 juin
+  };
+  useEffect(() => {
+  moment.locale("fr");
+  console.log("Locale inside useEffect:", moment.locale());
+  console.log("Formatted date test:", moment().format("dddd D MMMM YYYY"));
+}, []);
+
+console.log(moment.localeData("fr-FR").weekdays()); // Должен вывести массив с днями недели по-французски
+console.log(moment.localeData().months());   // Месяцы по-французски
+
+
+  return (
+    <>
+      <Images images={Hero} text="Calendrier" buttonText="Découvrir" />
+      <div className="calendar-container">
+        <Calendar
+          localizer={localizer}
+          events={events}
+          startAccessor="start"
+          endAccessor="end"
+          style={{ height: 600 }}
+          onSelectEvent={handleSelectEvent}
+          popup={true}
+          culture="fr"
+          view={view}
+          date={date}
+          onView={(v) => setView(v)}
+          onNavigate={(date) => setDate(date)}
+          messages={messages}
+          formats={formats} // <- тут formats для французского
+          components={{
+            toolbar: (props) => (
+              <CustomToolbar {...props} view={view} onView={(v) => setView(v)} />
+            ),
+            event: Event,
+          }}
+        />
+      </div>
+<p>Test: {moment(new Date()).format("dddd D MMMM YYYY")}</p>
+<p>Test: {moment(new Date()).locale("fr").format("dddd D MMMM YYYY")}</p>
+
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        contentLabel="Détails de l'événement"
+        className="modal"
+        overlayClassName="modal-overlay"
+        ariaHideApp={false}
+      >
+        {selectedEvent && (
+          <>
+            <h2>{selectedEvent.title}</h2>
+            <p>
+              <strong>Date :</strong>{" "}
+              {moment(selectedEvent.start).format("dddd D MMMM YYYY, HH:mm")} -{" "}
+              {moment(selectedEvent.end).format("HH:mm")}
+            </p>
+            {selectedEvent.desc && (
+              <p>
+                <strong>Description :</strong> {selectedEvent.desc}
+              </p>
+            )}
+            <button onClick={closeModal} className="close-btn">
+              Fermer
+            </button>
+          </>
+        )}
+      </Modal>
+    </>
+  );
+}
+

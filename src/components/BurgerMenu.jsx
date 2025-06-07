@@ -50,6 +50,13 @@ export default function BurgerMenu() {
               <Link to="/schedule" onClick={toggleMenu}>
                 Calendrier
               </Link>
+              <div className="nav-item dropdown">
+            <button className="dropdown-toggle">Calendrier</button>
+            <div className="dropdown-menu">
+              <Link to="/schedule">Calendrier</Link>
+              <Link to="/creneau">Creneau</Link>
+            </div>
+          </div>
               <Link to="/login" onClick={toggleMenu}>
                 Login
               </Link>
