@@ -1,8 +1,5 @@
 import "../styles/pageStyles/Schedule.css";
-import Images from "../components/Images";
-import Hero from "../assets/4R5KFUBYIRD23OJOG4NCZ6FWEA.avif";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-
 import { useState } from "react";
 import { Calendar, momentLocalizer, Views } from "react-big-calendar";
 import moment from "moment";
@@ -186,7 +183,6 @@ export default function MatchCalendar() {
 
   return (
     <>
-      <Images images={Hero} text="Calendrier" buttonText="Découvrir" />
       <div className="calendar-container">
         <Calendar
           localizer={localizer}

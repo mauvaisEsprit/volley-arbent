@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import "../styles/pageStyles/Creneau.css";
 import scheduleData from "../data/scheduleData";
 import Images from "../components/Images";
+import Schedule from "./Schedule";
 
 
 
@@ -51,6 +52,7 @@ export default function Creneau() {
         })}
       </div>
     </div>
+    <Schedule />  
     </div>
   );
 }
