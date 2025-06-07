@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import ScrollUpButton from "../components/ScrollUpButton";
 import { useState, useEffect } from "react";
 import Hero from "../assets/4R5KFUBYIRD23OJOG4NCZ6FWEA.avif";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const imageHome = Hero;
@@ -68,9 +69,9 @@ export default function Home() {
           </li>
           <li>📅 Samedi 9h30-11h00 — École de volley (Gymnase Arbent)</li>
         </ul>
-        <a href="/creneaux" className="btn-link">
+        <Link to="/creneau" className="btn-link">
           Voir tout le planning
-        </a>
+        </Link>
       </section>
 
       <section className="match container">

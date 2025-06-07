@@ -1,5 +1,4 @@
 import "../styles/pageStyles/Schedule.css";
-import { useEffect } from "react";
 import Images from "../components/Images";
 import Hero from "../assets/4R5KFUBYIRD23OJOG4NCZ6FWEA.avif";
 import "react-big-calendar/lib/css/react-big-calendar.css";
@@ -22,7 +21,7 @@ import {
 
 // Устанавливаем французскую локаль для moment
 moment.locale("fr");
-console.log("Current moment locale:", moment.locale());
+
 
 // Обновляем локаль, чтобы неделя начиналась с понедельника и форматы даты под франц.
 moment.updateLocale("fr", {
@@ -38,8 +37,8 @@ moment.updateLocale("fr", {
     LLLL: "dddd D MMMM YYYY HH:mm",
   },
 })
-console.log("Current moment locale:", moment.locale());
-console.log("Formatted date test:", moment().format("dddd D MMMM YYYY"));
+
+
 
 
 
@@ -180,14 +179,9 @@ export default function MatchCalendar() {
     dayHeaderFormat: (date) => moment(date).format("dddd D MMMM"),   // lundi 22 juin
     agendaDateFormat: (date) => moment(date).format("dddd D MMMM"),  // lundi 22 juin
   };
-  useEffect(() => {
-  moment.locale("fr");
-  console.log("Locale inside useEffect:", moment.locale());
-  console.log("Formatted date test:", moment().format("dddd D MMMM YYYY"));
-}, []);
 
-console.log(moment.localeData("fr-FR").weekdays()); // Должен вывести массив с днями недели по-французски
-console.log(moment.localeData().months());   // Месяцы по-французски
+
+
 
 
   return (
@@ -217,8 +211,6 @@ console.log(moment.localeData().months());   // Месяцы по-француз
           }}
         />
       </div>
-<p>Test: {moment(new Date()).format("dddd D MMMM YYYY")}</p>
-<p>Test: {moment(new Date()).locale("fr").format("dddd D MMMM YYYY")}</p>
 
       <Modal
         isOpen={modalIsOpen}

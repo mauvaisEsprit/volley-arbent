@@ -3,11 +3,12 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import LogoImage from "./LogoImage";
 
-
 export default function BurgerMenu() {
   const [isOpen, setIsOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false); // состояние для dropdown меню
 
   const toggleMenu = () => setIsOpen((prev) => !prev);
+  const toggleDropdown = () => setDropdownOpen((prev) => !prev);
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "auto";
@@ -16,10 +17,8 @@ export default function BurgerMenu() {
     };
   }, [isOpen]);
 
-
-
   return (
-    <div className="burger-wrapper">    
+    <div className="burger-wrapper">
       {!isOpen && (
         <div className="burger-icon" onClick={toggleMenu}>
           <div className="line"></div>
@@ -47,23 +46,40 @@ export default function BurgerMenu() {
               <Link to="/about" onClick={toggleMenu}>
                 À propos
               </Link>
-              <Link to="/schedule" onClick={toggleMenu}>
-                Calendrier
-              </Link>
-              <div className="nav-item dropdown">
-            <button className="dropdown-toggle">Calendrier</button>
-            <div className="dropdown-menu">
-              <Link to="/schedule">Calendrier</Link>
-              <Link to="/creneau">Creneau</Link>
-            </div>
-          </div>
+              <div className="burger-itemDropdown">
+                {!dropdownOpen ? (
+                  <button className="burger-itemDropdown-toggle" onClick={toggleDropdown}>
+                   Planning<span className="arrow">▼</span>
+                  </button>
+                ) : (
+                  <div className="burger-itemDropdown-menu">
+                    <Link
+                      to="/schedule"
+                      onClick={() => {
+                        toggleMenu();
+                        toggleDropdown();
+                      }}
+                    >
+                      Calendrier
+                    </Link>
+                    <Link
+                      to="/creneau"
+                      onClick={() => {
+                        toggleMenu();
+                        toggleDropdown();
+                      }}
+                    >
+                      Creneau
+                    </Link>
+                  </div>
+                )}
+              </div>
+
               <Link to="/login" onClick={toggleMenu}>
                 Login
               </Link>
-              
             </nav>
-              <LogoImage />
-              
+            <LogoImage />
           </div>
         </div>
       )}
