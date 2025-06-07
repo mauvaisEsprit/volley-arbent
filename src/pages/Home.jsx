@@ -36,51 +36,65 @@ export default function Home() {
       <section className="intro container">
         <h1>Bienvenue sur le site officiel du club !</h1>
         <p>
-          Rejoignez-nous pour vivre le volley avec passion, camaraderie et esprit sportif.
+          Rejoignez-nous pour vivre le volley avec passion, camaraderie et
+          esprit sportif.
         </p>
       </section>
 
       <section className="actus container">
         <h2>Actualités</h2>
         <ul>
-          <li>📅 <strong>Tournoi régional</strong> prévu le 15 juin à 14h</li>
-          <li>👟 <strong>Reprise des entraînements jeunes</strong> dès le 10 juin</li>
-          <li>🎉 <strong>Soirée conviviale</strong> du club prévue le 30 juin</li>
+          <li>
+            📅 <strong>Tournoi régional</strong> prévu le 15 juin à 14h
+          </li>
+          <li>
+            👟 <strong>Reprise des entraînements jeunes</strong> dès le 10 juin
+          </li>
+          <li>
+            🎉 <strong>Soirée conviviale</strong> du club prévue le 30 juin
+          </li>
         </ul>
       </section>
 
       <section className="match container">
         <h2>Prochain match</h2>
-        <p>🏐 <strong>Arbent VS Oyonnax</strong> — Samedi 22 juin à 18h (Salle Municipale)</p>
+        <p>
+          🏐 <strong>Arbent VS Oyonnax</strong> — Samedi 22 juin à 18h (Salle
+          Municipale)
+        </p>
       </section>
 
       <section className="partenaires container">
-  <h2>Nos partenaires</h2>
+        <h2>Nos partenaires</h2>
 
-  {isMobile && (
-    <button
-      className="toggle-partenaires-btn"
-      onClick={() => setShowPartenaires(!showPartenaires)}
-    >
-      {showPartenaires ? "Masquer" : "Afficher"} les partenaires
-    </button>
-  )}
+        {isMobile && (
+          <button
+            className="toggle-partenaires-btn"
+            onClick={() => setShowPartenaires(!showPartenaires)}
+          >
+            {showPartenaires ? "Masquer" : "Afficher"} les partenaires
+          </button>
+        )}
 
-  <AnimatePresence initial={false}>
-    {showPartenaires && (
-      <motion.div
-        className="partenaires-content"
-        key="partenaires"
-        initial={{ height: 0, opacity: 0 }}
-        animate={{ height: "auto", opacity: 1 }}
-        exit={{ height: 0, opacity: 0 }}
-        transition={{ duration: 0.5, ease: "easeInOut" }}
-      >
-        <Partenaires />
-      </motion.div>
-    )}
-  </AnimatePresence>
-</section>
+        <AnimatePresence initial={false}>
+          {showPartenaires && (
+            <motion.div
+              className="partenaires-content"
+              key="partenaires"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              transition={{
+                height: { duration: 0.6 },
+                opacity: { duration: 0.9 },
+              }}
+              exit={{ height: 0, opacity: 0 }}
+              style={{ overflow: "hidden" }}
+            >
+              <Partenaires />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </section>
 
       <ScrollUpButton />
     </main>
