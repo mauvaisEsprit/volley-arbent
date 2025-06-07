@@ -1,10 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Header from './components/Header';
-import Image from './components/Images';
 import Footer from './components/Footer';
 import ScrollUpButton from './components/ScrollUpButton';
-import Navbar from './components/Navbar';
+import ScrollToTop from './components/ScrollToTop';
 
 
 
@@ -20,6 +19,7 @@ export default function App() {
   return (
     <Router>
       <Header />
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/news" element={<News />} />

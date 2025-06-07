@@ -9,13 +9,13 @@ export default function Header() {
 
   return (
     <header>
-      <div class="header-left">
+      <div className="header-left">
         <LogoImage />
       </div>
-      <div class="header-center">
+      <div className="header-center">
         <Logo />
       </div>
-      <div class="header-right">
+      <div className="header-right">
         <Navbar />
       </div>     
     </header>

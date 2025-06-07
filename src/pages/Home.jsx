@@ -5,8 +5,8 @@ import ScrollUpButton from "../components/ScrollUpButton";
 
 export default function Home() {
   const imageHome =
-    "https://www.pa-sport.fr/wp-content/uploads/qrwjxvaqujmpykl5y3ws-4-scaled.jpg";
-
+    "https://www.lexpress.fr/resizer/ymRRXr6fSYpJ74FlTiOiwKrGRQc=/arc-photo-lexpress/eu-central-1-prod/public/4R5KFUBYIRD23OJOG4NCZ6FWEA.jpg";
+  
   return (
     <main className="home">
       <Images

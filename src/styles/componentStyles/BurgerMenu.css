@@ -301,3 +301,15 @@
     transform: rotate(-45deg);
   }
 }
+
+
+@media (max-height: 750px) {
+  .logoBurger {
+    font-size: 18px;
+  }
+
+  .fullscreen-menu nav a {
+    font-size: 28px;
+  }
+  
+}
