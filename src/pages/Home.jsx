@@ -13,17 +13,21 @@ export default function Home() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-      if (window.innerWidth < 768) {
-        setShowPartenaires(false);
-      }
-    };
+  const isMobileNow = window.innerWidth < 768;
+  setIsMobile(isMobileNow);
+  if (isMobileNow) {
+    setShowPartenaires(false);
+  }
 
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 768);
+  };
+
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
+
+
 
   return (
     <main className="home">
