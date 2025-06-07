@@ -1,12 +1,30 @@
 import "../styles/pageStyles/Home.css";
 import Images from "../components/Images";
 import Partenaires from "../components/Partenaires";
+import { motion, AnimatePresence } from "framer-motion";
 import ScrollUpButton from "../components/ScrollUpButton";
+import { useState, useEffect } from "react";
 
 export default function Home() {
   const imageHome =
     "https://www.lexpress.fr/resizer/ymRRXr6fSYpJ74FlTiOiwKrGRQc=/arc-photo-lexpress/eu-central-1-prod/public/4R5KFUBYIRD23OJOG4NCZ6FWEA.jpg";
-  
+
+  const [showPartenaires, setShowPartenaires] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+      if (window.innerWidth < 768) {
+        setShowPartenaires(false);
+      }
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <main className="home">
       <Images
@@ -37,9 +55,32 @@ export default function Home() {
       </section>
 
       <section className="partenaires container">
-        <h2>Nos partenaires</h2>
+  <h2>Nos partenaires</h2>
+
+  {isMobile && (
+    <button
+      className="toggle-partenaires-btn"
+      onClick={() => setShowPartenaires(!showPartenaires)}
+    >
+      {showPartenaires ? "Masquer" : "Afficher"} les partenaires
+    </button>
+  )}
+
+  <AnimatePresence initial={false}>
+    {showPartenaires && (
+      <motion.div
+        className="partenaires-content"
+        key="partenaires"
+        initial={{ height: 0, opacity: 0 }}
+        animate={{ height: "auto", opacity: 1 }}
+        exit={{ height: 0, opacity: 0 }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+      >
         <Partenaires />
-      </section>
+      </motion.div>
+    )}
+  </AnimatePresence>
+</section>
 
       <ScrollUpButton />
     </main>
