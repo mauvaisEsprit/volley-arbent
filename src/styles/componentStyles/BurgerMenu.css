@@ -326,7 +326,7 @@
 .burger-itemDropdown-menu {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 40px;
   margin-top: 10px;
   text-align: center;
 }
