@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import LogoImage from "./LogoImage";
 
-
 export default function BurgerMenu() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -16,15 +15,13 @@ export default function BurgerMenu() {
     };
   }, [isOpen]);
 
-
-
   return (
-    <div className="burger-wrapper">    
+    <div className="burger-wrapper">
       {!isOpen && (
         <div className="burger-icon" onClick={toggleMenu}>
-          <div className="line"></div>
-          <div className="line"></div>
-          <div className="line"></div>
+          <div className={`line ${isOpen ? "line1" : ""}`}></div>
+          <div className={`line ${isOpen ? "line2" : ""}`}></div>
+          <div className={`line ${isOpen ? "line3" : ""}`}></div>
         </div>
       )}
       {isOpen && (
@@ -46,16 +43,15 @@ export default function BurgerMenu() {
               </Link>
               <Link to="/about" onClick={toggleMenu}>
                 À propos
-              </Link> 
+              </Link>
               <Link to="/creneau" onClick={toggleMenu}>
                 Creneau
               </Link>
               <Link to="/login" onClick={toggleMenu}>
                 Login
-              </Link>   
+              </Link>
             </nav>
-              <LogoImage />
-              
+            <LogoImage />
           </div>
         </div>
       )}

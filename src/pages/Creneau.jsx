@@ -4,6 +4,7 @@ import "../styles/pageStyles/Creneau.css";
 import scheduleData from "../data/scheduleData";
 import Images from "../components/Images";
 import Schedule from "./Schedule";
+import Hero from "../assets/4R5KFUBYIRD23OJOG4NCZ6FWEA.avif";
 
 
 
@@ -13,7 +14,7 @@ export default function Creneau() {
 
   return (
     <div>
-        <Images images="https://www.lexpress.fr/resizer/ymRRXr6fSYpJ74FlTiOiwKrGRQc=/arc-photo-lexpress/eu-central-1-prod/public/4R5KFUBYIRD23OJOG4NCZ6FWEA.jpg" text="Créneau" buttonText="Découvrir" />
+        <Images images={Hero} text="Créneau" buttonText="Découvrir" />
         <div className="schedule-container">
       <h2 className="schedule-title">📅 Créneaux d'entraînement</h2>
       <div className="cards-grid">
@@ -52,6 +53,7 @@ export default function Creneau() {
         })}
       </div>
     </div>
+    <h2 className="schedule-title">📅 Calendrier</h2>
     <Schedule />  
     </div>
   );

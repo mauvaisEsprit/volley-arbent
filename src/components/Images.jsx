@@ -1,6 +1,7 @@
 import "../styles/componentStyles/Image.css";
 import { Parallax } from "react-parallax";
 import { useRef } from "react";
+import ScatterText from "./SplitTextScatter";
 
 export default function Images({ images, text, buttonText }) {
   const bookingRef = useRef(null);
@@ -30,7 +31,7 @@ export default function Images({ images, text, buttonText }) {
           objectPosition: isMobile ? "right bottom" : "center center"
         }}>
         <div className="section parallax-window">
-          <h1>{text}</h1>
+          <ScatterText text={text} />
           <button className="buttonRes" onClick={scrollToBooking}>
             {buttonText}
           </button>

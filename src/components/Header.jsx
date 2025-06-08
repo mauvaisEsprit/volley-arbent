@@ -5,6 +5,7 @@ import BurgerMenu from "../components/BurgerMenu";
 import "../styles/componentStyles/Header.css";
 import Navbar from "./Navbar";
 
+
 export default function Header() {
 
   return (

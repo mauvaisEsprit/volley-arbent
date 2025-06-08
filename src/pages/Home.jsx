@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import Hero from "../assets/4R5KFUBYIRD23OJOG4NCZ6FWEA.avif";
 import { Link } from "react-router-dom";
 
+
 export default function Home() {
   const imageHome = Hero;
 
