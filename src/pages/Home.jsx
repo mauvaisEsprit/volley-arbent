@@ -47,13 +47,13 @@ export default function Home() {
         <h2>Actualités</h2>
         <ul>
           <li>
-            📅 <Link to="/actualites/tournoi-regional" className="link-actus"><strong>Tournoi régional</strong></Link> prévu le 15 juin à 14h
+            📅 <Link to="/news/tournoi-regional" className="link-actus"><strong>Tournoi régional</strong></Link> prévu le 15 juin à 14h
           </li>
           <li>
-            👟 <Link to="/actualites/entrainements-jeunes" className="link-actus"><strong>Reprise des entraînements jeunes</strong></Link> dès le 10 juin
+            👟 <Link to="/news/entrainements-jeunes" className="link-actus"><strong>Reprise des entraînements jeunes</strong></Link> dès le 10 juin
           </li>
           <li>
-            🎉 <Link to="/actualites/soiree-conviviale" className="link-actus"><strong>Soirée conviviale</strong></Link> du club prévue le 30 juin
+            🎉 <Link to="/news/inscriptions-saison-2025" className="link-actus"><strong>Soirée conviviale</strong></Link> du club prévue le 30 juin
           </li>
         </ul>
       </section>
@@ -61,13 +61,13 @@ export default function Home() {
       <section className="schedule-preview container">
         <h2>Prochains créneaux</h2>
         <ul>
-          <li>📅 <Link to="/creneau#lundi" className="link-schedule">Lundi 18h00-19h30 — Entraînement M13-M15 (Gymnase Arbent)</Link></li>
+          <li>📅 <Link to="/planning#lundi" className="link-schedule">Lundi 18h00-19h30 — Entraînement M13-M15 (Gymnase Arbent)</Link></li>
           <li>
-            📅 <Link to="/creneau#mercredi" className="link-schedule">Mercredi 18h15-20h15 — Entraînement M18 féminine (Gymnase Jean Moulin)</Link>
+            📅 <Link to="/planning#mercredi" className="link-schedule">Mercredi 18h15-20h15 — Entraînement M18 féminine (Gymnase Jean Moulin)</Link>
           </li>
-          <li>📅 <Link to="/creneau#samedi" className="link-schedule">Samedi 9h30-11h00 — École de volley (Gymnase Arbent)</Link></li>
+          <li>📅 <Link to="/planning#samedi" className="link-schedule" >Samedi 9h30-11h00 — École de volley (Gymnase Arbent)</Link></li>
         </ul>
-        <Link to="/creneau" className="btn-link">
+        <Link to="/planning" className="btn-link">
           Voir tout le planning
         </Link>
       </section>

@@ -6,18 +6,17 @@ import ScrollUpButton from './components/ScrollUpButton';
 import ScrollToTop from './components/ScrollToTop';
 
 
-
 import Home from './pages/Home';
-import News from './pages/News';
-import Schedule from './pages/Schedule';
+import News from './pages/NewsList';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Login from './pages/Login';
 import AdminPanel from './pages/AdminPanel';
-import Creneau from './pages/Creneau';
+import Planning from './pages/Planning';
 import MentionsLegales from './pages/MentionsLegales';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Faq from './pages/Faq';
+import NewsDetail from './pages/NewsDetail';
 
 export default function App() {
   return (
@@ -27,8 +26,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/news" element={<News />} />
-        <Route path="/schedule" element={<Schedule />} />
-        <Route path="/creneau" element={<Creneau />} />
+        <Route path="/news/:slug" element={<NewsDetail />} />
+        <Route path="/planning" element={<Planning />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
@@ -42,4 +41,3 @@ export default function App() {
     </Router>
   );
 }
-

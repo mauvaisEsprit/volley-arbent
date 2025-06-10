@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import "../styles/pageStyles/Creneau.css";
+import "../styles/pageStyles/Planning.css";
 import scheduleData from "../data/scheduleData";
 import Images from "../components/Images";
 import Schedule from "./Schedule";
@@ -9,7 +9,7 @@ import Hero from "../assets/4R5KFUBYIRD23OJOG4NCZ6FWEA.avif";
 
 
 
-export default function Creneau() {
+export default function Planning() {
   const [activeDay, setActiveDay] = useState(null);
 
   return (

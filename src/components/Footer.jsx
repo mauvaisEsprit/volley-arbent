@@ -84,10 +84,10 @@ export default function Footer() {
             </li>
             <li>
               <NavLink
-                to="/schedule"
-                onClick={(e) => handleLinkClick(e, "/schedule")}
+                to="/planning"
+                onClick={(e) => handleLinkClick(e, "/planning")}
               >
-                Calendrier
+                Planning
               </NavLink>
             </li>
             <li>
@@ -98,11 +98,7 @@ export default function Footer() {
                 À propos
               </NavLink>
             </li>
-            {/*<li>
-              <NavLink to="/tarifs" onClick={(e) => handleLinkClick(e, "/tarifs")}>
-                Contact
-              </NavLink>
-            </li>*/}
+            
           </ul>
           <LogoImage />
         </div>

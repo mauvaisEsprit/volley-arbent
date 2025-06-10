@@ -1,86 +1,187 @@
 .about-club {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 80px 30px;
-  background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-  font-family: 'Segoe UI', Roboto, sans-serif;
-  color: #333;
-  line-height: 1.8;
-  transition: all 0.3s ease;
+  max-width: 900px;
+  margin: 40px auto 80px;
+  padding: 70px 50px;
+  background: linear-gradient(135deg, #f0f8ff, #e6f2fa);
+  border-radius: 24px;
+  box-shadow:
+    0 20px 40px rgba(0, 119, 204, 0.25),
+    0 6px 12px rgba(0, 0, 0, 0.07);
+  font-family: 'Poppins', 'Segoe UI', Roboto, sans-serif;
+  color: #1a1a1a;
+  line-height: 1.85;
+  transition: box-shadow 0.4s ease, transform 0.4s ease;
+  will-change: transform;
+  cursor: default;
 }
 
-/* Заголовок страницы */
+.about-club:hover {
+  box-shadow:
+    0 35px 50px rgba(0, 119, 204, 0.4),
+    0 12px 22px rgba(0, 0, 0, 0.12);
+  transform: translateY(-8px);
+}
+
 .about-title {
-  font-size: 42px;
+  font-size: 48px;
   text-align: center;
-  color: #0077cc;
+  color: #005ea2;
   text-transform: uppercase;
-  letter-spacing: 1.2px;
-  margin-bottom: 50px;
+  letter-spacing: 2px;
+  margin-bottom: 60px;
+  font-weight: 800;
+  text-shadow: 1px 1px 4px rgba(0, 94, 162, 0.5);
 }
 
-/* Заголовки секций */
 .about-subtitle {
-  font-size: 26px;
-  color: #444;
-  margin-top: 40px;
-  margin-bottom: 16px;
-  border-left: 4px solid #0077cc;
-  padding-left: 14px;
-  background: linear-gradient(to right, #e6f2fa, transparent);
-}
-
-/* Текст */
-.about-content p {
-  font-size: 18px;
+  font-size: 28px;
+  color: #003a75;
+  margin-top: 50px;
   margin-bottom: 20px;
-  color: #444;
+  border-left: 6px solid #0077cc;
+  padding-left: 18px;
+  background: linear-gradient(to right, #cce6ff 40%, transparent);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  transition: color 0.3s ease;
 }
 
-/* Список ценностей */
+.about-subtitle:hover {
+  color: #005ea2;
+}
+
+.about-content p {
+  font-size: 19px;
+  margin-bottom: 26px;
+  color: #2b2b2b;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.9;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
 .about-content ul {
   list-style: none;
   padding-left: 0;
-  margin-top: 10px;
+  margin-top: 15px;
+  margin-bottom: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 35px;
 }
 
 .about-content li {
+  flex: 1 1 45%;
   font-size: 18px;
-  margin-bottom: 12px;
-  padding-left: 32px;
+  font-weight: 600;
+  padding-left: 40px;
   position: relative;
+  color: #004a99;
+  transition: color 0.3s ease;
+  cursor: default;
+}
+
+.about-content li:hover {
+  color: #0077cc;
 }
 
 .about-content li::before {
-  content: '';
+  content: '✓';
   position: absolute;
   left: 0;
-  top: 7px;
-  width: 20px;
-  height: 20px;
-  background-color: #0077cc;
-  border-radius: 50%;
-  box-shadow: 0 0 0 2px #cce6f5;
+  top: 2px;
+  font-size: 20px;
+  color: #0077cc;
+  font-weight: 900;
+  text-shadow: 0 0 3px #66aaff;
+  transition: color 0.3s ease;
 }
 
-/* Медиа-запросы */
-@media (max-width: 768px) {
+.about-content li:hover::before {
+  color: #005ea2;
+  text-shadow: 0 0 5px #003a75;
+}
+
+/* Адаптивность */
+
+/* Планшеты */
+@media (max-width: 992px) {
   .about-club {
-    padding: 50px 20px;
+    padding: 60px 40px;
+    margin: 30px auto 70px;
   }
 
   .about-title {
-    font-size: 32px;
+    font-size: 40px;
+    margin-bottom: 45px;
   }
 
   .about-subtitle {
-    font-size: 22px;
+    font-size: 24px;
+    margin-top: 40px;
+    margin-bottom: 18px;
   }
 
-  .about-content p,
+  .about-content p {
+    font-size: 17.5px;
+    margin-bottom: 22px;
+  }
+
+  .about-content ul {
+    gap: 14px 28px;
+  }
+
   .about-content li {
+    flex: 1 1 100%;
+    font-size: 17px;
+  }
+}
+
+/* Смартфоны */
+@media (max-width: 600px) {
+  .about-club {
+    padding: 50px 25px;
+    margin: 20px 15px 60px;
+    border-radius: 20px;
+    box-shadow:
+      0 14px 30px rgba(0, 119, 204, 0.15),
+      0 5px 15px rgba(0, 0, 0, 0.06);
+  }
+
+  .about-title {
+    font-size: 30px;
+    margin-bottom: 35px;
+  }
+
+  .about-subtitle {
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 14px;
+    border-left-width: 5px;
+    padding-left: 14px;
+  }
+
+  .about-content p {
     font-size: 16px;
+    margin-bottom: 18px;
+    line-height: 1.7;
+  }
+
+  .about-content ul {
+    gap: 12px 20px;
+    margin-bottom: 30px;
+  }
+
+  .about-content li {
+    flex: 1 1 100%;
+    font-size: 16px;
+    padding-left: 30px;
+  }
+
+  .about-content li::before {
+    font-size: 18px;
+    top: 4px;
+    left: 0;
   }
 }
