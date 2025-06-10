@@ -1,0 +1,100 @@
+/* Общие стили для страницы */
+.legal-mentions {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 80px 30px;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  color: #2c2c2c;
+  background-color: #fafafa;
+  line-height: 1.8;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  margin-top: 40px;
+  margin-bottom: 60px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Заголовок страницы */
+.legal-title {
+  font-size: 42px;
+  text-align: center;
+  color: #005aa7;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Вложенные заголовки */
+.legal-content h2 {
+  font-size: 26px;
+  margin-top: 40px;
+  color: #333;
+  border-left: 4px solid #005aa7;
+  padding-left: 12px;
+  background: linear-gradient(to right, #f0f8ff, transparent);
+}
+
+/* Параграфы */
+.legal-content p {
+  font-size: 18px;
+  margin-top: 12px;
+  margin-bottom: 16px;
+  color: #444;
+}
+
+/* Список */
+.legal-content ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 10px;
+}
+
+.legal-content li {
+  margin-bottom: 10px;
+  padding-left: 24px;
+  position: relative;
+  font-size: 17px;
+}
+
+.legal-content li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  color: #005aa7;
+  font-size: 16px;
+  line-height: 1;
+  top: 2px;
+}
+
+/* Ссылки */
+.legal-content a {
+  color: #005aa7;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.legal-content a:hover {
+  color: #003d73;
+  text-decoration: underline;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+  .legal-mentions {
+    padding: 40px 20px;
+  }
+
+  .legal-title {
+    font-size: 32px;
+  }
+
+  .legal-content h2 {
+    font-size: 22px;
+  }
+
+  .legal-content p,
+  .legal-content li {
+    font-size: 16px;
+  }
+}

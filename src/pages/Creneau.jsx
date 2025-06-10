@@ -14,7 +14,7 @@ export default function Creneau() {
 
   return (
     <div>
-        <Images images={Hero} text="Créneau" buttonText="Découvrir" />
+        <Images images={Hero} text="Créneaux d'entraînement et calendrier" buttonText="Découvrir" />
         <div className="schedule-container">
       <h2 className="schedule-title">📅 Créneaux d'entraînement</h2>
       <div className="cards-grid">

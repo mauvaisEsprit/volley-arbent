@@ -7,7 +7,6 @@ import { useState, useEffect } from "react";
 import Hero from "../assets/4R5KFUBYIRD23OJOG4NCZ6FWEA.avif";
 import { Link } from "react-router-dom";
 
-
 export default function Home() {
   const imageHome = Hero;
 
@@ -40,8 +39,7 @@ export default function Home() {
       <section className="intro container">
         <h1>Bienvenue sur le site officiel du club !</h1>
         <p>
-          Rejoignez-nous pour vivre le volley avec passion, camaraderie et
-          esprit sportif.
+          Rejoignez-nous pour vivre le volley avec passion, camaraderie et esprit sportif.
         </p>
       </section>
 
@@ -49,13 +47,13 @@ export default function Home() {
         <h2>Actualités</h2>
         <ul>
           <li>
-            📅 <strong>Tournoi régional</strong> prévu le 15 juin à 14h
+            📅 <Link to="/actualites/tournoi-regional" className="link-actus"><strong>Tournoi régional</strong></Link> prévu le 15 juin à 14h
           </li>
           <li>
-            👟 <strong>Reprise des entraînements jeunes</strong> dès le 10 juin
+            👟 <Link to="/actualites/entrainements-jeunes" className="link-actus"><strong>Reprise des entraînements jeunes</strong></Link> dès le 10 juin
           </li>
           <li>
-            🎉 <strong>Soirée conviviale</strong> du club prévue le 30 juin
+            🎉 <Link to="/actualites/soiree-conviviale" className="link-actus"><strong>Soirée conviviale</strong></Link> du club prévue le 30 juin
           </li>
         </ul>
       </section>
@@ -63,12 +61,11 @@ export default function Home() {
       <section className="schedule-preview container">
         <h2>Prochains créneaux</h2>
         <ul>
-          <li>📅 Lundi 18h00-19h30 — Entraînement M13-M15 (Gymnase Arbent)</li>
+          <li>📅 <Link to="/creneau#lundi" className="link-schedule">Lundi 18h00-19h30 — Entraînement M13-M15 (Gymnase Arbent)</Link></li>
           <li>
-            📅 Mercredi 18h15-20h15 — Entraînement M18 féminine (Gymnase Jean
-            Moulin)
+            📅 <Link to="/creneau#mercredi" className="link-schedule">Mercredi 18h15-20h15 — Entraînement M18 féminine (Gymnase Jean Moulin)</Link>
           </li>
-          <li>📅 Samedi 9h30-11h00 — École de volley (Gymnase Arbent)</li>
+          <li>📅 <Link to="/creneau#samedi" className="link-schedule">Samedi 9h30-11h00 — École de volley (Gymnase Arbent)</Link></li>
         </ul>
         <Link to="/creneau" className="btn-link">
           Voir tout le planning
@@ -78,8 +75,7 @@ export default function Home() {
       <section className="match container">
         <h2>Prochain match</h2>
         <p>
-          🏐 <strong>Arbent VS Oyonnax</strong> — Samedi 22 juin à 18h (Salle
-          Municipale)
+          🏐 <Link to="/matches/arbent-vs-oyonnax" className="link-match"><strong>Arbent VS Oyonnax</strong></Link> — Samedi 22 juin à 18h (Salle Municipale)
         </p>
       </section>
 

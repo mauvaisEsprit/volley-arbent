@@ -57,6 +57,7 @@
   .nav-menu .nav-item button {
     font-size: 28px;
     padding: 5px;
+    font-weight: 600;
   }
 
   .dropdown {

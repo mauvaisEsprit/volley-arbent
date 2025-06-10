@@ -15,6 +15,7 @@ import Contact from './pages/Contact';
 import Login from './pages/Login';
 import AdminPanel from './pages/AdminPanel';
 import Creneau from './pages/Creneau';
+import MentionsLegales from './pages/MentionsLegales';
 
 export default function App() {
   return (
@@ -30,6 +31,7 @@ export default function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/admin" element={<AdminPanel />} />
+        <Route path="/mentions-legales" element={<MentionsLegales />} />
       </Routes>
       <Footer />
       <ScrollUpButton />

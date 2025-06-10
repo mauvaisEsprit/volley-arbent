@@ -54,7 +54,7 @@ export default function ScatterText({ text }) {
           { x: 0, y: 0 },
           { type: "spring", stiffness: 150, damping: 20 }
         );
-      }, 5000);
+      }, 2000);
     });
 
     return () => {
