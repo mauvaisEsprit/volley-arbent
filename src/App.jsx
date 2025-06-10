@@ -16,6 +16,8 @@ import Login from './pages/Login';
 import AdminPanel from './pages/AdminPanel';
 import Creneau from './pages/Creneau';
 import MentionsLegales from './pages/MentionsLegales';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import Faq from './pages/Faq';
 
 export default function App() {
   return (
@@ -32,6 +34,8 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/admin" element={<AdminPanel />} />
         <Route path="/mentions-legales" element={<MentionsLegales />} />
+        <Route path="/politique-de-confidentialite" element={<PrivacyPolicy />} />
+        <Route path="/faq" element={<Faq />} />
       </Routes>
       <Footer />
       <ScrollUpButton />
