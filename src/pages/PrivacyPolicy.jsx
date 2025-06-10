@@ -3,8 +3,20 @@ import { Link } from "react-router-dom";
 import "../styles/pageStyles/PrivacyPolicy.css";
 import Images from "../components/Images";
 import Hero from "../assets/4R5KFUBYIRD23OJOG4NCZ6FWEA.avif";
+import { useLocation } from "react-router-dom";
 
 export default function PrivacyPolicy() {
+  const location = useLocation();
+  const handleLinkClick = (e, path) => {
+  if (location.pathname === path) {
+    e.preventDefault();
+    // отложим скролл, чтобы partenaires успел прогрузиться
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 1500); // можно поиграться с задержкой (зависит от анимации)
+  }
+};
+
   return (
     <>
       <Images images={Hero} text="Politique de confidentialité" buttonText="Découvrir" />
@@ -57,7 +69,9 @@ export default function PrivacyPolicy() {
         </p>
 
         <div className="privacy-back">
-          <Link to="/">← Retour à l'accueil</Link>
+          <Link to="/" onClick={(e) =>{
+            handleLinkClick(e, "/")} }>← Retour à l'accueil</Link>
+            
         </div>
       </div>
     </main>

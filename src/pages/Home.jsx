@@ -12,6 +12,16 @@ export default function Home() {
 
   const [showPartenaires, setShowPartenaires] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
+ 
+  useEffect(() => {
+  // небольшой таймер, чтобы дать анимации partenaires закончиться
+  const timeout = setTimeout(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, 600); // 600 мс, т.к. height animation = 0.6s
+
+  return () => clearTimeout(timeout);
+}, []);
+
 
   useEffect(() => {
     const isMobileNow = window.innerWidth < 768;
@@ -19,6 +29,8 @@ export default function Home() {
     if (isMobileNow) {
       setShowPartenaires(false);
     }
+
+
 
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
