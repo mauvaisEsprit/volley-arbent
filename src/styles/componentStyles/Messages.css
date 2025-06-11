@@ -35,6 +35,8 @@
 .message-header {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   margin-bottom: 0.75rem;
   font-size: 0.95rem;
   color: #555;
@@ -50,6 +52,7 @@
   margin-bottom: 1rem;
   font-size: 1rem;
   color: #333;
+  word-wrap: break-word;
 }
 
 .delete-button {
@@ -65,4 +68,44 @@
 
 .delete-button:hover {
   background-color: #d62839;
+}
+
+/* 📱 Mobile adaptation */
+@media (max-width: 600px) {
+  .messages-container {
+    padding: 1rem;
+  }
+
+  .messages-title {
+    font-size: 1.5rem;
+  }
+
+  .message-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .message-text {
+    font-size: 0.95rem;
+  }
+
+  .delete-button {
+    font-size: 0.9rem;
+    padding: 0.4rem 1rem;
+  }
+}
+
+/* 📱📲 Tablet adaptation */
+@media (max-width: 900px) {
+  .messages-container {
+    padding: 1.5rem;
+  }
+
+  .message-text {
+    font-size: 1rem;
+  }
+
+  .delete-button {
+    font-size: 0.95rem;
+  }
 }
