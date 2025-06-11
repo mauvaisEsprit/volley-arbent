@@ -47,12 +47,7 @@ export default function Navbar() {
               >
                 Contact
               </Link>
-              <Link
-                to="/support"
-                onClick={(e) => handleLinkClick(e, "/support")}
-              >
-                Support
-              </Link>
+              
               <Link to="/login" onClick={(e) => handleLinkClick(e, "/login")}>
                 Login
               </Link>

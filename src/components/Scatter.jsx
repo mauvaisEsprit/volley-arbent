@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-const ScatterText = ({ text }) => {
+export default function ScatterText({ text }) {
   const letters = text.split("");
 
   return (
@@ -34,4 +34,4 @@ const ScatterText = ({ text }) => {
   );
 };
 
-export default ScatterText;
+

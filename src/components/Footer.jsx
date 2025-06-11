@@ -40,14 +40,7 @@ export default function Footer() {
                 Contact
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                to="/support"
-                onClick={(e) => handleLinkClick(e, "/support")}
-              >
-                Support
-              </NavLink>
-            </li>
+    
             <li>
               <NavLink
                 to="/mentions-legales"

@@ -12,22 +12,17 @@ export default function Login() {
   const handleLogin = async (e) => {
   e.preventDefault();
   try {
-    const res = await axios.post('http://localhost:5000/api/login', {
+    const res = await axios.post('http://localhost:3001/api/login', {
       email,
       password,
     });
 
-    const { token, role } = res.data;
+    const { token } = res.data;
 
     localStorage.setItem('token', token);
-    
-    
 
-    if (role === 'admin') {
-      navigate('/admin/dashboard');
-    } else {
-      alert("Unknown role"); // если вдруг придёт неизвестная роль
-    }
+    navigate('/admin/dashboard');
+    
 
   } catch (err) {
     console.error(err);

@@ -22,7 +22,7 @@ const NewsDetail = () => {
           </button>
         <div className="news-detail__container">
           <h1 className="news-detail__title">{article.title}</h1>
-          <p className="news-detail__date">{article.date}</p>
+          <p className="news-detail__date">{article.date + " - " + article.time}</p>
           <img src={article.image} alt={article.title} className="news-detail__image" />
           <div className="news-detail__content">
             {article.content.split("\n").map((paragraph, idx) => (

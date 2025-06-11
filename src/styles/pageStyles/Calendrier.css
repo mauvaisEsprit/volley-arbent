@@ -1,0 +1,189 @@
+/* Календарь */
+.calendar-container {
+  padding: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Цвета событий */
+.event-match {
+  background-color: #ef4444 !important;
+  color: white !important;
+}
+
+.event-tournament {
+  background-color: #3b82f6 !important;
+  color: white !important;
+}
+
+.event-party {
+  background-color: #10b981 !important;
+  color: white !important;
+}
+
+.event-default {
+  background-color: #6b7280 !important;
+  color: white !important;
+}
+
+/* Модальное окно */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  color: #1f2937;
+}
+
+.modal-content p {
+  margin-bottom: 0.75rem;
+  color: #374151;
+  font-size: 1rem;
+}
+
+.modal-content button {
+  background-color: #ef4444;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-size: 1rem;
+}
+
+.modal-content button:hover {
+  background-color: #dc2626;
+}
+
+/* Анимация */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 📱 Мобильные устройства */
+@media (max-width: 768px) {
+  .calendar-container {
+    padding: 1rem;
+  }
+
+  .modal-content {
+    padding: 1.25rem;
+    border-radius: 0.75rem;
+  }
+
+  .modal-content h2 {
+    font-size: 1.25rem;
+  }
+
+  .modal-content p {
+    font-size: 0.95rem;
+  }
+
+  .modal-content button {
+    font-size: 0.95rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  /* Кнопки календаря и заголовки */
+  .fc-toolbar-title {
+    font-size: 1.2rem !important;
+  }
+
+  .fc .fc-button {
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.85rem !important;
+  }
+
+  .fc .fc-daygrid-event {
+    font-size: 0.75rem !important;
+    padding: 2px 4px !important;
+  }
+}
+
+/* 📱 Очень маленькие экраны */
+@media (max-width: 480px) {
+  .modal-content {
+    padding: 1rem;
+  }
+
+  .modal-content h2 {
+    font-size: 1.1rem;
+  }
+
+  .modal-content p {
+    font-size: 0.9rem;
+  }
+
+  .modal-content button {
+    font-size: 0.9rem;
+  }
+}
+
+/* Toolbar FullCalendar */
+.fc-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.fc-toolbar-title {
+  font-size: 1.25rem;
+  text-align: center;
+  flex: 1 1 100%;
+  margin-bottom: 0.5rem;
+}
+
+.fc-toolbar .fc-button-group {
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.fc .fc-button {
+  font-size: 0.85rem;
+  padding: 0.4rem 0.6rem;
+}
+
+/* Убираем перенос при больших экранах */
+@media (min-width: 769px) {
+  .fc-toolbar {
+    flex-wrap: nowrap;
+  }
+
+  .fc-toolbar-title {
+    flex: initial;
+    margin-bottom: 0;
+  }
+}

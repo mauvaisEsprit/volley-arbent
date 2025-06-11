@@ -31,7 +31,7 @@ const NewsList = () => {
                   <img src={item.image} alt={item.title} className="news-card__image" />
                   <div className="news-card__content">
                     <h2 className="news-card__title">{item.title}</h2>
-                    <p className="news-card__date">{item.date}</p>
+                    <p className="news-card__date">{item.date + " - " + item.time}</p>
                     <p className="news-card__excerpt">{item.excerpt}</p>
                   </div>
                 </Link>

@@ -1,9 +1,12 @@
+
+
 const newsData = [
   {
     slug: 'tournoi-regional-juin',
     title: 'Tournoi régional prévu le 15 juin',
     content: "Le tournoi régional se déroulera le samedi 15 juin à 14h au gymnase municipal d'Arbent. Venez nombreux encourager nos équipes !",
-    date: '2025-06-01',
+    date: '20/06/2025',
+    time: '14:00',
     image: 'https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=800&q=80', // пример фото турнира
   },
   {

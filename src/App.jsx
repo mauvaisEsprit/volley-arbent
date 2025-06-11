@@ -11,12 +11,14 @@ import News from './pages/NewsList';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Login from './pages/Login';
-import AdminPanel from './pages/AdminPanel';
 import Planning from './pages/Planning';
 import MentionsLegales from './pages/MentionsLegales';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Faq from './pages/Faq';
 import NewsDetail from './pages/NewsDetail';
+
+import ProtectedRoute from '../src/pages/admin/ProtectedRoute';
+import Dashboard from '../src/pages/admin/Dashboard';
 
 export default function App() {
   return (
@@ -31,10 +33,19 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/admin" element={<AdminPanel />} />
         <Route path="/mentions-legales" element={<MentionsLegales />} />
         <Route path="/politique-de-confidentialite" element={<PrivacyPolicy />} />
         <Route path="/faq" element={<Faq />} />
+        <Route path="/login" element={<Login />} />
+         
+        <Route
+          path="/admin/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
       <Footer />
       <ScrollUpButton />

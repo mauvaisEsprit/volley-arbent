@@ -3,8 +3,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import "../styles/pageStyles/Planning.css";
 import scheduleData from "../data/scheduleData";
 import Images from "../components/Images";
-import Schedule from "./Schedule";
+import MatchCalendar from "../pages/Calendrier";
 import Hero from "../assets/4R5KFUBYIRD23OJOG4NCZ6FWEA.avif";
+import { Calendar } from "@fullcalendar/core/index.js";
 
 
 
@@ -54,7 +55,7 @@ export default function Planning() {
       </div>
     </div>
     <h2 className="schedule-title">📅 Calendrier</h2>
-    <Schedule />  
+    <MatchCalendar  />  
     </div>
   );
 }
