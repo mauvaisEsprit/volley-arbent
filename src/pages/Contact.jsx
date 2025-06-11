@@ -20,7 +20,7 @@ const Contact = ({ initialData = {} }) => {
 
     
 
-    fetch("http://localhost:3001/api/contact", {
+    fetch("https://volleyback.onrender.com/api/contact", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

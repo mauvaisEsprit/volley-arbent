@@ -27,7 +27,7 @@ export default function NewsForm({  initialData = {} }) {
 
      const token = localStorage.getItem("token");
 
-  fetch('http://localhost:3001/api/news', { // URL твоего backend API
+  fetch('https://volleyback.onrender.com/api/news', { // URL твоего backend API
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

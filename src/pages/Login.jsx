@@ -12,7 +12,7 @@ export default function Login() {
   const handleLogin = async (e) => {
   e.preventDefault();
   try {
-    const res = await axios.post('http://localhost:3001/api/login', {
+    const res = await axios.post('https://volleyback.onrender.com/api/login', {
       email,
       password,
     });
