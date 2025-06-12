@@ -55,6 +55,7 @@
   .news-form textarea {
     font-size: 0.95rem;
   }
+
 }
 
 .section-title {
@@ -67,10 +68,17 @@
   color: #1e1e1e;
   border-bottom: 2px solid #ccc;
   padding-bottom: 0.5rem;
-  margin-top:75px;
+  margin-top:120px;
 }
 
 .section-icon {
   color: #007bff;
   font-size: 1.6rem;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.4rem;
+    margin-top: 75px;
+  }
 }
