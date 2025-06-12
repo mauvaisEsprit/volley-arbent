@@ -32,7 +32,7 @@ export default function EventForm({ initialData = {} }) {
 
     const token = localStorage.getItem("token");
 
-    fetch("http://localhost:3001/api/events", {
+    fetch("https://volleyback.onrender.com/api/events", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -24,7 +24,7 @@ export default function EventList() {
   useEffect(() => {
     async function fetchEvents() {
       try {
-        const res = await fetch("http://localhost:3001/api/events");
+        const res = await fetch("https://volleyback.onrender.com/api/events");
         if (!res.ok) throw new Error(`Ошибка: ${res.status}`);
         const data = await res.json();
         setEvents(data);
@@ -41,7 +41,7 @@ export default function EventList() {
   const handleDelete = async (slug) => {
     if (!window.confirm("Вы действительно хотите удалить это событие?")) return;
     try {
-      const res = await fetch(`http://localhost:3001/api/events/${slug}`, {
+      const res = await fetch(`https://volleyback.onrender.com/api/events/${slug}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -80,7 +80,7 @@ export default function EventList() {
 
   const saveEdit = async (slug) => {
     try {
-      const res = await fetch(`http://localhost:3001/api/events/${slug}`, {
+      const res = await fetch(`https://volleyback.onrender.com/api/events/${slug}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

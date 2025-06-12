@@ -22,7 +22,7 @@ export default function MatchCalendar() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await fetch("http://localhost:3001/api/events"); // адаптируй к своему API
+        const res = await fetch("https://volleyback.onrender.com/api/events"); // адаптируй к своему API
         const data = await res.json();
 
         // Преобразуем при необходимости

@@ -12,7 +12,7 @@ export default function NewsAdmin() {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const res = await fetch("http://localhost:3001/api/news");
+        const res = await fetch("https://volleyback.onrender.com/api/news");
         if (!res.ok) throw new Error("Erreur de chargement");
         const data = await res.json();
         setNews(data);
@@ -33,7 +33,7 @@ export default function NewsAdmin() {
 
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`http://localhost:3001/api/news/${slug}`, {
+      const res = await fetch(`https://volleyback.onrender.com/api/news/${slug}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -72,7 +72,7 @@ export default function NewsAdmin() {
 
     try {
       const res = await fetch(
-        `http://localhost:3001/api/news/${editingNews.slug}`,
+        `https://volleyback.onrender.com/api/news/${editingNews.slug}`,
         {
           method: "PUT",
           headers: {

@@ -13,7 +13,7 @@ const NewsList = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const res = await fetch("http://localhost:3001/api/news");
+        const res = await fetch("https://volleyback.onrender.com/api/news");
         if (!res.ok) throw new Error("Erreur de chargement des actualités");
         const data = await res.json();
         setNews(data);

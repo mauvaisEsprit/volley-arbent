@@ -13,7 +13,7 @@ const NewsDetail = () => {
   useEffect(() => {
     const fetchArticle = async () => {
       try {
-        const res = await fetch(`http://localhost:3001/api/news/${slug}`);
+        const res = await fetch(`https://volleyback.onrender.com/api/news/${slug}`);
         if (!res.ok) throw new Error("Article introuvable");
         const data = await res.json();
         setArticle(data);
