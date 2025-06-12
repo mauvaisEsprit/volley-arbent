@@ -175,6 +175,7 @@ export default function EventList() {
                 onChange={(e) => setEditDescription(e.target.value)}
                 placeholder="Description"
                 className="input-image-url"
+                required
               />
               <div className="buttons-edit">
                 <button onClick={() => saveEdit(slug)} className="btn-save">
