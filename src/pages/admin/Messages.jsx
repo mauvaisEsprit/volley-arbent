@@ -11,7 +11,7 @@ export default function Messages() {
       try {
         const token = localStorage.getItem("token");
 
-        const res = await fetch("https://volleyback.onrender.com/api/contact", {
+        const res = await fetch("http://localhost:3001/api/contact", {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
@@ -39,7 +39,7 @@ export default function Messages() {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await fetch(`https://volleyback.onrender.com/api/contact/${id}`, {
+      const res = await fetch(`http://localhost:3001/api/contact/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -57,8 +57,9 @@ export default function Messages() {
   };
 
   return (
+      <>
+      <h1 className="section-title">📩 Messages reçus</h1>
     <div className="messages-container">
-      <h1 className="messages-title">📩 Messages reçus</h1>
       {loading && <p>Chargement...</p>}
       {error && <p className="messages-error">{error}</p>}
       {!loading && messages.length === 0 && <p>Aucun message reçu.</p>}
@@ -78,5 +79,6 @@ export default function Messages() {
           </div>
         ))}
     </div>
+    </>
   );
 }

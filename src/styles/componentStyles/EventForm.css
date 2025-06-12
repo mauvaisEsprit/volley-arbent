@@ -1,29 +1,36 @@
 .event-form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  background: #f0f2f5;
+  gap: 1.2rem;
+  background: #f9fafb;
   padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   max-width: 600px;
-  margin: auto;
+  margin: 2rem auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Унифицированные стили для input, textarea и select */
 .event-form input,
-.event-form textarea {
-  padding: 0.8rem 1rem;
-  border: 1px solid #bbb;
-  border-radius: 8px;
+.event-form textarea,
+.event-form select {
+  padding: 0.85rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
   font-size: 1rem;
+  background-color: white;
   transition: border 0.3s ease, box-shadow 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .event-form input:focus,
-.event-form textarea:focus {
+.event-form textarea:focus,
+.event-form select:focus {
   outline: none;
   border-color: #28a745;
-  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.2);
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.15);
 }
 
 .event-form textarea {
@@ -31,28 +38,66 @@
   min-height: 120px;
 }
 
+.event-form select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg fill='gray' viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1.2rem;
+}
+
+/* Кнопка */
 .event-form button {
   background: #28a745;
   color: white;
   border: none;
-  padding: 0.9rem 1.2rem;
-  border-radius: 8px;
-  font-size: 1rem;
+  padding: 1rem 1.4rem;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.1s ease;
 }
 
 .event-form button:hover {
   background: #1e7e34;
 }
 
+.event-form button:active {
+  transform: scale(0.98);
+}
+
+/* Mobile адаптация */
 @media (max-width: 600px) {
   .event-form {
-    padding: 1rem;
+    padding: 1.2rem;
   }
 
   .event-form input,
-  .event-form textarea {
+  .event-form textarea,
+  .event-form select {
     font-size: 0.95rem;
   }
+
+  .event-form button {
+    font-size: 1rem;
+    padding: 0.9rem 1.2rem;
+  }
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #1e1e1e;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 0.5rem;
+}
+
+.section-icon {
+  color: #007bff;
+  font-size: 1.6rem;
 }

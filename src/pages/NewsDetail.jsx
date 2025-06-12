@@ -1,43 +1,74 @@
 import { useParams, useNavigate } from "react-router-dom";
-import newsData from "../data/newsData";
+import { useEffect, useState } from "react";
 import "../styles/pageStyles/NewsDetail.css";
 
 const NewsDetail = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
-  const article = newsData.find((item) => item.slug === slug);
 
-  if (!article) {
+  const [article, setArticle] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchArticle = async () => {
+      try {
+        const res = await fetch(`http://localhost:3001/api/news/${slug}`);
+        if (!res.ok) throw new Error("Article introuvable");
+        const data = await res.json();
+        setArticle(data);
+      } catch (err) {
+        console.error(err);
+        setError("Impossible de charger l’article.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchArticle();
+  }, [slug]);
+
+  if (loading) return <p>Chargement...</p>;
+  if (error) return <div className="news-detail__not-found">{error}</div>;
+  if (!article)
     return <div className="news-detail__not-found">Article introuvable</div>;
-  }
 
   return (
-    <>
-      <section className="news-detail">
-          <button
-            className="news-detail__back-button"
-            onClick={() => navigate(-1)} // возвращаемся на предыдущую страницу
-          >
-            ← Retour
-          </button>
-        <div className="news-detail__container">
-          <h1 className="news-detail__title">{article.title}</h1>
-          <p className="news-detail__date">{article.date + " - " + article.time}</p>
-          <img src={article.image} alt={article.title} className="news-detail__image" />
-          <div className="news-detail__content">
-            {article.content.split("\n").map((paragraph, idx) => (
-              <p key={idx}>{paragraph}</p>
-            ))}
-          </div>
+    <section className="news-detail">
+      <button className="news-detail__back-button" onClick={() => navigate(-1)}>
+        ← Retour
+      </button>
+
+      <div className="news-detail__container">
+        <h1 className="news-detail__title">{article.title}</h1>
+        <p className="news-detail__date">
+          {new Date(article.date).toLocaleString("fr-FR", {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: false,
+          })}
+        </p>
+        {article.image && (
+          <img
+            src={article.image}
+            alt={article.title}
+            className="news-detail__image"
+          />
+        )}
+        <div className="news-detail__content">
+          {article.content?.split("\n").map((paragraph, idx) => (
+            <p key={idx}>{paragraph}</p>
+          ))}
         </div>
-          <button
-            className="news-detail__back-button"
-            onClick={() => navigate(-1)} // возвращаемся на предыдущую страницу
-          >
-            ← Retour
-          </button>
-      </section>
-    </>
+      </div>
+
+      <button className="news-detail__back-button" onClick={() => navigate(-1)}>
+        ← Retour
+      </button>
+    </section>
   );
 };
 
