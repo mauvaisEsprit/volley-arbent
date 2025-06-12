@@ -61,6 +61,7 @@
 .section-title {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   font-size: 1.8rem;
   font-weight: bold;
@@ -78,6 +79,8 @@
 
 @media (max-width: 768px) {
   .section-title {
+     display: flex;
+  align-items: center;
     font-size: 1.4rem;
     margin-top: 140px;
   }
