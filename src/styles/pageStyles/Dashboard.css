@@ -125,7 +125,7 @@
   .admin-bottom-nav {
     display: flex;
     position: fixed;
-    bottom: 0;
+    top: 75px;
     width: 100%;
     background: var(--sidebar-bg);
     justify-content: space-around;
