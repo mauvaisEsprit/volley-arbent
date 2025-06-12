@@ -104,6 +104,9 @@
   flex-grow: 1;
   font-weight: 500;
   letter-spacing: 0.015em;
+  white-space: pre-wrap; /* сохраняет переносы строк из текста */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 

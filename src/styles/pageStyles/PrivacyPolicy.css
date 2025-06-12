@@ -1,9 +1,15 @@
 .privacy-policy {
   background: #f9f9f9;
-  padding: 60px 20px;
+  padding: 10px 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #222;
   line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .privacy-policy {
+    padding: 0;
+  }
 }
 
 .privacy-container {

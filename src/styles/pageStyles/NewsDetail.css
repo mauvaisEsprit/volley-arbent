@@ -57,6 +57,9 @@
   font-weight: 500;
   letter-spacing: 0.02em;
   margin-bottom: 2rem;
+  white-space: pre-wrap; /* сохраняет переносы строк из текста */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .news-detail__image {

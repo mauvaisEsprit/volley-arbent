@@ -98,39 +98,43 @@ export default function NewsAdmin() {
 
   return (
     <>
-      <h2 className="section-title">
-        <FaRegNewspaper className="section-icon" />
-        Gestion des actualités
-      </h2>
-    <div className="news-admin-container">
+  <section className="admin-news-section">
+    <h2 className="section-title">
+      <FaRegNewspaper className="section-icon" />
+      Gestion des actualités
+    </h2>
 
-      {loading && <p>Chargement...</p>}
-      {error && <p className="error">{error}</p>}
-
+    <div className="admin-content">
+      {loading && <p className="admin-loading">Chargement...</p>}
+      {error && <p className="admin-error">{error}</p>}
       {!loading && !error && news.length === 0 && (
-        <p>Aucune actualité trouvée.</p>
+        <p className="section-title">Aucune actualité trouvée.</p>
       )}
 
-      <div className="news-list">
+      <div className="admin-news-list">
         {news.map(({ slug, title, date, image, content }) => (
-          <div key={slug} className="news-item">
-            {image && <img src={image} alt={title} className="news-image" />}
-            <div className="news-info">
-              <h3>{title}</h3>
-              <p className="news-date">
+          <div key={slug} className="admin-news-card">
+            {image && (
+              <div className="admin-image-wrapper">
+                <img src={image} alt={title} className="admin-image" />
+              </div>
+            )}
+            <div className="admin-news-details">
+              <h3 className="admin-news-title">{title}</h3>
+              <p className="admin-news-date">
                 {new Date(date).toLocaleDateString("fr-FR")}
               </p>
-              <p className="news-content">{content}</p>
-              <div className="news-actions">
+              <p className="admin-news-text">{content}</p>
+              <div className="admin-news-actions">
                 <button
                   onClick={() => handleEdit(slug)}
-                  className="edit-button"
+                  className="admin-btn edit"
                 >
                   ✏️ Modifier
                 </button>
                 <button
                   onClick={() => handleDelete(slug)}
-                  className="delete-button"
+                  className="admin-btn delete"
                 >
                   🗑️ Supprimer
                 </button>
@@ -139,43 +143,47 @@ export default function NewsAdmin() {
           </div>
         ))}
       </div>
+    </div>
 
-      {/* Модальное окно редактирования */}
-      {editingNews && (
-        <div className="edit-modal">
-          <div className="edit-modal-content">
-            <h3>✏️ Modifier l’actualité</h3>
-            <input
-              name="title"
-              value={editingNews.title}
-              onChange={handleFormChange}
-              placeholder="Titre"
-            />
-            <textarea
-              name="content"
-              value={editingNews.content}
-              onChange={handleFormChange}
-              rows={5}
-              placeholder="Contenu"
-            />
-            <input
-              name="image"
-              value={editingNews.image}
-              onChange={handleFormChange}
-              placeholder="Image URL"
-            />
-            <div className="modal-actions">
-              <button onClick={handleSave} className="save-button">
-                💾 Enregistrer
-              </button>
-              <button onClick={handleCancel} className="cancel-button">
-                ❌ Annuler
-              </button>
-            </div>
+    {editingNews && (
+      <div className="admin-modal-overlay">
+        <div className="admin-modal">
+          <h3 className="admin-modal-title">✏️ Modifier l’actualité</h3>
+          <input
+            name="title"
+            value={editingNews.title}
+            onChange={handleFormChange}
+            placeholder="Titre"
+            className="admin-input"
+          />
+          <textarea
+            name="content"
+            value={editingNews.content}
+            onChange={handleFormChange}
+            rows={5}
+            placeholder="Contenu"
+            className="admin-textarea"
+          />
+          <input
+            name="image"
+            value={editingNews.image}
+            onChange={handleFormChange}
+            placeholder="Image URL"
+            className="admin-input"
+          />
+          <div className="admin-modal-actions">
+            <button onClick={handleSave} className="admin-btn save">
+              💾 Enregistrer
+            </button>
+            <button onClick={handleCancel} className="admin-btn cancel">
+              ❌ Annuler
+            </button>
           </div>
         </div>
-      )}
-    </div>
-    </>
+      </div>
+    )}
+  </section>
+</>
+
   );
 }
