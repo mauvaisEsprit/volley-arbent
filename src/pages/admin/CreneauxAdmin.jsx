@@ -106,6 +106,7 @@ export default function CreneauxAdmin() {
             <th>Jour</th>
             <th>Heure début</th>
             <th>Heure fin</th>
+            <th>Concerné</th>
             <th>Coach</th>
             <th>Lieu</th>
             <th>Actions</th>
@@ -121,6 +122,7 @@ export default function CreneauxAdmin() {
               <td data-label="Heure fin">
                 {formatHeure(item.endTime || item.end)}
               </td>
+              <td data-label="Concerné">{item.concerned}</td>
               <td data-label="Coach">{item.coachName}</td>
               <td data-label="Lieu">{item.location}</td>
               <td data-label="Actions" className="actions-cell">
@@ -226,6 +228,17 @@ function CreneauForm({ initial, onClose, onSave }) {
             type="time"
             name="endTime"
             value={form.endTime}
+            onChange={handleChange}
+            required
+          />
+        </label>
+
+        <label>
+          Concerné
+          <input
+            type="text"
+            name="concerned"
+            value={form.concerned}
             onChange={handleChange}
             required
           />

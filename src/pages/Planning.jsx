@@ -82,6 +82,7 @@ export default function Planning() {
                           <tr>
                             <th>Heure début</th>
                             <th>Heure fin</th>
+                            <th>Concerné</th>
                             <th>Coach</th>
                             <th>Lieu</th>
                           </tr>
@@ -91,6 +92,7 @@ export default function Planning() {
                             <tr key={s._id}>
                               <td>{formatHeure(s.startTime)}</td>
                               <td>{formatHeure(s.endTime)}</td>
+                              <td>{s.concerned}</td>
                               <td>{s.coachName}</td>
                               <td>{s.location}</td>
                             </tr>
