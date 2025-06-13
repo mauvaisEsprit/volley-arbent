@@ -132,6 +132,13 @@
     padding-right: 1rem;
     text-align: left;
   }
+  .start-time    {
+    max-width: 85%;
+  }
+
+  .end-time {
+    max-width: 85%;
+  }
 
   .actions-cell { justify-content: flex-end; }
   .actions-cell button { font-size: 1rem; }
@@ -216,3 +223,4 @@
 .form-actions button[type="submit"]:hover { background: #005fa3; }
 .form-actions button[type="button"]  { background: #999; color: #fff; }
 .form-actions button[type="button"]:hover { background: #777; }
+

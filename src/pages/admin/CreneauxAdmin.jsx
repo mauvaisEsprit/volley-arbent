@@ -218,6 +218,7 @@ function CreneauForm({ initial, onClose, onSave }) {
             name="startTime"
             value={form.startTime}
             onChange={handleChange}
+            className="start-time"
             required
           />
         </label>
@@ -229,6 +230,7 @@ function CreneauForm({ initial, onClose, onSave }) {
             name="endTime"
             value={form.endTime}
             onChange={handleChange}
+            className="end-time"
             required
           />
         </label>

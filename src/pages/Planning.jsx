@@ -101,7 +101,7 @@ export default function Planning() {
                         <tbody>
                           {sessions.map((s) => (
                             <tr key={s._id}>
-                              <td data-label="Heure début">
+                              <td  data-label="Heure début">
                                 {formatHeure(s.startTime)}
                               </td>
                               <td data-label="Heure fin">
