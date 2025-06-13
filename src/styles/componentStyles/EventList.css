@@ -142,7 +142,7 @@ select {
 }
 .input-datetime {
  width: 100%;
-  max-width: 100%;
+  max-width: 75%;
   min-width: 0;
   padding: 0.6rem 0.8rem;
   margin-bottom: 1rem;

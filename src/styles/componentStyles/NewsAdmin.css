@@ -194,4 +194,16 @@
   .admin-modal-title {
     font-size: 1.25rem;
   }
+
+  .admin-input-date {
+    padding: 0.85rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+  background-color: white;
+  transition: border 0.3s ease, box-shadow 0.2s ease;
+  width: 100%;
+  max-width: 75%;
+  box-sizing: border-box;
+  }
 }

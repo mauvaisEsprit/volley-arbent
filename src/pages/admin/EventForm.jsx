@@ -95,7 +95,7 @@ export default function EventForm({ initialData = {} }) {
         </select>
 
         <input
-          className="event-form-input"
+          className="event-form-input-date"
           type="datetime-local"
           name="start"
           value={formData.start}
@@ -103,7 +103,7 @@ export default function EventForm({ initialData = {} }) {
           required
         />
         <input
-          className="event-form-input"
+          className="event-form-input-date"
           type="datetime-local"
           name="end"
           value={formData.end}

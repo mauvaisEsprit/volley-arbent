@@ -194,7 +194,7 @@ export default function NewsAdmin() {
                 value={editingNews.date || ""}
                 onChange={handleFormChange}
                 placeholder="Date"
-                className="admin-input"
+                className="admin-input-date"
               />
               <textarea
                 name="content"
