@@ -80,6 +80,9 @@
 .news-card__excerpt {
   font-size: 1rem;
   color: #444;
+   white-space: nowrap;       /* Запрет переноса */
+  overflow: hidden;          /* Обрезать лишнее */
+  text-overflow: ellipsis;   /* Добавить "..." */
 }
 
 .pagination {

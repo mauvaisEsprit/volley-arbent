@@ -1,0 +1,118 @@
+.partners-admin {
+  padding: 2rem;
+  color: #333;
+  background-color: #f7f9fc; /* светло-голубой/серый фон */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 120px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.partners-admin h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #0077cc; /* насыщенный синий */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.partners-admin > button {
+  display: block;
+  margin: 0 auto 2rem;
+  padding: 0.75rem 2rem;
+  background: #0077cc;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 119, 204, 0.4);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.partners-admin > button:hover {
+  background: #005fa3;
+  box-shadow: 0 6px 18px rgba(0, 95, 163, 0.6);
+}
+
+.partners-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.partner-card {
+  background: #fff;
+  padding: 1.5rem 1.75rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.partner-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+}
+
+.partner-card img {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  margin-bottom: 1.25rem;
+  border-radius: 12px;
+  background: #f0f4f8;
+  padding: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.05);
+}
+
+.partner-card strong {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+
+.partner-card p {
+  margin: 0.25rem 0;
+  font-size: 1rem;
+  color: #555;
+  font-weight: 500;
+}
+
+.partner-card a {
+  color: #0077cc;
+  text-decoration: none;
+  font-weight: 600;
+  word-break: break-word;
+  transition: color 0.2s ease;
+}
+
+.partner-card a:hover {
+  color: #005fa3;
+  text-decoration: underline;
+}
+
+.partner-card button {
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.5rem;
+  background: #e53e3e;
+  border: none;
+  border-radius: 14px;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(229, 62, 62, 0.5);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.partner-card button:hover {
+  background: #b32a2a;
+  box-shadow: 0 6px 18px rgba(179, 42, 42, 0.7);
+}

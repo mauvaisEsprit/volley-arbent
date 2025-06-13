@@ -12,16 +12,63 @@ export default function Home() {
 
   const [showPartenaires, setShowPartenaires] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
- 
+  const [news, setNews] = useState([]);
+  const [nextMatch, setNextMatch] = useState(null);
+
   useEffect(() => {
-  // небольшой таймер, чтобы дать анимации partenaires закончиться
-  const timeout = setTimeout(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, 600); // 600 мс, т.к. height animation = 0.6s
+    // небольшой таймер, чтобы дать анимации partenaires закончиться
+    const timeout = setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 600); // 600 мс, т.к. height animation = 0.6s
 
-  return () => clearTimeout(timeout);
-}, []);
+    return () => clearTimeout(timeout);
+  }, []);
 
+  useEffect(() => {
+    async function fetchNextEvent() {
+      try {
+        const res = await fetch("https://volleyback.onrender.com/api/events");
+        if (!res.ok) throw new Error("Erreur réseau");
+        const data = await res.json();
+
+        const upcomingEvent = data
+          .filter(
+            (ev) =>
+              (ev.type === "match" || ev.type === "tournoi") &&
+              new Date(ev.start) > new Date()
+          )
+          .sort((a, b) => new Date(a.start) - new Date(b.start))[0];
+
+        setNextMatch(upcomingEvent || null);
+      } catch (err) {
+        console.error("Erreur lors du chargement du prochain événement :", err);
+      }
+    }
+
+    fetchNextEvent();
+  }, []);
+
+  useEffect(() => {
+    async function fetchNews() {
+      try {
+        const res = await fetch("https://volleyback.onrender.com/api/news");
+        if (!res.ok) throw new Error("Erreur réseau");
+
+        const data = await res.json();
+
+        // сортируем по createdAt (новее → старее) и берём первые 3
+        const topThree = data
+          .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+          .slice(0, 3);
+
+        setNews(topThree);
+      } catch (error) {
+        console.error("Erreur lors du chargement des actualités :", error);
+      }
+    }
+
+    fetchNews();
+  }, []);
 
   useEffect(() => {
     const isMobileNow = window.innerWidth < 768;
@@ -29,8 +76,6 @@ export default function Home() {
     if (isMobileNow) {
       setShowPartenaires(false);
     }
-
-
 
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
@@ -51,33 +96,69 @@ export default function Home() {
       <section className="intro container">
         <h1>Bienvenue sur le site officiel du club !</h1>
         <p>
-          Rejoignez-nous pour vivre le volley avec passion, camaraderie et esprit sportif.
+          Rejoignez-nous pour vivre le volley avec passion, camaraderie et
+          esprit sportif.
         </p>
       </section>
 
       <section className="actus container">
         <h2>Actualités</h2>
         <ul>
-          <li>
-            📅 <Link to="/news/tournoi-regional" className="link-actus"><strong>Tournoi régional</strong></Link> prévu le 15 juin à 14h
-          </li>
-          <li>
-            👟 <Link to="/news/entrainements-jeunes" className="link-actus"><strong>Reprise des entraînements jeunes</strong></Link> dès le 10 juin
-          </li>
-          <li>
-            🎉 <Link to="/news/inscriptions-saison-2025" className="link-actus"><strong>Soirée conviviale</strong></Link> du club prévue le 30 juin
-          </li>
+          {news.length === 0 ? (
+            <li>Aucune actualité disponible.</li>
+          ) : (
+            news.map((item) => (
+              <li key={item._id || item.id}>
+                {/* Здесь предполагается, что item имеет поля: title, slug, date */}
+                📅{" "}
+                <Link to={`/news/${item.slug}`} className="link-actus">
+                  <strong>{item.title}</strong>
+                </Link>{" "}
+                {item.date && (
+                  <span>
+                    {" "}
+                    —{" "}
+                    {new Date(item.date).toLocaleString("fr-FR", {
+                      weekday: "long",
+                      day: "numeric",
+                      month: "long",
+                      year: "numeric",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })}
+                  </span>
+                )}
+              </li>
+            ))
+          )}
         </ul>
+        <Link to="/news" className="btn-link">
+          Voir toutes les actualités
+        </Link>
       </section>
 
       <section className="schedule-preview container">
         <h2>Prochains créneaux</h2>
         <ul>
-          <li>📅 <Link to="/planning#lundi" className="link-schedule">Lundi 18h00-19h30 — Entraînement M13-M15 (Gymnase Arbent)</Link></li>
           <li>
-            📅 <Link to="/planning#mercredi" className="link-schedule">Mercredi 18h15-20h15 — Entraînement M18 féminine (Gymnase Jean Moulin)</Link>
+            📅{" "}
+            <Link to="/planning#lundi" className="link-schedule">
+              Lundi 18h00-19h30 — Entraînement M13-M15 (Gymnase Arbent)
+            </Link>
           </li>
-          <li>📅 <Link to="/planning#samedi" className="link-schedule" >Samedi 9h30-11h00 — École de volley (Gymnase Arbent)</Link></li>
+          <li>
+            📅{" "}
+            <Link to="/planning#mercredi" className="link-schedule">
+              Mercredi 18h15-20h15 — Entraînement M18 féminine (Gymnase Jean
+              Moulin)
+            </Link>
+          </li>
+          <li>
+            📅{" "}
+            <Link to="/planning#samedi" className="link-schedule">
+              Samedi 9h30-11h00 — École de volley (Gymnase Arbent)
+            </Link>
+          </li>
         </ul>
         <Link to="/planning" className="btn-link">
           Voir tout le planning
@@ -85,10 +166,26 @@ export default function Home() {
       </section>
 
       <section className="match container">
-        <h2>Prochain match</h2>
-        <p>
-          🏐 <Link to="/matches/arbent-vs-oyonnax" className="link-match"><strong>Arbent VS Oyonnax</strong></Link> — Samedi 22 juin à 18h (Salle Municipale)
-        </p>
+        <h2>Prochain événement</h2>
+
+        {!nextMatch ? (
+          <p>Aucun match ou tournoi à venir.</p>
+        ) : (
+          <p>
+            {nextMatch.type === "match" ? "🏐 Match :" : "🏆 Tournoi :"}{" "}
+            <Link to={`/events/${nextMatch.slug}`} className="link-match">
+              <strong>{nextMatch.title}</strong>
+            </Link>{" "}
+            —{" "}
+            {new Date(nextMatch.start).toLocaleString("fr-FR", {
+              weekday: "long",
+              day: "numeric",
+              month: "long",
+              hour: "2-digit",
+              minute: "2-digit",
+            })}
+          </p>
+        )}
       </section>
 
       <section className="partenaires container">

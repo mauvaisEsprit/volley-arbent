@@ -1,0 +1,147 @@
+/* ─────────────── базовый контейнер ─────────────── */
+.event-detail {
+  max-width: 820px;
+  margin: 3rem auto;
+  padding: 2.2rem 2rem;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.5s ease-in-out;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  margin-top: 120px;
+}
+
+/* плавное появление */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─────────────── заголовок ─────────────── */
+.event-detail h1 {
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+  line-height: 1.25;
+  color: #222;
+  position: relative;
+}
+
+.event-detail h1::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #1976d2, #4caf50);
+  margin-top: 0.6rem;
+}
+
+/* ─────────────── дата/время ─────────────── */
+.event-detail p:first-of-type {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  
+}
+
+.event-detail p:first-of-type::before {
+  content: "🗓️";
+  font-size: 1.1rem;
+}
+
+/* ─────────────── изображение ─────────────── */
+.event-detail img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  margin: 1.5rem 0;
+}
+
+/* ─────────────── описание ─────────────── */
+.event-detail p:not(:first-of-type) {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #333;
+  margin-bottom: 1.2rem;
+  white-space: pre-line; /* уважать переносы \n */
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+/* ─────────────── responsive ─────────────── */
+@media (max-width: 640px) {
+  .event-detail {
+    margin: 1.5rem 1rem;
+    padding: 1.5rem;
+    margin-top: 80px;
+  }
+
+  .event-detail img {
+    max-height: 260px;
+  }
+}
+
+/* ─────────────── тёмная тема ─────────────── */
+@media (prefers-color-scheme: dark) {
+  .event-detail {
+    background: #1e1e1e;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.65);
+    color: #e5e5e5;
+  }
+
+  .event-detail h1 {
+    color: #fafafa;
+  }
+
+  .event-detail p:first-of-type {
+    color: #aaa;
+  }
+
+  .event-detail p:not(:first-of-type) {
+    color: #ddd;
+  }
+}
+
+.back-button {
+  background: linear-gradient(90deg, #1976d2, #4caf50);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  transition: background 0.3s ease;
+}
+
+.back-button:hover {
+  background: linear-gradient(90deg, #135ba1, #3c8c3a);
+}
+
+.back-button:active {
+  transform: scale(0.97);
+}
+
+@media (prefers-color-scheme: dark) {
+  .back-button {
+    background: linear-gradient(90deg, #64b5f6, #81c784);
+    color: #1a1a1a;
+  }
+
+  .back-button:hover {
+    background: linear-gradient(90deg, #42a5f5, #66bb6a);
+  }
+}

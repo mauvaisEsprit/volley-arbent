@@ -61,6 +61,8 @@
   margin-bottom: 0.75rem;
   color: #374151;
   font-size: 1rem;
+  white-space: normal;  /* Позволяет переносить строки */
+  word-wrap: break-word; /* Переносит длинные слова */
 }
 
 .modal-content button {

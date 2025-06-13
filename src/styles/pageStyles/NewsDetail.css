@@ -55,6 +55,8 @@
   line-height: 1.7;
   margin-bottom: 1.2rem;
   color: #333;
+  white-space: normal;  /* Позволяет переносить строки */
+  word-wrap: break-word; /* Переносит длинные слова */
 }
 
 .news-detail__not-found {

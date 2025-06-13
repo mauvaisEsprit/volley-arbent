@@ -4,6 +4,8 @@ import EventList from "../admin/EventList";
 import EventForm from "../admin/EventForm";
 import Messages from "../admin/Messages";
 import NewsAdmin from "./NewsAdmin";
+import PartenairesAdmin from "../admin/PartenairesAdmin";
+import CreneauxAdmin from "../admin/CreneauxAdmin";
 import "../../styles/pageStyles/Dashboard.css";
 import {
   FaPlus,
@@ -32,6 +34,10 @@ export default function Dashboard() {
         return <EventForm />;
       case "eventList":
         return <EventList />;
+      case "partenaires":
+        return <PartenairesAdmin />;
+      case "creneaux":
+        return <CreneauxAdmin />;
       case "messages":
         return <Messages />;
       default:
@@ -44,6 +50,8 @@ export default function Dashboard() {
     { key: "newsList", icon: <FaRegNewspaper />, label: "Actualités" },
     { key: "eventForm", icon: <FaCalendarPlus />, label: "Ajouter un événement" },
     { key: "eventList", icon: <FaCalendarAlt />, label: "Événements" },
+    { key: "partenaires", icon: <FaRegNewspaper />, label: "Partenaires" },
+    { key: "creneaux", icon: <FaCalendarAlt />, label: "Créneaux" },
     { key: "messages", icon: <FaEnvelopeOpenText />, label: "Messages" },
   ];
 

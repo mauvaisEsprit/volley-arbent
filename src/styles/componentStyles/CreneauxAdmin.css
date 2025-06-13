@@ -1,0 +1,218 @@
+/* ────────────────────────────────────────────
+   ОСНОВНОЙ КОНТЕЙНЕР
+──────────────────────────────────────────── */
+.creneaux-admin {
+  max-width: 1100px;
+  margin: 120px auto 2rem;     /* отступ сверху под header */
+  padding: 1.5rem 2rem;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 8px 34px rgba(0, 0, 0, 0.08);
+  color: #232323;
+  font-family: "Segoe UI", sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.creneaux-admin h2 {
+  text-align: center;
+  font-size: clamp(1.8rem, 2.5vw, 2.3rem);
+  color: #0077cc;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* ────────────────────────────────────────────
+   КНОПКА «AJOUTER»
+──────────────────────────────────────────── */
+.btn-add {
+  align-self: center;
+  padding: 0.8rem 2rem;
+  background: #0077cc;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 119, 204, 0.35);
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+.btn-add:hover { background: #005fa3; transform: translateY(-2px); }
+.btn-add:active { transform: translateY(0); }
+
+/* ────────────────────────────────────────────
+   ТАБЛИЦА – ДЕСКТОПНАЯ ВЕРСИЯ (>992px)
+──────────────────────────────────────────── */
+.creneaux-table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 14px;
+  font-size: 0.95rem;
+}
+.creneaux-table thead {
+  background: #0077cc;
+  color: #fff;
+}
+.creneaux-table th,
+.creneaux-table td {
+  padding: 0.9rem 1rem;
+  border: 1px solid #e3e6ec;
+  text-align: left;
+  white-space: nowrap;
+}
+.creneaux-table tbody tr:nth-child(even) {
+  background: #f7faff;
+}
+
+/* Кнопки действий */
+.actions-cell {
+  display: flex;
+  gap: 0.4rem;
+}
+.actions-cell button {
+  border: none;
+  padding: 0.35rem 0.6rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.actions-cell button:hover { opacity: 0.75; }
+.actions-cell button:first-child { background: #00aa55; color: #fff; }
+.actions-cell button:last-child  { background: #ff4e4e; color: #fff; }
+
+/* ────────────────────────────────────────────
+   ПЛАНШЕТ (≤992px) – чуть меньше шрифты
+──────────────────────────────────────────── */
+@media (max-width: 992px) {
+  .creneaux-table th,
+  .creneaux-table td { font-size: 0.88rem; padding: 0.75rem; }
+}
+
+/* ────────────────────────────────────────────
+   МОБИЛЬНЫЙ (≤768px) – “карточки”
+──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .creneaux-table,
+  .creneaux-table thead,
+  .creneaux-table tbody,
+  .creneaux-table tr,
+  .creneaux-table th,
+  .creneaux-table td {
+    display: block;
+    width: 100%;
+  }
+  .creneaux-table thead { display: none; }
+
+  .creneaux-table tr {
+    margin-bottom: 1rem;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    padding: 0.8rem 1rem;
+  }
+
+  .creneaux-table td {
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid #efefef;
+    font-size: 0.95rem;
+  }
+
+  .creneaux-table td::before {
+    content: attr(data-label);
+    flex: 1;
+    font-weight: 600;
+    color: #555;
+    padding-right: 1rem;
+    text-align: left;
+  }
+
+  .actions-cell { justify-content: flex-end; }
+  .actions-cell button { font-size: 1rem; }
+}
+
+/* ────────────────────────────────────────────
+   МОДАЛЬНОЕ ОКНО
+──────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.creneau-form {
+  width: 90%;
+  max-width: 480px;
+  background: #ffffff;
+  padding: 2rem 2.2rem;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+  animation: fadeInUp 0.35s ease;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+
+.creneau-form h3 {
+  text-align: center;
+  margin-bottom: 1.4rem;
+  font-size: 1.55rem;
+  color: #0077cc;
+}
+
+.creneau-form label {
+  display: block;
+  margin-bottom: 1.1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.creneau-form input,
+.creneau-form select {
+  width: 100%;
+  margin-top: 0.35rem;
+  padding: 0.7rem 0.9rem;
+  border: 1.5px solid #cfd7e2;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: border 0.25s, box-shadow 0.25s;
+}
+.creneau-form input:focus,
+.creneau-form select:focus {
+  border-color: #0077cc;
+  box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.22);
+  outline: none;
+}
+
+/* кнопки формы */
+.form-actions {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: flex-end;
+  margin-top: 1.2rem;
+}
+.form-actions button {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.25s;
+}
+.form-actions button[type="submit"] { background: #0077cc; color: #fff; }
+.form-actions button[type="submit"]:hover { background: #005fa3; }
+.form-actions button[type="button"]  { background: #999; color: #fff; }
+.form-actions button[type="button"]:hover { background: #777; }

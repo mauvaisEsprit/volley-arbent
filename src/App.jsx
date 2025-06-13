@@ -16,9 +16,11 @@ import MentionsLegales from './pages/MentionsLegales';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Faq from './pages/Faq';
 import NewsDetail from './pages/NewsDetail';
+import EventDetail from './pages/EventDetail';
 
 import ProtectedRoute from '../src/pages/admin/ProtectedRoute';
 import Dashboard from '../src/pages/admin/Dashboard';
+import CreneauxAdmin from './pages/admin/CreneauxAdmin';
 
 export default function App() {
   return (
@@ -37,7 +39,8 @@ export default function App() {
         <Route path="/politique-de-confidentialite" element={<PrivacyPolicy />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/login" element={<Login />} />
-         
+        <Route path="/events/:slug" element={<EventDetail />} />
+        <Route path="/creneaux" element={<CreneauxAdmin />} />
         <Route
           path="/admin/dashboard"
           element={

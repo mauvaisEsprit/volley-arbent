@@ -71,6 +71,8 @@
   color: #444;
   margin-bottom: 1.2rem;
   white-space: pre-line;
+  white-space: normal;  /* Позволяет переносить строки */
+  word-wrap: break-word; /* Переносит длинные слова */
 }
 
 .buttons-actions,

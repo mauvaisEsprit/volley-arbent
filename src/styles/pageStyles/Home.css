@@ -97,6 +97,9 @@
 }
 
 .actus li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   background: #fff3f3;
   margin-bottom: 12px;
   padding: 14px 20px;
