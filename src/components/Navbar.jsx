@@ -24,16 +24,18 @@ export default function Navbar() {
     <nav className="nav">
       <div className="nav-container">
         <div className="nav-menu">
-          {pages.map((page) => (
-            <div key={page.path} className="nav-item">
-              <Link
-                to={page.path}
-                onClick={(e) => handleLinkClick(e, page.path)}
-              >
-                {page.label}
-              </Link>
-            </div>
-          ))}
+          {pages
+            .filter((page) => page.path !== location.pathname)
+            .map((page) => (
+              <div key={page.path} className="nav-item">
+                <Link
+                  to={page.path}
+                  onClick={(e) => handleLinkClick(e, page.path)}
+                >
+                  {page.label}
+                </Link>
+              </div>
+            ))}
 
           <div className="nav-item dropdown">
             <button className="dropdown-toggle">Plus</button>
@@ -47,7 +49,7 @@ export default function Navbar() {
               >
                 Contact
               </Link>
-              
+
               <Link to="/login" onClick={(e) => handleLinkClick(e, "/login")}>
                 Login
               </Link>

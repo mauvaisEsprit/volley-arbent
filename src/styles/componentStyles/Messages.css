@@ -1,105 +1,141 @@
 .messages-container {
-  padding: 2rem;
   max-width: 800px;
-  margin: 0 auto;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.messages-error {
-  color: red;
-  font-weight: bold;
-  text-align: center;
+  margin: 20px auto;
+  padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .message-card {
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background-color: #fefefe;
-  padding: 1rem 1.5rem;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  padding: 20px 25px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
 }
 
 .message-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
 .message-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #222;
+  margin-bottom: 8px;
+  gap: 10px;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
-  font-size: 0.95rem;
-  color: #555;
 }
 
 .message-date {
-  font-style: italic;
-  color: #999;
+  font-weight: 400;
   font-size: 0.85rem;
+  color: #888;
+  white-space: nowrap;
+}
+
+.badge-replied {
+  background-color: #4caf50;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 9999px;
+  user-select: none;
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.4);
+  transition: background-color 0.3s ease;
 }
 
 .message-text {
-  margin-bottom: 1rem;
   font-size: 1rem;
-  color: #333;
-  word-wrap: break-word;
+  line-height: 1.6;
+  color: #444;
+  margin-bottom: 18px;
+  font-family: "Open Sans", Arial, sans-serif;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.message-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.reply-button {
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+  user-select: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #1976d2;
+  color: white;
+}
+
+.reply-button:hover:not(:disabled) {
+  background-color: #155a9c;
+  box-shadow: 0 6px 16px rgba(25, 118, 210, 0.5);
+}
+
+.reply-button:disabled {
+  background-color: #90caf9;
+  cursor: not-allowed;
+  box-shadow: none;
 }
 
 .delete-button {
-  background-color: #e63946;
-  color: #fff;
-  border: none;
-  padding: 0.5rem 1.25rem;
-  border-radius: 5px;
   cursor: pointer;
-  font-size: 0.95rem;
-  transition: background-color 0.2s;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+  user-select: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: #e53935;
+  color: white;
 }
 
 .delete-button:hover {
-  background-color: #d62839;
+  background-color: #ab2620;
+  box-shadow: 0 6px 16px rgba(229, 57, 53, 0.5);
 }
 
-/* 📱 Mobile adaptation */
-@media (max-width: 600px) {
-  .messages-container {
-    padding: 1rem;
-  }
-
-  .messages-title {
-    font-size: 1.5rem;
-  }
-
-  .message-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .message-text {
-    font-size: 0.95rem;
-  }
-
-  .delete-button {
-    font-size: 0.9rem;
-    padding: 0.4rem 1rem;
-  }
+.messages-error {
+  color: #d32f2f;
+  font-weight: 600;
+  text-align: center;
+  font-size: 1.1rem;
 }
 
-/* 📱📲 Tablet adaptation */
-@media (max-width: 900px) {
-  .messages-container {
-    padding: 1.5rem;
-  }
-
-  .message-text {
-    font-size: 1rem;
-  }
-
-  .delete-button {
-    font-size: 0.95rem;
-  }
+.section-title {
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #333;
+  user-select: none;
 }
 
+.reply-button:active,
+.delete-button:active {
+  transform: scale(0.96);
+  transition: transform 0.1s ease;
+}

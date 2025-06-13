@@ -1,297 +1,205 @@
-/* Общие стили */
+/* ============ VARIABLES ============ */
+:root {
+  --clr-bg: #f7f8fa;
+  --clr-card: #ffffff;
+  --clr-primary: #e11d48;
+  --clr-primary-dark: #be0f35;
+  --clr-secondary: #3b82f6;
+  --clr-text: #0f172a;
+  --clr-text-soft: #475569;
+  --radius: 14px;
+  --shadow: 0 12px 24px rgba(0,0,0,.08);
+  --tr: .3s ease;
+}
 
+/* ============ BASE ============ */
 .home {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #222;
-  background-color: #fefefe;
+  background: var(--clr-bg);
+  color: var(--clr-text);
+  font-family: "Inter", sans-serif;
   line-height: 1.6;
   scroll-behavior: smooth;
 }
 
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 3rem 1.5rem;
+/* Layout helper — унифицирует контейнеры */
+.home .container {
+  width: min(100% - 2rem, 1100px);
+  margin-inline: auto;
 }
 
-/* === Параллакс заголовок === */
-
-.parallax-window {
+/* ============ HERO (Images) ============ */
+.home-hero {
+  position: relative;
   height: 70vh;
+  overflow: hidden;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-block: 2.5rem;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  color: white;
-  text-shadow: 0 0 12px rgba(0,0,0,0.7);
-  background-color: rgba(0,0,0,0.3);
+  justify-content: center;
   text-align: center;
 }
 
-.parallax-window h1 {
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
-  font-weight: 900;
-  letter-spacing: 0.05em;
+.home-hero img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(.75);
+  transition: filter var(--tr);
+}
+
+.home-hero:hover img { filter: brightness(.9); }
+
+/* Если внутри Images есть текст – доп‑класс */
+.home-hero .hero-text {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  font-size: clamp(1.7rem, 5vw, 3rem);
+  font-weight: 700;
+  text-shadow: 0 3px 12px rgba(0,0,0,.6);
+  max-width: 85%;
+}
+
+/* ============ СЕКЦИИ ============ */
+.home-section {
+  background: var(--clr-card);
+  border-radius: var(--radius);
+  padding: 2.5rem 2rem;
+  margin-block: 2.5rem;
+  box-shadow: var(--shadow);
+}
+
+.home-title,
+.home-subtitle {
+  font-weight: 800;
   text-transform: uppercase;
+  letter-spacing: .04em;
+  margin-bottom: 1.4rem;
 }
 
-.parallax-window button.buttonRes {
-  margin-top: 20px;
-  padding: 14px 35px;
-  background: linear-gradient(45deg, #ff6b6b, #ff4757);
-  border: none;
-  border-radius: 50px;
-  color: white;
-  font-size: 1.25rem;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 6px 12px rgba(255, 71, 87, 0.5);
-  transition: background 0.3s ease;
-}
+.home-title   { font-size: clamp(1.8rem, 5vw, 2.4rem); }
+.home-subtitle{ font-size: clamp(1.4rem, 4vw, 1.9rem); color: var(--clr-primary); }
 
-.parallax-window button.buttonRes:hover {
-  background: linear-gradient(45deg, #ff4757, #ff6b6b);
-  box-shadow: 0 8px 16px rgba(255, 71, 87, 0.7);
-}
+.home-description { color: var(--clr-text-soft); font-size: 1.05rem; }
 
-/* === Секция Intro === */
-
-.intro {
-  background: linear-gradient(90deg, #ff6b6b, #ff4757);
-  color: white;
-  padding: 4rem 2rem;
-  border-radius: 16px;
-  box-shadow: 0 10px 20px rgba(255, 71, 87, 0.3);
-  margin-bottom: 3rem;
-  margin-top: 25px;
-  text-align: center;
-}
-
-.intro h1 {
-  font-size: 2.8rem;
-  margin-bottom: 1rem;
-  font-weight: 700;
-}
-
-.intro p {
-  font-size: 1.2rem;
-  font-weight: 500;
-}
-
-/* === Секция Actualités === */
-
-.actus h2 {
-  font-size: 2.2rem;
-  margin-bottom: 1rem;
-  color: #ff4757;
-  border-bottom: 3px solid #ff6b6b;
-  display: inline-block;
-  padding-bottom: 0.3rem;
-}
-
-.actus ul {
-  list-style: none;
-  padding-left: 0;
-  font-size: 1.1rem;
-}
-
-.actus li {
+/* ============ NEWS & SCHEDULE LISTS ============ */
+.home-news-list,
+.home-schedule-list {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  background: #fff3f3;
-  margin-bottom: 12px;
-  padding: 14px 20px;
-  border-left: 5px solid #ff6b6b;
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+}
+
+.home-news-item,
+.home-schedule-item {
+  border-left: 5px solid var(--clr-primary);
+  padding: .9rem 1rem;
   border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(255, 71, 87, 0.1);
-  transition: background-color 0.3s ease;
+  background: #fff;
+  transition: padding-left var(--tr), background var(--tr);
 }
 
-.actus li:hover {
-  background-color: #ffd9d9;
+.home-schedule-item { border-color: var(--clr-secondary); }
+
+.home-news-item:hover,
+.home-schedule-item:hover {
+  background: #fef2f2;
+  padding-left: 1.3rem;
 }
 
-/* === Секция Prochain match === */
-
-.match {
-  background: #f7f7f7;
-  padding: 2.5rem 2rem;
-  border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.05);
-  margin-bottom: 3rem;
-  text-align: center;
-}
-
-.match h2 {
-  font-size: 2rem;
-  color: #ff6b6b;
-  margin-bottom: 1rem;
-}
-
-.match p {
+.home-news-link,
+.home-schedule-link,
+.home-match-link {
+  color: var(--clr-primary);
   font-weight: 600;
-  font-size: 1.3rem;
-  color: #333;
+  transition: color var(--tr);
 }
+.home-schedule-link { color: var(--clr-secondary); }
 
-/* === Секция Partenaires === */
+.home-news-link:hover,
+.home-schedule-link:hover,
+.home-match-link:hover { color: var(--clr-primary-dark); }
 
-.partenaires h2 {
-  font-size: 2.2rem;
-  margin-bottom: 1.5rem;
-  color: #ff4757;
+/* ============ BUTTONS ============ */
+.home-btn-link,
+.home-btn-toggle-partenaires {
+  display: inline-block;
+  padding: 0.7rem 1.8rem;
+  border-radius: 999px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all var(--tr);
   text-align: center;
 }
 
-/* === Адаптив === */
-
-@media (max-width: 768px) {
-  .parallax-window h1 {
-    font-size: 2.2rem;
-  }
-
-  .intro h1 {
-    font-size: 2rem;
-  }
-
-  .actus h2,
-  .partenaires h2 {
-    font-size: 1.6rem;
-  }
-
-  .match h2 {
-    font-size: 1.6rem;
-  }
+.home-btn-link {
+  background: var(--clr-primary);
+  color: #fff;
+  box-shadow: 0 6px 14px rgba(225,29,72,.35);
 }
 
+.home-btn-link:hover { background: var(--clr-primary-dark); transform: translateY(-2px); }
 
-/* --- Мобильная и планшетная адаптация --- */
-
-@media (max-width: 1024px) {
-  /* Параллакс: уменьшаем высоту и шрифт */
-  .parallax-window {
-    height: 50vh;
-    padding: 0 1rem;
-  }
-
-  .parallax-window h1 {
-    font-size: 2.4rem;
-    line-height: 1.2;
-  }
-
-  .parallax-window button.buttonRes {
-    padding: 12px 28px;
-    font-size: 1rem;
-  }
-
-  /* Контейнеры */
-  .container {
-    padding: 2rem 1rem;
-    max-width: 90%;
-  }
-
-  /* Intro */
-  .intro {
-    padding: 3rem 1.5rem;
-  }
-
-  .intro h1 {
-    font-size: 2rem;
-  }
-
-  .intro p {
-    font-size: 1rem;
-  }
-
-  /* Actualités */
-  .actus h2 {
-    font-size: 1.8rem;
-  }
-
-  .actus ul li {
-    font-size: 1rem;
-    padding: 12px 15px;
-  }
-
-  /* Match */
-  .match h2 {
-    font-size: 1.8rem;
-  }
-
-  .match p {
-    font-size: 1.1rem;
-  }
-
-  /* Partenaires */
-  .partenaires h2 {
-    font-size: 1.8rem;
-  }
+.home-btn-toggle-partenaires {
+  background: transparent;
+  color: var(--clr-primary);
+  border: 2px solid var(--clr-primary);
 }
 
-@media (max-width: 480px) {
-  /* Ещё меньше параллакс */
-  .parallax-window {
-    height: 40vh;
-  }
-
-  .parallax-window h1 {
-    font-size: 1.8rem;
-  }
-
-  .parallax-window button.buttonRes {
-    padding: 10px 20px;
-    font-size: 0.9rem;
-  }
-
-  .intro h1 {
-    font-size: 1.6rem;
-  }
-
-  .intro p {
-    font-size: 0.9rem;
-  }
-
-  .actus h2,
-  .match h2,
-  .partenaires h2 {
-    font-size: 1.4rem;
-  }
-
-  .actus ul li,
-  .match p {
-    font-size: 0.9rem;
-  }
+.home-btn-toggle-partenaires:hover {
+  background: var(--clr-primary);
+  color: #fff;
 }
 
+/* ============ MATCH INFO ============ */
+.home-match-info { font-size: 1.1rem; }
 
-
-
-.toggle-partenaires-btn:hover {
-  background: linear-gradient(45deg, #ff4757, #ff6b6b);
-  box-shadow: 0 8px 16px rgba(255, 71, 87, 0.7);
+/* ============ PARTENAIRES GRID ============ */
+.home-partenaires-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px,1fr));
+  gap: 1.5rem;
+  margin-top: 1.2rem;
 }
 
-/* Появляется только на мобильных */
-@media (max-width: 768px) {
-  .toggle-partenaires-btn {
-    display: block;
-  margin: 1rem auto 2rem;
-  padding: 10px 10px;
-  background: linear-gradient(45deg, #ff6b6b, #ff4757);
+/* ============ SCROLL UP BUTTON ============ */
+.home-scroll-up {
+  position: fixed;
+  bottom: 1.6rem;
+  right: 1.6rem;
+  width: 52px;
+  height: 52px;
+  background: var(--clr-primary);
+  color: #fff;
   border: none;
-  border-radius: 50px;
-  color: white;
+  border-radius: 50%;
+  font-size: 1.3rem;
   font-weight: 700;
-  font-size: 1.1rem;
   cursor: pointer;
-  box-shadow: 0 6px 12px rgba(255, 71, 87, 0.5);
-  transition: background 0.3s ease, box-shadow 0.3s ease;
-  }
+  box-shadow: 0 10px 25px rgba(0,0,0,.3);
+  transition: background var(--tr), transform .25s;
+  z-index: 999;
 }
 
+.home-scroll-up:hover {
+  background: var(--clr-primary-dark);
+  transform: translateY(-4px);
+}
 
+/* ============ EMPTY / INFO TEXT ============ */
+.home-empty-text { color: var(--clr-text-soft); }
 
-
-
+/* ============ ADAPTIVE ============ */
+@media (max-width: 768px) {
+  .home .container { padding: 1.4rem 1rem; }
+  .home-section   { padding: 2rem 1.2rem; }
+  .home-btn-link  { width: 100%; }
+  .home-match-info{ font-size: 1rem; }
+  .home-scroll-up { width: 44px; height: 44px; font-size: 1.1rem; }
+}

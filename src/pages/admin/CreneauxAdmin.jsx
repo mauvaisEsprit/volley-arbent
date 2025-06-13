@@ -93,7 +93,7 @@ export default function CreneauxAdmin() {
 
   return (
     <section className="creneaux-admin container">
-      <h2>Gestion des créneaux d'entraînement</h2>
+      <h2 >Gestion des créneaux d'entraînement</h2>
 
       <button className="btn-add" onClick={() => setShowForm(true)}>
         + Ajouter un créneau

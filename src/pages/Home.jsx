@@ -14,14 +14,67 @@ export default function Home() {
   const [isMobile, setIsMobile] = useState(false);
   const [news, setNews] = useState([]);
   const [nextMatch, setNextMatch] = useState(null);
+  const [nextSlots, setNextSlots] = useState([]);
+
+  // 💡 Получить ближайшую дату для дня недели + времени
+  function getNextOccurrence({ weekday, startTime }) {
+    const weekdayMap = {
+      Dimanche: 0,
+      Lundi: 1,
+      Mardi: 2,
+      Mercredi: 3,
+      Jeudi: 4,
+      Vendredi: 5,
+      Samedi: 6,
+    };
+
+    const [hour, minute] = startTime.split(":").map(Number);
+    const now = new Date();
+    const currentDay = now.getDay();
+    const targetDay = weekdayMap[weekday];
+
+    let daysToAdd = (targetDay - currentDay + 7) % 7;
+    const targetDate = new Date(now);
+    targetDate.setDate(now.getDate() + daysToAdd);
+    targetDate.setHours(hour, minute, 0, 0);
+
+    if (daysToAdd === 0 && targetDate <= now) {
+      targetDate.setDate(targetDate.getDate() + 7);
+    }
+
+    return targetDate;
+  }
 
   useEffect(() => {
-    // небольшой таймер, чтобы дать анимации partenaires закончиться
     const timeout = setTimeout(() => {
       window.scrollTo({ top: 0, behavior: "smooth" });
-    }, 600); // 600 мс, т.к. height animation = 0.6s
-
+    }, 600);
     return () => clearTimeout(timeout);
+  }, []);
+
+  useEffect(() => {
+    async function fetchNextSlots() {
+      try {
+        const res = await fetch("https://volleyback.onrender.com/api/creneaux");
+        if (!res.ok) throw new Error("Erreur réseau");
+
+        const data = await res.json();
+
+        const upcoming = data
+          .map((slot) => ({
+            ...slot,
+            nextOccurrence: getNextOccurrence(slot),
+          }))
+          .sort((a, b) => a.nextOccurrence - b.nextOccurrence)
+          .slice(0, 3);
+
+        setNextSlots(upcoming);
+      } catch (err) {
+        console.error("Erreur lors du chargement des créneaux :", err);
+      }
+    }
+
+    fetchNextSlots();
   }, []);
 
   useEffect(() => {
@@ -56,7 +109,6 @@ export default function Home() {
 
         const data = await res.json();
 
-        // сортируем по createdAt (новее → старее) и берём первые 3
         const topThree = data
           .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
           .slice(0, 3);
@@ -86,141 +138,143 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="home">
-      <Images
-        images={imageHome}
-        text="Bienvenue au Club de Volley d'Arbent"
-        buttonText="Découvrir"
-      />
+   <main className="home">
 
-      <section className="intro container">
-        <h1>Bienvenue sur le site officiel du club !</h1>
-        <p>
-          Rejoignez-nous pour vivre le volley avec passion, camaraderie et
-          esprit sportif.
-        </p>
-      </section>
+  <Images
+    images={imageHome}
+    text="Bienvenue au Club de Volley d'Arbent"
+    buttonText="Découvrir"
+    className="home-hero"
+/>
 
-      <section className="actus container">
-        <h2>Actualités</h2>
-        <ul>
-          {news.length === 0 ? (
-            <li>Aucune actualité disponible.</li>
-          ) : (
-            news.map((item) => (
-              <li key={item._id || item.id}>
-                {/* Здесь предполагается, что item имеет поля: title, slug, date */}
-                📅{" "}
-                <Link to={`/news/${item.slug}`} className="link-actus">
-                  <strong>{item.title}</strong>
-                </Link>{" "}
-                {item.date && (
-                  <span>
-                    {" "}
-                    —{" "}
-                    {new Date(item.date).toLocaleString("fr-FR", {
-                      weekday: "long",
-                      day: "numeric",
-                      month: "long",
-                      year: "numeric",
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    })}
-                  </span>
-                )}
-              </li>
-            ))
-          )}
-        </ul>
-        <Link to="/news" className="btn-link">
-          Voir toutes les actualités
-        </Link>
-      </section>
+  <section className="home-section home-intro container">
+    <h1 className="home-title">Bienvenue sur le site officiel du club !</h1>
+    <p className="home-description">
+      Rejoignez-nous pour vivre le volley avec passion, camaraderie et
+      esprit sportif.
+    </p>
+  </section>
 
-      <section className="schedule-preview container">
-        <h2>Prochains créneaux</h2>
-        <ul>
-          <li>
+  <section className="home-section home-news container">
+    <h2 className="home-subtitle">Actualités</h2>
+    <ul className="home-news-list">
+      {news.length === 0 ? (
+        <li className="home-news-item">Aucune actualité disponible.</li>
+      ) : (
+        news.map((item) => (
+          <li key={item._id || item.id} className="home-news-item">
             📅{" "}
-            <Link to="/planning#lundi" className="link-schedule">
-              Lundi 18h00-19h30 — Entraînement M13-M15 (Gymnase Arbent)
-            </Link>
-          </li>
-          <li>
-            📅{" "}
-            <Link to="/planning#mercredi" className="link-schedule">
-              Mercredi 18h15-20h15 — Entraînement M18 féminine (Gymnase Jean
-              Moulin)
-            </Link>
-          </li>
-          <li>
-            📅{" "}
-            <Link to="/planning#samedi" className="link-schedule">
-              Samedi 9h30-11h00 — École de volley (Gymnase Arbent)
-            </Link>
-          </li>
-        </ul>
-        <Link to="/planning" className="btn-link">
-          Voir tout le planning
-        </Link>
-      </section>
-
-      <section className="match container">
-        <h2>Prochain événement</h2>
-
-        {!nextMatch ? (
-          <p>Aucun match ou tournoi à venir.</p>
-        ) : (
-          <p>
-            {nextMatch.type === "match" ? "🏐 Match :" : "🏆 Tournoi :"}{" "}
-            <Link to={`/events/${nextMatch.slug}`} className="link-match">
-              <strong>{nextMatch.title}</strong>
+            <Link to={`/news/${item.slug}`} className="home-news-link">
+              <strong>{item.title}</strong>
             </Link>{" "}
-            —{" "}
-            {new Date(nextMatch.start).toLocaleString("fr-FR", {
-              weekday: "long",
-              day: "numeric",
-              month: "long",
-              hour: "2-digit",
-              minute: "2-digit",
-            })}
-          </p>
-        )}
-      </section>
+            {item.date && (
+              <span className="home-news-date">
+                {" "}
+                —{" "}
+                {new Date(item.date).toLocaleString("fr-FR", {
+                  weekday: "long",
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
+              </span>
+            )}
+          </li>
+        ))
+      )}
+    </ul>
+    <Link to="/news" className="home-btn-link">
+      Voir toutes les actualités
+    </Link>
+  </section>
 
-      <section className="partenaires container">
-        <h2>Nos partenaires</h2>
+  <section className="home-section home-schedule container">
+    <h2 className="home-subtitle">Prochains créneaux</h2>
+    {nextSlots.length === 0 ? (
+      <p className="home-empty-text">Aucun créneau à venir.</p>
+    ) : (
+      <ul className="home-schedule-list">
+        {nextSlots.map((slot) => (
+          <li key={slot._id || slot.id} className="home-schedule-item">
+            📅{" "}
+            <Link to="/planning" className="home-schedule-link">
+              {slot.nextOccurrence.toLocaleString("fr-FR", {
+                weekday: "long",
+                day: "numeric",
+                month: "long",
+                hour: "2-digit",
+                minute: "2-digit",
+              })}{" "}
+              — {slot.concerned} ({slot.location})
+            </Link>
+          </li>
+        ))}
+      </ul>
+    )}
+    <Link to="/planning" className="home-btn-link">
+      Voir tout le planning
+    </Link>
+  </section>
 
-        {isMobile && (
-          <button
-            className="toggle-partenaires-btn"
-            onClick={() => setShowPartenaires(!showPartenaires)}
-          >
-            {showPartenaires ? "Masquer" : "Afficher"} les partenaires
-          </button>
-        )}
+  <section className="home-section home-match container">
+    <h2 className="home-subtitle">Prochain événement</h2>
+    {!nextMatch ? (
+      <p className="home-empty-text">Aucun match ou tournoi à venir.</p>
+    ) : (
+      <p className="home-match-info">
+        {nextMatch.type === "match" ? "🏐 Match :" : "🏆 Tournoi :"}{" "}
+        <Link to={`/events/${nextMatch.slug}`} className="home-match-link">
+          <strong>{nextMatch.title}</strong>
+        </Link>{" "}
+        —{" "}
+        {new Date(nextMatch.start).toLocaleString("fr-FR", {
+          weekday: "long",
+          day: "numeric",
+          month: "long",
+          hour: "2-digit",
+          minute: "2-digit",
+        })}
+      </p>
+    )}
+  </section>
 
-        <AnimatePresence initial={false}>
-          {showPartenaires && (
-            <motion.div
-              className="partenaires-content"
-              key="partenaires"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              transition={{
-                height: { duration: 0.6 },
-                opacity: { duration: 0.9 },
-              }}
-              exit={{ height: 0, opacity: 0 }}
-              style={{ overflow: "hidden" }}
-            >
-              <Partenaires />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </section>
+  <section className="home-section home-partenaires container">
+    <h2 className="home-subtitle">Nos partenaires</h2>
 
-      <ScrollUpButton />
-    </main>
+    {isMobile && (
+      <button
+        className="home-btn-toggle-partenaires"
+        onClick={() => setShowPartenaires(!showPartenaires)}
+      >
+        {showPartenaires ? "Masquer" : "Afficher"} les partenaires
+      </button>
+    )}
+
+    <AnimatePresence initial={false}>
+      {showPartenaires && (
+        <motion.div
+          className="home-partenaires-content"
+          key="partenaires"
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: "auto", opacity: 1 }}
+          transition={{
+            height: { duration: 0.6 },
+            opacity: { duration: 0.9 },
+          }}
+          exit={{ height: 0, opacity: 0 }}
+          style={{ overflow: "hidden" }}
+        >
+          <Partenaires />
+        </motion.div>
+      )}
+    </AnimatePresence>
+  </section>
+
+  <ScrollUpButton className="home-scroll-up" />
+
+</main>
+
   );
 }

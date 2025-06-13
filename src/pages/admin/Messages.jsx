@@ -5,80 +5,115 @@ export default function Messages() {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [sendingId, setSendingId] = useState(null);
 
+  // ─────────────────────────── загрузка списка
   useEffect(() => {
-    const fetchMessages = async () => {
+    (async () => {
       try {
         const token = localStorage.getItem("token");
-
         const res = await fetch("https://volleyback.onrender.com/api/contact", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
+          headers: { Authorization: `Bearer ${token}` },
         });
-
-        if (!res.ok) throw new Error("Erreur lors du chargement");
-
-        const data = await res.json();
-        setMessages(data);
-      } catch (err) {
-        console.error(err);
+        if (!res.ok) throw new Error();
+        setMessages(await res.json()); // ← должен включать { replied: Boolean, replyDate? }
+      } catch {
         setError("Erreur de chargement des messages.");
       } finally {
         setLoading(false);
       }
-    };
-
-    fetchMessages();
+    })();
   }, []);
 
-  const handleDelete = async (id) => {
-    if (!window.confirm("Supprimer ce message ?")) return;
-
+  // ─────────────────────────── ответить
+  const handleReply = async (id) => {
+    if (!window.confirm("Envoyer la réponse ?")) return;
     try {
+      setSendingId(id);
       const token = localStorage.getItem("token");
 
+      const res = await fetch(
+        `https://volleyback.onrender.com/api/contact/${id}/reply`,
+        {
+          method: "PUT",
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      if (!res.ok) throw new Error();
+
+      // обновляем локально «répondu»
+      setMessages((prev) =>
+        prev.map((m) =>
+          m._id === id ? { ...m, replied: true, replyDate: new Date().toISOString() } : m
+        )
+      );
+      alert("Réponse envoyée !");
+    } catch {
+      alert("Erreur lors de l’envoi de la réponse.");
+    } finally {
+      setSendingId(null);
+    }
+  };
+
+  // ─────────────────────────── supprimer
+  const handleDelete = async (id) => {
+    if (!window.confirm("Supprimer ce message ?")) return;
+    try {
+      const token = localStorage.getItem("token");
       const res = await fetch(`https://volleyback.onrender.com/api/contact/${id}`, {
         method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
+        headers: { Authorization: `Bearer ${token}` },
       });
-
-      if (!res.ok) throw new Error("Erreur lors de la suppression");
-
-      setMessages((prev) => prev.filter((msg) => msg._id !== id));
-    } catch (err) {
-      console.error(err);
+      if (!res.ok) throw new Error();
+      setMessages((prev) => prev.filter((m) => m._id !== id));
+    } catch {
       alert("Erreur lors de la suppression.");
     }
   };
 
   return (
-      <>
+    <>
       <h1 className="section-title">📩 Messages reçus</h1>
-    <div className="messages-container">
-      {loading && <p>Chargement...</p>}
-      {error && <p className="messages-error">{error}</p>}
-      {!loading && messages.length === 0 && <p>Aucun message reçu.</p>}
-      {!loading &&
-        messages.map(({ _id, name, email, message, createdAt }) => (
-          <div key={_id} className="message-card">
+      <div className="messages-container">
+        {loading && <p>Chargement...</p>}
+        {error && <p className="messages-error">{error}</p>}
+        {!loading && messages.length === 0 && <p>Aucun message reçu.</p>}
+
+        {messages.map((msg) => (
+          <div key={msg._id} className="message-card">
             <div className="message-header">
-              <strong>{name}</strong> &lt;{email}&gt;
+              <strong>{msg.name}</strong> &lt;{msg.email}&gt;
               <span className="message-date">
-                {new Date(createdAt).toLocaleString("fr-FR")}
+                {new Date(msg.createdAt).toLocaleString("fr-FR")}
               </span>
+              {msg.replied && <span className="badge-replied">✅ Répondu</span>}
             </div>
-            <p className="message-text">{message}</p>
-            <button className="delete-button" onClick={() => handleDelete(_id)}>
-              🗑️ Supprimer
-            </button>
+
+            <p className="message-text">{msg.message}</p>
+
+            <div className="message-actions">
+              <button
+                className="reply-button"
+                onClick={() => handleReply(msg._id)}
+                disabled={msg.replied || sendingId === msg._id}
+              >
+                {msg.replied
+                  ? "Déjà répondu"
+                  : sendingId === msg._id
+                  ? "Envoi..."
+                  : "📝 Répondre"}
+              </button>
+
+              <button
+                className="delete-button"
+                onClick={() => handleDelete(msg._id)}
+              >
+                🗑️ Supprimer
+              </button>
+            </div>
           </div>
         ))}
-    </div>
+      </div>
     </>
   );
 }
