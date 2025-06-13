@@ -4,11 +4,14 @@ import "../styles/pageStyles/NewsList.css";
 import Images from "../components/Images";
 import Hero from "../assets/4R5KFUBYIRD23OJOG4NCZ6FWEA.avif";
 
+const NEWS_PER_PAGE = 6;
+
 const NewsList = () => {
   const location = useLocation();
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -30,10 +33,21 @@ const NewsList = () => {
 
   const handleLinkClick = (e, path) => {
     if (location.pathname === path) {
-      e.preventDefault(); // Уже на этой странице
+      e.preventDefault();
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
+
+  const isNew = (dateStr) => {
+    const daysSince = (Date.now() - new Date(dateStr)) / (1000 * 60 * 60 * 24);
+    return daysSince <= 3;
+  };
+
+  const totalPages = Math.ceil(news.length / NEWS_PER_PAGE);
+  const paginatedNews = news.slice(
+    (currentPage - 1) * NEWS_PER_PAGE,
+    currentPage * NEWS_PER_PAGE
+  );
 
   return (
     <>
@@ -49,7 +63,7 @@ const NewsList = () => {
           )}
 
           <div className="news-list__items">
-            {news.map((item) => (
+            {paginatedNews.map((item) => (
               <div className="news-card" key={item.slug}>
                 <Link
                   to={`/news/${item.slug}`}
@@ -57,11 +71,16 @@ const NewsList = () => {
                   className="news-card__link"
                 >
                   {item.image && (
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="news-card__image"
-                    />
+                    <div className="news-card__image-wrapper">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="news-card__image"
+                      />
+                      {isNew(item.createdAt) && (
+                        <span className="news-card__badge">NOUVEAU</span>
+                      )}
+                    </div>
                   )}
                   <div className="news-card__content">
                     <h2 className="news-card__title">{item.title}</h2>
@@ -83,6 +102,22 @@ const NewsList = () => {
               </div>
             ))}
           </div>
+
+          {totalPages > 1 && (
+            <div className="pagination">
+              {Array.from({ length: totalPages }, (_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentPage(i + 1)}
+                  className={`pagination__button ${
+                    i + 1 === currentPage ? "active" : ""
+                  }`}
+                >
+                  {i + 1}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </section>
     </>

@@ -61,7 +61,8 @@ export default function EventList() {
     currentStart,
     currentEnd,
     currentType,
-    currentImage
+    currentImage,
+    currentDescription
   ) => {
     setEditSlug(slug);
     setEditTitle(currentTitle);
@@ -69,6 +70,7 @@ export default function EventList() {
     setEditEnd(formatDateForInput(currentEnd));
     setEditType(currentType);
     setEditImage(currentImage || "");
+    setEditDescription(currentDescription || "");
   };
 
   const formatDateForInput = (dateStr) => {
