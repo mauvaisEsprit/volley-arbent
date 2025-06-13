@@ -10,8 +10,19 @@
   margin: auto;
 }
 
-.news-form input,
-.news-form textarea {
+.news-form input {
+  max-width: 75%;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border 0.3s ease;
+}
+
+.newsFormContent {
+  max-width: 100%;
+  width: 100%;
   padding: 0.8rem 1rem;
   border: 1px solid #ccc;
   border-radius: 8px;

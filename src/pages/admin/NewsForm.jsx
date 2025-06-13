@@ -79,6 +79,7 @@ export default function NewsForm({ initialData = {} }) {
           value={formData.date}
           onChange={handleChange}
           required
+          className="newsFormDate"
         />
         <input
           type="text"
@@ -93,6 +94,7 @@ export default function NewsForm({ initialData = {} }) {
           value={formData.content}
           onChange={handleChange}
           required
+          className="newsFormContent"
         />
         <button type="submit">Publier</button>
       </form>

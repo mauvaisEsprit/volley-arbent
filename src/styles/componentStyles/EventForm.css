@@ -12,7 +12,7 @@
 }
 
 /* Унифицированные стили для input, textarea и select */
-.event-form input,
+/*.event-form input,*/
 .event-form textarea,
 .event-form select {
   padding: 0.85rem 1rem;

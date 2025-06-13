@@ -127,9 +127,21 @@ button {
 }
 
 input[type="text"],
-input[type="datetime-local"],
 select {
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0.6rem 0.8rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  border: 1.8px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+.input-datetime {
+ width: 100%;
   max-width: 100%;
   min-width: 0;
   padding: 0.6rem 0.8rem;
