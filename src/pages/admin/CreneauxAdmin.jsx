@@ -18,7 +18,6 @@ export default function CreneauxAdmin() {
   const [creneaux, setCreneaux] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
   const [showForm, setShowForm] = useState(false);
   const [editing, setEditing] = useState(null); // объект, если редактируем
 
@@ -155,6 +154,7 @@ function CreneauForm({ initial, onClose, onSave }) {
       weekday: "Lundi",
       startTime: "",
       endTime: "",
+      concerned: "",
       coachName: "",
       location: "",
     }

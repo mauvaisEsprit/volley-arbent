@@ -6,7 +6,13 @@ import MatchCalendar from "../pages/Calendrier";
 import Hero from "../assets/4R5KFUBYIRD23OJOG4NCZ6FWEA.avif";
 
 const WEEKDAYS = [
-  "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"
+  "Lundi",
+  "Mardi",
+  "Mercredi",
+  "Jeudi",
+  "Vendredi",
+  "Samedi",
+  "Dimanche",
 ];
 
 export default function Planning() {
@@ -48,7 +54,7 @@ export default function Planning() {
         text="Créneaux d'entraînement et calendrier"
         buttonText="Découvrir"
       />
-      
+
       <div className="schedule-container">
         <h2 className="schedule-title">📅 Créneaux d'entraînement</h2>
 
@@ -63,10 +69,15 @@ export default function Planning() {
                 key={day}
                 className={`card ${isActive ? "active" : ""}`}
                 onClick={() => setActiveDay(isActive ? null : day)}
-                whileHover={{ scale: 1.05, boxShadow: "0 10px 20px rgba(0,0,0,0.2)" }}
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0 10px 20px rgba(0,0,0,0.2)",
+                }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
-                <motion.h3 layout className="card-day">{day}</motion.h3>
+                <motion.h3 layout className="card-day">
+                  {day}
+                </motion.h3>
 
                 <AnimatePresence>
                   {isActive && sessions.length > 0 && (
@@ -90,11 +101,15 @@ export default function Planning() {
                         <tbody>
                           {sessions.map((s) => (
                             <tr key={s._id}>
-                              <td>{formatHeure(s.startTime)}</td>
-                              <td>{formatHeure(s.endTime)}</td>
-                              <td>{s.concerned}</td>
-                              <td>{s.coachName}</td>
-                              <td>{s.location}</td>
+                              <td data-label="Heure début">
+                                {formatHeure(s.startTime)}
+                              </td>
+                              <td data-label="Heure fin">
+                                {formatHeure(s.endTime)}
+                              </td>
+                              <td data-label="Concerné">{s.concerned}</td>
+                              <td data-label="Coach">{s.coachName}</td>
+                              <td data-label="Lieu">{s.location}</td>
                             </tr>
                           ))}
                         </tbody>
