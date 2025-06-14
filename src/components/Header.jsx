@@ -19,6 +19,7 @@ export default function Header() {
       <div className="header-right">
         <Navbar />
       </div>     
+      <BurgerMenu />
     </header>
   );
 }

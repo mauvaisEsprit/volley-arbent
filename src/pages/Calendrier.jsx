@@ -27,35 +27,61 @@ export default function MatchCalendar() {
   };
 
   // ─────────────────── загрузка событий
-  useEffect(() => {
-    (async () => {
-      try {
-        const res = await fetch("https://volleyback.onrender.com/api/events");
-        const data = await res.json();
+ // ─────────────────── загрузка событий
+useEffect(() => {
+  (async () => {
+    try {
+      const res  = await fetch(
+        "https://volleyback.onrender.com/api/events"
+      );
+      const data = await res.json();
 
-        const formatted = data.map((ev) => ({
+      const formatted = data.map((ev) => {
+        // нормализуем на всякий случай
+        const type  = (ev.type || "autre").toLowerCase();
+        const color = TYPE_COLORS[type] || "#999";
+
+        return {
+          // стандартные поля FullCalendar
+          id: ev._id,
           title: ev.title,
           start: ev.start,
-          end: ev.end,
-          className: TYPE_CLASS[ev.type] || "event-default",
-          backgroundColor: TYPE_COLORS[ev.type] || "#999",
-          borderColor: TYPE_COLORS[ev.type] || "#999",
+          end:   ev.end,
+
+          // короткий способ задать фон + бордер
+          color,
+
+          // если нужны кастомные классы
+          classNames: [TYPE_CLASS[type] || "event-default"],
+
+          // всё, что хотите видеть при клике
           extendedProps: {
             slug: ev.slug,
+            type,          // ← теперь доступно как event.extendedProps.type
           },
-        }));
+        };
+      });
 
-        setEvents(formatted);
-      } catch (err) {
-        console.error("Erreur lors du chargement des événements :", err);
-      }
-    })();
-  }, []);
+      console.table(formatted.map(({ title, color, extendedProps }) => ({
+        title,
+        type: extendedProps.type,
+        color,
+      })));
+
+      setEvents(formatted);
+    } catch (err) {
+      console.error("Erreur lors du chargement des événements :", err);
+    }
+  })();
+}, []);
+
 
   // ─────────────────── переход на страницу события
   const handleEventClick = ({ event }) => {
     navigate(`/events/${event.extendedProps.slug}`);
   };
+
+  
 
   return (
     <>
