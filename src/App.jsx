@@ -18,7 +18,6 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import Faq from './pages/Faq';
 import NewsDetail from './pages/NewsDetail';
 import EventDetail from './pages/EventDetail';
-
 import ProtectedRoute from '../src/pages/admin/ProtectedRoute';
 import Dashboard from '../src/pages/admin/Dashboard';
 import CreneauxAdmin from './pages/admin/CreneauxAdmin';

@@ -112,12 +112,11 @@ export default function Messages() {
             <p className="message-text">{msg.message}</p>
 
             {msg.replied && msg.replyText && (
-  <div className="message-reply">
-    <strong>Réponse de l'admin :</strong>
-    <p>{msg.replyText}</p>
-  </div>
-)}
-
+              <div className="message-reply">
+                <strong>Réponse de l'admin :</strong>
+                <p className="reply-text">{msg.replyText}</p>
+              </div>
+            )}
 
             <div className="message-actions">
               <button

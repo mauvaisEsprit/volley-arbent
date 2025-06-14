@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/pageStyles/Login.css';
 
+
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -51,6 +52,7 @@ export default function Login() {
         />
         <button type="submit" className="login-button">Se connecter</button>
       </form>
+      
     </div>
   );
 }

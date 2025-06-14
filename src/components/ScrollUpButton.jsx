@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { FaArrowUp } from "react-icons/fa";
 import "../styles/componentStyles/ScrollUpButton.css";
 
-export default function ScrollToTopButton() {
+export default function ScrollUpButton() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {

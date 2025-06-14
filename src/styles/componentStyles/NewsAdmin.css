@@ -51,6 +51,7 @@
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
+  color:black;
 }
 
 .admin-news-date {
@@ -163,6 +164,7 @@
 @media (max-width: 640px) {
   .admin-news-title {
     font-size: 1.25rem;
+    
   }
 
   .admin-news-date,

@@ -42,7 +42,7 @@ const NewsDetail = () => {
       <div className="news-detail__container">
         <h1 className="news-detail__title">{article.title}</h1>
         <p className="news-detail__date">
-          {new Date(article.date).toLocaleString("fr-FR", {
+          {new Date(article.createdAt).toLocaleString("fr-FR", {
             day: "2-digit",
             month: "2-digit",
             year: "numeric",

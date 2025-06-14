@@ -62,7 +62,7 @@
 
 /* Layout helper — унифицирует контейнеры */
 .home .container {
-  width: min(100% - 2rem, 1100px);
+  width: min(100% - 2rem, 1150px);
   margin-inline: auto;
 }
 
