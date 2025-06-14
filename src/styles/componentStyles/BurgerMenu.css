@@ -26,7 +26,7 @@ body, html {
 
 .burger-icon {
   width: 8vw;
-  height: 6vh;
+  height: 4vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -84,7 +84,7 @@ body, html {
   text-align: center;
   animation: pulse 2.5s infinite ease-in-out;
   transition: background 0.3s ease, box-shadow 0.3s ease;
-  width: 100%;
+  width: 100%
 }
 
 /* Эффект волны */
@@ -93,7 +93,6 @@ body, html {
 .fullscreen-menu nav a:nth-child(3) { animation-delay: 0.6s; }
 .fullscreen-menu nav a:nth-child(4) { animation-delay: 0.9s; }
 .fullscreen-menu nav a:nth-child(5) { animation-delay: 1.2s; }
-.fullscreen-menu nav a:nth-child(6) { animation-delay: 1.5s; }
 
 .fullscreen-menu nav a:hover {
   animation-play-state: paused;
@@ -152,7 +151,297 @@ body, html {
     text-shadow: 0 0 0.6vh rgba(255, 255, 255, 0.7);
   }
   50% {
-    transform: scale(1.08);
+    transform: scale(1.12);
     text-shadow: 0 0 1.4vh rgba(255, 255, 255, 1);
   }
 }
+
+
+/* Очень маленькие экраны — телефоны в портрете */
+@media (max-width: 320px) {
+  /* мобильные стили */
+  .burger-wrapper {
+    top: 3vh;
+    right: 3vw;
+  }
+
+  .burger-icon {
+    width: 8vw;
+    height: 4vh;
+  }
+  .burger-icon .line {
+    height: 0.6vh;
+  }
+
+  .close-icon {
+    top: 1vh;
+    right: 3vw;
+    width: 8vw;
+    height: 8vw;
+  }
+  .close-icon span {
+    height: 0.6vh;
+  }
+}
+
+/* Маленькие телефоны, портрет */
+@media (min-width: 321px) and (max-width: 375px) {
+  /* мобильные стили */
+  .burger-wrapper {
+    top: 3vh;
+    right: 3.25vw;
+  }
+
+  .burger-icon {
+    width: 8vw;
+    height: 3.75vh;
+  }
+  .burger-icon .line {
+    height: 0.55vh;
+  }
+
+  .close-icon {
+    top: 2.5vh;
+    right: 3.25vw;
+    width: 8vw;
+    height: 8vw;
+  }
+  .close-icon span {
+    height: 0.6vh;
+  }
+}
+
+/* Средние телефоны */
+@media (min-width: 376px) and (max-width: 425px) {
+  /* мобильные стили */
+  .burger-wrapper {
+    top: 2.5vh;
+    right: 3.25vw;
+  }
+
+  .burger-icon {
+    width: 8vw;
+    height: 3.75vh;
+  }
+  .burger-icon .line {
+    height: 0.55vh;
+  }
+
+  .close-icon {
+    top: 2.5vh;
+    right: 3.25vw;
+    width: 8vw;
+    height: 8vw;
+  }
+  .close-icon span {
+    height: 0.6vh;
+  }
+}
+
+/* Большие телефоны и маленькие планшеты */
+@media (min-width: 426px) and (max-width: 480px) {
+  /* мобильные / маленькие планшеты */
+  .burger-wrapper {
+    top: 2.5vh;
+    right: 3.25vw;
+  }
+
+  .burger-icon {
+    width: 8vw;
+    height: 3.5vh;
+  }
+  .burger-icon .line {
+    height: 0.55vh;
+  }
+
+  .close-icon {
+    top: 2vh;
+    right: 3.25vw;
+    width: 8vw;
+    height: 8vw;
+  }
+  .close-icon span {
+    height: 0.6vh;
+  }
+}
+
+/* Маленькие планшеты портрет */
+@media (min-width: 481px) and (max-width: 600px) {
+  /* маленькие планшеты */
+  .burger-wrapper {
+    top: 3.5vh;
+    right: 3.25vw;
+  }
+
+  .burger-icon {
+    width: 8vw;
+    height: 4.25vh;
+  }
+  .burger-icon .line {
+    height: 0.6vh;
+  }
+
+  .close-icon {
+    top: 2vh;
+    right: 3.25vw;
+    width: 8vw;
+    height: 8vw;
+  }
+  .close-icon span {
+    height: 0.6vh;
+  }
+}
+
+/* Планшеты портрет */
+@media (min-width: 601px) and (max-width: 768px) {
+  /* планшеты */
+  .burger-wrapper {
+    top: 1.5vh;
+    right: 3.25vw;
+  }
+
+  .burger-icon {
+    width: 7vw;
+    height: 4.25vh;
+  }
+  .burger-icon .line {
+    height: 0.6vh;
+  }
+
+  .close-icon {
+    top: 2vh;
+    right: 3.25vw;
+    width: 8vw;
+    height: 8vw;
+  }
+  .close-icon span {
+    height: 0.6vh;
+  }
+}
+
+/* Планшеты ландшафт */
+@media (min-width: 769px) and (max-width: 900px) {
+  /* планшеты ландшафт */
+  .burger-wrapper {
+    top: 3.25vh;
+    right: 3.25vw;
+  }
+
+  .burger-icon {
+    width: 8vw;
+    height: 4.25vh;
+  }
+  .burger-icon .line {
+    height: 0.6vh;
+  }
+
+  .close-icon {
+    top: 2vh;
+    right: 3.25vw;
+    width: 8vw;
+    height: 8vw;
+  }
+  .close-icon span {
+    height: 0.6vh;
+  }
+}
+
+/* Небольшие ноутбуки и большие планшеты */
+@media (min-width: 901px) and (max-width: 1023px) {
+  /* большие планшеты / небольшие ноутбуки */
+  .burger-wrapper {
+    top: 2.5vh;
+    right: 3.25vw;
+  }
+
+  .burger-icon {
+    width: 8vw;
+    height: 4.25vh;
+  }
+  .burger-icon .line {
+    height: 0.6vh;
+  }
+
+  .close-icon {
+    top: 2vh;
+    right: 3.25vw;
+    width: 8vw;
+    height: 8vw;
+  }
+  .close-icon span {
+    height: 0.6vh;
+  }
+}
+
+/* Стандартные ноутбуки */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  /* ноутбуки */
+  .burger-wrapper {
+    top: 6vh;
+    right: 3.25vw;
+  }
+
+  .burger-icon {
+    width: 8vw;
+    height: 6vh;
+  }
+  .burger-icon .line {
+    height: 0.8vh;
+  }
+
+  .close-icon {
+    top: 2vh;
+    right: 3.25vw;
+    width: 8vw;
+    height: 8vw;
+  }
+  .close-icon span {
+    height: 0.6vh;
+  }
+}
+
+/* Большие ноутбуки и маленькие десктопы */
+@media (min-width: 1280px) and (max-width: 1400px) {
+  /* большие ноутбуки */
+  .burger-wrapper {
+    top: 4.25vh;
+    right: 3.25vw;
+  }
+
+  .burger-icon {
+    width: 8vw;
+    height: 5.5vh;
+  }
+  .burger-icon .line {
+    height: 0.8vh;
+  }
+
+  .close-icon {
+    top: 2vh;
+    right: 3.25vw;
+    width: 8vw;
+    height: 8vw;
+  }
+  .close-icon span {
+    height: 0.6vh;
+  }
+}
+
+/* Средние десктопы */
+@media (min-width: 1401px) and (max-width: 1680px) {
+  /* десктопы */
+  .burger-wrapper {
+    display: none;
+  }
+  
+}
+
+/* Большие десктопы */
+@media (min-width: 1681px)  {
+  /* большие десктопы */
+  .burger-wrapper {
+    display: none;
+  }
+  
+}
+

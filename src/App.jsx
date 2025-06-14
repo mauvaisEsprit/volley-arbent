@@ -6,6 +6,7 @@ import ScrollUpButton from './components/ScrollUpButton';
 import ScrollToTop from './components/ScrollToTop';
 
 
+
 import Home from './pages/Home';
 import News from './pages/NewsList';
 import About from './pages/About';
