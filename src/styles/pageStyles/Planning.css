@@ -2,15 +2,15 @@
 :root {
   --clr-bgPlanning: #0f172a;
   --clr-cardPlanning: #bdcce4;
-  --clr-innerPlanning: #546074;
+  --clr-innerPlanning: #dddddd;
   --clr-borderPlanning: #334155;
 
   --clr-primaryPlanning: #666e7b;
-  --clr-primary-darkPlanning: #333;
+  --clr-primary-darkPlanning: #777;
 
-  --clr-accentPlanning: #22d3ee;
+  --clr-accentPlanning: #111;
 
-  --clr-text-mainPlanning: #e2e8f0;
+  --clr-text-mainPlanning: #111;
   --clr-text-softPlanning: #94a3b8;
 
   --shadow-cardPlanning: 0 10px 18px rgba(0, 0, 0, 0.4);
