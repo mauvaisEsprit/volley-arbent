@@ -72,6 +72,7 @@
 .news-card__title {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
+  color: #222;
 }
 
 .news-card__date {
