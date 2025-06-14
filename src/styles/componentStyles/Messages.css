@@ -124,15 +124,7 @@
   font-size: 1.1rem;
 }
 
-.section-title {
-  text-align: center;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: 700;
-  font-size: 2rem;
-  margin-bottom: 30px;
-  color: #333;
-  user-select: none;
-}
+
 
 .reply-button:active,
 .delete-button:active {

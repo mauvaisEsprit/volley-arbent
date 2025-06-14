@@ -47,7 +47,7 @@ export default function PartenairesForm({ onSave, onClose }) {
   return (
     <div className="modal-overlay" onClick={handleOverlayClick}>
       <form className="partner-form" onClick={handleFormClick} onSubmit={handleSubmit}>
-        <h3>Ajouter un partenaire</h3>
+        <h3> + Ajouter un partenaire</h3>
 
         <input
           name="name"

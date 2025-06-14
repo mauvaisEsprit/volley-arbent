@@ -1,7 +1,7 @@
 .admin-news-section {
   max-width: 100%;
   overflow-x: hidden;
-  padding: 1rem;
+  padding: 0 1rem;
   box-sizing: border-box;
 }
 

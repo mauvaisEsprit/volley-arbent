@@ -53,8 +53,8 @@ export default function PartenairesAdmin() {
 
   return (
     <section className="partners-admin container">
-      <h2>Gestion des partenaires</h2>
-      <button onClick={openForm}>Ajouter un partenaire</button>
+      <h2 className="section-title">Gestion des partenaires</h2>
+      <button onClick={openForm}> + Ajouter un partenaire</button>
 
       {/* Показываем форму, если showForm = true */}
       {showForm && (

@@ -67,6 +67,12 @@ export default function CreneauxAdmin() {
     setEditing(null);
   };
 
+  /** группируем по weekday */
+  const creneauxByDay = WEEKDAYS.reduce((acc, day) => {
+    acc[day] = creneaux.filter((c) => c.weekday === day);
+    return acc;
+  }, {});
+
   /** Приводит время "HH:mm" или Date‑строку к виду  "HH:mm" */
   function formatHeure(value) {
     if (!value) return "";
@@ -93,45 +99,53 @@ export default function CreneauxAdmin() {
 
   return (
     <section className="creneaux-admin container">
-      <h2 >Gestion des créneaux d'entraînement</h2>
+      <h2>Gestion des créneaux d'entraînement</h2>
 
       <button className="btn-add" onClick={() => setShowForm(true)}>
         + Ajouter un créneau
       </button>
 
-      <table className="creneaux-table">
-        <thead>
-          <tr>
-            <th>Jour</th>
-            <th>Heure début</th>
-            <th>Heure fin</th>
-            <th>Concerné</th>
-            <th>Coach</th>
-            <th>Lieu</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {creneaux.map((item) => (
-            <tr key={item._id}>
-              <td data-label="Jour">{item.weekday}</td>
-              <td data-label="Heure début">
-                {formatHeure(item.startTime || item.start)}
-              </td>
-              <td data-label="Heure fin">
-                {formatHeure(item.endTime || item.end)}
-              </td>
-              <td data-label="Concerné">{item.concerned}</td>
-              <td data-label="Coach">{item.coachName}</td>
-              <td data-label="Lieu">{item.location}</td>
-              <td data-label="Actions" className="actions-cell">
-                <button onClick={() => handleEdit(item)}>✏️</button>
-                <button onClick={() => deleteCreneau(item._id)}>🗑</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {WEEKDAYS.map((day) => (
+        <div key={day} className="creneaux-day-block">
+          <h3 style={{ marginBottom: "10px" }}>{day}</h3>
+
+          {creneauxByDay[day].length === 0 ? (
+            <p className="empty">Aucun créneau</p>
+          ) : (
+            <table className="creneaux-table">
+              <thead>
+                <tr>
+                  <th>Heure début</th>
+                  <th>Heure fin</th>
+                  <th>Concerné</th>
+                  <th>Coach</th>
+                  <th>Lieu</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {creneauxByDay[day].map((item) => (
+                  <tr key={item._id}>
+                    <td data-label="Heure début">
+                      {formatHeure(item.startTime)}
+                    </td>
+                    <td data-label="Heure fin">{formatHeure(item.endTime)}</td>
+                    <td data-label="Concerné">{item.concerned}</td>
+                    <td data-label="Coach">{item.coachName}</td>
+                    <td data-label="Lieu">{item.location}</td>
+
+                    <td className="actions-cell" data-label="Actions">
+                      <button onClick={() => handleEdit(item)}>✏️</button>
+                      <button onClick={() => deleteCreneau(item._id)}>🗑</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </div>
+      ))}
 
       {showForm && (
         <CreneauForm
@@ -192,6 +206,8 @@ function CreneauForm({ initial, onClose, onSave }) {
       setSaving(false);
     }
   };
+
+  /* ---------- в компоненте CreneauxAdmin ---------- */
 
   return (
     <div className="modal-overlay" onClick={onClose}>
