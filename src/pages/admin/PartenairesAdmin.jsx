@@ -3,9 +3,20 @@ import PartenairesForm from "./PartenairesForm";
 import "../../styles/componentStyles/PartenairesAdmin.css";
 
 export default function PartenairesAdmin() {
+  // ─────────────────────────────── State
   const [partners, setPartners] = useState([]);
   const [showForm, setShowForm] = useState(false);
+  const [editingPartner, setEditingPartner] = useState(null); // null = create, object = edit
 
+  // ─────────────────────────────── Helpers
+  const normalizeUrl = (url) => {
+    if (!url) return "";
+    return url.startsWith("http://") || url.startsWith("https://")
+      ? url
+      : "https://" + url;
+  };
+
+  // ─────────────────────────────── CRUD
   const fetchPartners = async () => {
     try {
       const res = await fetch("https://volleyback.onrender.com/api/partners");
@@ -15,17 +26,6 @@ export default function PartenairesAdmin() {
       console.error("Erreur lors du chargement des partenaires", err);
     }
   };
-
-  const normalizeUrl = (url) => {
-    if (!url) return "";
-    return url.startsWith("http://") || url.startsWith("https://")
-      ? url
-      : "https://" + url;
-  };
-
-  useEffect(() => {
-    fetchPartners();
-  }, []);
 
   const deletePartner = async (id) => {
     if (!window.confirm("Supprimer ce partenaire ?")) return;
@@ -46,19 +46,39 @@ export default function PartenairesAdmin() {
     }
   };
 
-  // Открыть форму
-  const openForm = () => setShowForm(true);
-  // Закрыть форму
-  const closeForm = () => setShowForm(false);
+  // ─────────────────────────────── Modal controls
+  const openFormForCreate = () => {
+    setEditingPartner(null);
+    setShowForm(true);
+  };
 
+  const openFormForEdit = (partner) => {
+    setEditingPartner(partner);
+    setShowForm(true);
+  };
+
+  const closeForm = () => {
+    setEditingPartner(null);
+    setShowForm(false);
+  };
+
+  // ─────────────────────────────── Init
+  useEffect(() => {
+    fetchPartners();
+  }, []);
+
+  // ─────────────────────────────── Render
   return (
     <section className="partners-admin container">
       <h2 className="section-title">Gestion des partenaires</h2>
-      <button onClick={openForm}> + Ajouter un partenaire</button>
 
-      {/* Показываем форму, если showForm = true */}
+      <button onClick={openFormForCreate} className="btn-primary">
+        + Ajouter un partenaire
+      </button>
+
       {showForm && (
         <PartenairesForm
+          partner={editingPartner}
           onSave={() => {
             fetchPartners();
             closeForm();
@@ -71,7 +91,8 @@ export default function PartenairesAdmin() {
         {partners.map((partner) => (
           <div key={partner._id} className="partner-card">
             <img src={partner.logo} alt={partner.name} />
-            <div>
+
+            <div className="partner-info">
               <strong>{partner.name}</strong>
               <p>Type: {partner.type}</p>
               {partner.site && (
@@ -84,9 +105,11 @@ export default function PartenairesAdmin() {
                 </a>
               )}
             </div>
-            <button onClick={() => deletePartner(partner._id)}>
-              Supprimer
-            </button>
+
+            <div className="partner-actions">
+              <button className="edit-buttonPartners" onClick={() => openFormForEdit(partner)}>✏️ Modifier</button>
+              <button className="delete-buttonPartners" onClick={() => deletePartner(partner._id)}>🗑️ Supprimer</button>
+            </div>
           </div>
         ))}
       </div>

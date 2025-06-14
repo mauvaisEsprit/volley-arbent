@@ -104,7 +104,30 @@
   text-decoration: underline;
 }
 
-.partner-card button {
+.partner-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.partner-card .edit-buttonPartners {
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.5rem;
+  background: orange;
+  border: none;
+  border-radius: 14px;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(229, 62, 62, 0.5);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.partner-card .edit-buttonPartners:hover {
+  background: orangered;
+  box-shadow: 0 6px 18px rgba(179, 42, 42, 0.7);
+}
+
+.partner-card .delete-buttonPartners {
   margin-top: 1.5rem;
   padding: 0.6rem 1.5rem;
   background: #e53e3e;
@@ -117,7 +140,7 @@
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.partner-card button:hover {
+.partner-card .delete-buttonPartners:hover {
   background: #b32a2a;
   box-shadow: 0 6px 18px rgba(179, 42, 42, 0.7);
 }

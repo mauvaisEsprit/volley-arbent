@@ -1,53 +1,73 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../../styles/componentStyles/PartenairesForm.css";
 
-export default function PartenairesForm({ onSave, onClose }) {
-  const [data, setData] = useState({ name: "", logo: "", site: "", type: "sponsor" });
+/**
+ * Formulaire (dans une modale) pour créer OU modifier un partenaire.
+ * - Si `partner` est undefined/null → mode création (POST)
+ * - Si `partner` est défini         → mode édition   (PUT)
+ */
+export default function PartenairesForm({ partner = null, onSave, onClose }) {
+  /* ─────────────────────────────── State */
+  const buildInitial = (p) =>
+    p
+      ? {
+          name: p.name || "",
+          logo: p.logo || "",
+          site: p.site || "",
+          type: p.type || "sponsor",
+        }
+      : { name: "", logo: "", site: "", type: "sponsor" };
+
+  const [data, setData] = useState(buildInitial(partner));
   const [saving, setSaving] = useState(false);
 
+  /* ─────────────────────────────── Sync prop → state */
+  useEffect(() => {
+    setData(buildInitial(partner));
+  }, [partner]);
+
+  /* ─────────────────────────────── Handlers */
   const handleChange = (e) =>
-    setData({ ...data, [e.target.name]: e.target.value });
+    setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSaving(true);
 
+    const method = partner ? "PUT" : "POST";
+    const url = partner
+      ? `https://volleyback.onrender.com/api/partners/${partner._id}`
+      : "https://volleyback.onrender.com/api/partners";
+
     try {
-      const res = await fetch(
-        "https://volleyback.onrender.com/api/partners",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-          body: JSON.stringify(data),
-        }
-      );
+      const res = await fetch(url, {
+        method,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify(data),
+      });
       if (!res.ok) throw new Error();
       await res.json();
 
-      if (onSave) onSave();
-      setData({ name: "", logo: "", site: "", type: "sponsor" });
+      onSave?.();
     } catch {
-      alert("Erreur lors de l’enregistrement");
+      alert("Erreur lors de l'enregistrement");
     } finally {
       setSaving(false);
     }
   };
 
-  // Закрыть по клику на оверлей (если надо)
-  const handleOverlayClick = () => {
-    if (onClose) onClose();
-  };
+  /* ─────────────────────────────── Overlay */
+  const handleOverlayClick = () => onClose?.();
+  const stopPropagation = (e) => e.stopPropagation();
 
-  // Чтобы клик по форме не закрывал модалку
-  const handleFormClick = (e) => e.stopPropagation();
-
+  /* ─────────────────────────────── Render */
   return (
     <div className="modal-overlay" onClick={handleOverlayClick}>
-      <form className="partner-form" onClick={handleFormClick} onSubmit={handleSubmit}>
-        <h3> + Ajouter un partenaire</h3>
+      <form className="partner-form" onClick={stopPropagation} onSubmit={handleSubmit}>
+        <h3>{partner ? "Modifier le partenaire" : "+ Ajouter un partenaire"}</h3>
 
         <input
           name="name"
@@ -78,7 +98,9 @@ export default function PartenairesForm({ onSave, onClose }) {
           <button type="submit" disabled={saving}>
             {saving ? "Enregistrement…" : "Enregistrer"}
           </button>
-          <button type="button" onClick={onClose}>Annuler</button>
+          <button type="button" onClick={onClose}>
+            Annuler
+          </button>
         </div>
       </form>
     </div>
