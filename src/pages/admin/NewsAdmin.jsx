@@ -137,7 +137,7 @@ export default function NewsAdmin() {
           )}
 
           <div className="admin-news-list">
-            {news.map(({ slug, title, date, image, content }) => (
+            {news.map(({ slug, title, updatedAt, image, content }) => (
               <div key={slug} className="admin-news-card">
                 {image && (
                   <div className="admin-image-wrapper">
@@ -147,7 +147,7 @@ export default function NewsAdmin() {
                 <div className="admin-news-details">
                   <h3 className="admin-news-title">{title}</h3>
                   <p className="admin-news-date">
-                    {new Date(date).toLocaleString("fr-FR", {
+                    {new Date(updatedAt).toLocaleString("fr-FR", {
                       day: "2-digit",
                       month: "2-digit",
                       year: "numeric",
@@ -191,7 +191,7 @@ export default function NewsAdmin() {
               <input
                 type="datetime-local"
                 name="date"
-                value={editingNews.updatedAt || ""}
+                value={editingNews.date || ""}
                 onChange={handleFormChange}
                 placeholder="Date"
                 className="admin-input-date"
