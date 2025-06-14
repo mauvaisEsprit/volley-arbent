@@ -1,12 +1,12 @@
 /* ─────── ПАЛИТРА ─────── */
 :root {
   --clr-bgPlanning: #0f172a;
-  --clr-cardPlanning: #1e293b;
-  --clr-innerPlanning: #1e293b;
+  --clr-cardPlanning: #bdcce4;
+  --clr-innerPlanning: #546074;
   --clr-borderPlanning: #334155;
 
-  --clr-primaryPlanning: #3b82f6;
-  --clr-primary-darkPlanning: #1d4ed8;
+  --clr-primaryPlanning: #666e7b;
+  --clr-primary-darkPlanning: #333;
 
   --clr-accentPlanning: #22d3ee;
 
@@ -17,10 +17,8 @@
 }
 
 .planning-container {
-  background: linear-gradient(120deg, #303448 0%, #505f9c 50%, #040a33 100%);
-  background-size: 200% 200%;
-  animation: gradientFlow 20s ease-in-out infinite;
-  color: black;
+  background: linear-gradient(to bottom right, #f9f9f9, #eaeaea);
+  color: rgb(0, 0, 0);
   min-height: 100vh;
   position: relative;
   overflow: hidden;
@@ -78,7 +76,6 @@
 
 .card-day {
   margin-bottom: 10px;
-  color: white;
 }
 
 .card:hover {

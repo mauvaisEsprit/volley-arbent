@@ -1,16 +1,16 @@
 /* ============ VARIABLES ============ */
 :root {
-  --clr-bg: #0f172a;               /* Тёмный фон (night blue) */
-  --clr-card: #1e293b;             /* Тёмно-серый для карточек */
+  --clr-bg: #03319e;               /* Тёмный фон (night blue) */
+  --clr-card: #4575c1;             /* Тёмно-серый для карточек */
 
   --clr-primary: #e11d48;          /* Акцентный насыщенный розово-красный */
   --clr-primary-dark: #9f1239;     /* Тёмный бордовый для hover */
 
-  --clr-secondary: #22d3ee;        /* Яркий неоновый голубой */
+  --clr-secondary: #ffffff;        /* Яркий неоновый голубой */
   --clr-secondary-dark: #ffffff;  /* Темнее для hover и акцентов */
 
-  --clr-text: #f8fafc;             /* Почти белый текст */
-  --clr-text-soft: #cbd5e1;        /* Светло-серый текст */
+  --clr-text: #111;             /* Почти белый текст */
+  --clr-text-soft: #55667b;        /* Светло-серый текст */
 
   --clr-shadow-primary: rgba(225, 29, 72, 0.3); /* Мягкая тень розово-красного */
 
@@ -24,9 +24,7 @@
 
 /* ============ BASE ============ */
 .home {
-  background: linear-gradient(120deg, #303448 0%, #505f9c 50%, #040a33 100%);
-  background-size: 200% 200%;
-  animation: gradientFlow 20s ease-in-out infinite;
+   background: linear-gradient(to bottom right, #f9f9f9, #eaeaea);
   color: #f8fafc;
   min-height: 100vh;
   position: relative;
@@ -142,7 +140,7 @@
 }
 
 .home-section {
-  background: rgba(255, 255, 255, 0.1);
+  background: #d3d3d3;
   backdrop-filter: blur(10px);
   border-radius: var(--radius);
   padding: 2.5rem 2rem;
@@ -199,7 +197,7 @@
 }
 
 /* Ссылки */
-.home-news-link, .home-schedule-link, .home-match-link {
+.home-news-link, .home-schedule-link  {
   color: var(--clr-secondary);
   font-weight: 600;
   transition: color var(--tr);
@@ -209,6 +207,10 @@
 .home-news-link:hover, .home-schedule-link:hover  {
   color: var(--clr-secondary-dark);
   text-decoration: none;
+}
+
+.home-match-link {
+  color: red;
 }
 
 .home-match-link:hover {
@@ -232,7 +234,7 @@
 /* Кнопки */
 .home-btn-link {
   background: var(--clr-primary);
-  color: var(--clr-text);
+  color: white;
   padding: 0.7rem 1.8rem;
   border-radius: 999px;
   font-weight: 600;
@@ -260,7 +262,10 @@
 }
 
 /* ============ MATCH INFO ============ */
-.home-match-info { font-size: 1.1rem; }
+.home-match-info { 
+  font-size: 1.1rem; 
+  color: #111;
+}
 
 /* ============ PARTENAIRES GRID ============ */
 .home-partenaires-content {
@@ -270,29 +275,9 @@
   margin-top: 1.2rem;
 }
 
-/* ============ SCROLL UP BUTTON ============ */
-.home-scroll-up {
-  position: fixed;
-  bottom: 1.6rem;
-  right: 1.6rem;
-  width: 52px;
-  height: 52px;
-  background: var(--clr-primary);
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  font-size: 1.3rem;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 10px 25px rgba(0,0,0,.3);
-  transition: background var(--tr), transform .25s;
-  z-index: 999;
-}
 
-.home-scroll-up:hover {
-  background: var(--clr-primary-dark);
-  transform: translateY(-4px);
-}
+
+
 
 /* ============ EMPTY / INFO TEXT ============ */
 .home-empty-text { color: var(--clr-text-soft); }

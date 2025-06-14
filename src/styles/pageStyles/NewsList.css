@@ -118,7 +118,7 @@
 }
 
 /* Темная тема */
-@media (prefers-color-scheme: dark) {
+/*@media (prefers-color-scheme: dark) {
   .news-list {
     background-color: #121212;
     color: #f1f1f1;
@@ -149,4 +149,4 @@
     background: #1976d2;
     color: #fff;
   }
-}
+}*/
