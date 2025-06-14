@@ -7,6 +7,11 @@ export default function Messages() {
   const [error, setError] = useState(null);
   const [sendingId, setSendingId] = useState(null);
 
+  // Состояния модалки
+  const [showModal, setShowModal] = useState(false);
+  const [replyText, setReplyText] = useState("");
+  const [replyingToId, setReplyingToId] = useState(null);
+
   // ─────────────────────────── загрузка списка
   useEffect(() => {
     (async () => {
@@ -16,7 +21,7 @@ export default function Messages() {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (!res.ok) throw new Error();
-        setMessages(await res.json()); // ← должен включать { replied: Boolean, replyDate? }
+        setMessages(await res.json());
       } catch {
         setError("Erreur de chargement des messages.");
       } finally {
@@ -25,29 +30,41 @@ export default function Messages() {
     })();
   }, []);
 
-  // ─────────────────────────── ответить
-  const handleReply = async (id) => {
-    if (!window.confirm("Envoyer la réponse ?")) return;
+  // ─────────────────────────── отправка ответа
+  const submitReply = async () => {
+    if (!replyText.trim()) return alert("Veuillez écrire une réponse.");
+    if (!window.confirm("Envoyer cette réponse ?")) return;
+
     try {
-      setSendingId(id);
+      setSendingId(replyingToId);
       const token = localStorage.getItem("token");
 
       const res = await fetch(
-        `https://volleyback.onrender.com/api/contact/${id}/reply`,
+        `https://volleyback.onrender.com/api/contact/${replyingToId}/reply`,
         {
           method: "PUT",
-          headers: { Authorization: `Bearer ${token}` },
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ replyText }),
         }
       );
+
       if (!res.ok) throw new Error();
 
-      // обновляем локально «répondu»
       setMessages((prev) =>
         prev.map((m) =>
-          m._id === id ? { ...m, replied: true, replyDate: new Date().toISOString() } : m
+          m._id === replyingToId
+            ? { ...m, replied: true, replyDate: new Date().toISOString() }
+            : m
         )
       );
+
       alert("Réponse envoyée !");
+      setShowModal(false);
+      setReplyText("");
+      setReplyingToId(null);
     } catch {
       alert("Erreur lors de l’envoi de la réponse.");
     } finally {
@@ -55,15 +72,18 @@ export default function Messages() {
     }
   };
 
-  // ─────────────────────────── supprimer
+  // ─────────────────────────── удалить сообщение
   const handleDelete = async (id) => {
     if (!window.confirm("Supprimer ce message ?")) return;
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`https://volleyback.onrender.com/api/contact/${id}`, {
-        method: "DELETE",
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await fetch(
+        `https://volleyback.onrender.com/api/contact/${id}`,
+        {
+          method: "DELETE",
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       if (!res.ok) throw new Error();
       setMessages((prev) => prev.filter((m) => m._id !== id));
     } catch {
@@ -91,10 +111,22 @@ export default function Messages() {
 
             <p className="message-text">{msg.message}</p>
 
+            {msg.replied && msg.replyText && (
+  <div className="message-reply">
+    <strong>Réponse de l'admin :</strong>
+    <p>{msg.replyText}</p>
+  </div>
+)}
+
+
             <div className="message-actions">
               <button
                 className="reply-button"
-                onClick={() => handleReply(msg._id)}
+                onClick={() => {
+                  setReplyingToId(msg._id);
+                  setReplyText("");
+                  setShowModal(true);
+                }}
                 disabled={msg.replied || sendingId === msg._id}
               >
                 {msg.replied
@@ -114,6 +146,38 @@ export default function Messages() {
           </div>
         ))}
       </div>
+
+      {/* Модалка */}
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <h2>Répondre au message</h2>
+            <textarea
+              value={replyText}
+              onChange={(e) => setReplyText(e.target.value)}
+              placeholder="Écrivez votre réponse ici..."
+              rows={6}
+            />
+            <div className="modal-buttons">
+              <button
+                onClick={submitReply}
+                disabled={sendingId === replyingToId}
+              >
+                {sendingId === replyingToId ? "Envoi..." : "Envoyer"}
+              </button>
+              <button
+                onClick={() => {
+                  setShowModal(false);
+                  setReplyText("");
+                  setReplyingToId(null);
+                }}
+              >
+                Annuler
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
