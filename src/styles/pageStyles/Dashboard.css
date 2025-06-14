@@ -36,6 +36,7 @@
   text-align: center;
   font-size: 1.3rem;
   margin-bottom: 2rem;
+  border-bottom: 2px #858585 solid;
 }
 
 .admin-sidebar nav ul {
