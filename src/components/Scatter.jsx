@@ -4,7 +4,7 @@ export default function ScatterText({ text }) {
   const letters = text.split("");
 
   return (
-    <div className="flex space-x-1">
+    <div className="inline-flex space-x-1">
       {letters.map((letter, index) => (
         <motion.span
           key={index}
