@@ -1,19 +1,19 @@
 /* ─────── ПАЛИТРА ─────── */
 :root {
-  --clr-bg: #0f172a;
-  --clr-card: #1e293b;
-  --clr-inner: #1e293b;
-  --clr-border: #334155;
+  --clr-bgPlanning: #0f172a;
+  --clr-cardPlanning: #1e293b;
+  --clr-innerPlanning: #1e293b;
+  --clr-borderPlanning: #334155;
 
-  --clr-primary: #3b82f6;
-  --clr-primary-dark: #1d4ed8;
+  --clr-primaryPlanning: #3b82f6;
+  --clr-primary-darkPlanning: #1d4ed8;
 
-  --clr-accent: #22d3ee;
+  --clr-accentPlanning: #22d3ee;
 
-  --clr-text-main: #e2e8f0;
-  --clr-text-soft: #94a3b8;
+  --clr-text-mainPlanning: #e2e8f0;
+  --clr-text-softPlanning: #94a3b8;
 
-  --shadow-card: 0 10px 18px rgba(0, 0, 0, 0.4);
+  --shadow-cardPlanning: 0 10px 18px rgba(0, 0, 0, 0.4);
 }
 
 .planning-container {
@@ -42,7 +42,7 @@
   font-weight: 800;
   text-align: center;
   margin: 2rem 0 1.5rem;
-  background: linear-gradient(90deg, var(--clr-primary), var(--clr-accent));
+  background: linear-gradient(90deg, var(--clr-primaryPlanning), var(--clr-accentPlanning));
   -webkit-background-clip: text;
   color: transparent;
 }
@@ -68,11 +68,11 @@
 
 /* ─────── КАРТОЧКА ДНЯ ─────── */
 .card {
-  background: var(--clr-card);
+  background: var(--clr-cardPlanning);
   border-radius: 16px;
   padding: 1.25rem;
-  box-shadow: var(--shadow-card);
-  border: 1px solid var(--clr-border);
+  box-shadow: var(--shadow-cardPlanning);
+  border: 1px solid var(--clr-borderPlanning);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -86,7 +86,7 @@
 }
 
 .card.active {
-  border-color: var(--clr-primary);
+  border-color: var(--clr-primaryPlanning);
 }
 
 /* ─────── ТАБЛИЦА (DESKTOP) ─────── */
@@ -95,19 +95,19 @@
   border-collapse: collapse;
   table-layout: fixed;
   font-size: 0.95rem;
-  color: var(--clr-text-main);
+  color: var(--clr-text-mainPlanning);
 }
 
 .creneaux-inner-table th,
 .creneaux-inner-table td {
   padding: 10px 12px;
-  border: 1px solid var(--clr-border);
+  border: 1px solid var(--clr-borderPlanning);
   text-align: center;
-  background: var(--clr-inner);
+  background: var(--clr-innerPlanning);
 }
 
 .creneaux-inner-table th {
-  background: var(--clr-primary-dark);
+  background: var(--clr-primary-darkPlanning);
   color: #fff;
 }
 
@@ -126,10 +126,10 @@
 
   .creneaux-inner-table tr {
     margin-bottom: 1rem;
-    background: var(--clr-card);
+    background: var(--clr-cardPlanning);
     border-radius: 12px;
-    box-shadow: var(--shadow-card);
-    border-left: 4px solid var(--clr-primary);
+    box-shadow: var(--shadow-cardPlanning);
+    border-left: 4px solid var(--clr-primaryPlanning);
     padding: 0.6rem;
   }
 
@@ -138,7 +138,7 @@
     justify-content: space-between;
     padding: 0.6rem 1rem;
     border-bottom: 1px solid #475569;
-    color: var(--clr-text-main);
+    color: var(--clr-text-mainPlanning);
     background: transparent;
   }
 
@@ -149,7 +149,7 @@
   .creneaux-inner-table td::before {
     content: attr(data-label);
     font-weight: 600;
-    color: var(--clr-accent);
+    color: var(--clr-accentPlanning);
     margin-right: .8rem;
   }
 }
@@ -170,7 +170,7 @@
 a.pulse-link {
   animation: pulse 2.4s infinite ease-in-out;
   display: inline-block;
-  color: var(--clr-accent);
+  color: var(--clr-accentPlanning);
   font-weight: 600;
   text-decoration: none;
 }
