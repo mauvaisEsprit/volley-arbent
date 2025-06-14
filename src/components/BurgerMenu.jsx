@@ -62,6 +62,12 @@ export default function BurgerMenu() {
                   handleLinkClick(e, "/about");}}>
                 À propos
               </Link>
+              <Link to="/contact" onClick={(e) =>
+                {
+                  toggleMenu();
+                  handleLinkClick(e, "/contact");}}>
+                Contact
+              </Link>
               <Link to="/planning" onClick={(e) => 
                 {
                   toggleMenu();

@@ -96,6 +96,9 @@
 .fullscreen-menu nav a:nth-child(5) {
   animation-delay: 1.2s;
 }
+.fullscreen-menu nav a:nth-child(6) {
+  animation-delay: 1.5s;
+}
 
 /* При наведении анимация пауза, эффект ярче */
 .fullscreen-menu nav a:hover {
