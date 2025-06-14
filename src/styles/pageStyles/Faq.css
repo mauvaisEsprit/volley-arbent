@@ -1,7 +1,5 @@
 .faq-page {
- background: linear-gradient(120deg, #303448 0%, #505f9c 50%, #040a33 100%);
-  background-size: 200% 200%;
-  animation: gradientFlow 20s ease-in-out infinite;
+    background: linear-gradient(to bottom right, #f9f9f9, #eaeaea);
   min-height: 100vh;
   padding: 60px 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -55,7 +53,7 @@
 
 .faq-question {
   padding: 20px;
-  background-color: #003366;
+  background-color: #1b77d3;
   color: #fff;
   font-weight: 600;
   display: flex;
