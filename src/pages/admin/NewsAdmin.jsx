@@ -191,7 +191,7 @@ export default function NewsAdmin() {
               <input
                 type="datetime-local"
                 name="date"
-                value={editingNews.date || ""}
+                value={editingNews.updatedAt || ""}
                 onChange={handleFormChange}
                 placeholder="Date"
                 className="admin-input-date"

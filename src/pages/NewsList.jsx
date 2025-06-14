@@ -85,7 +85,7 @@ const NewsList = () => {
                   <div className="news-card__content">
                     <h2 className="news-card__title">{item.title}</h2>
                     <p className="news-card__date">
-                      {new Date(item.createdAt).toLocaleString("fr-FR", {
+                      {new Date(item.updatedAt).toLocaleString("fr-FR", {
                         day: "2-digit",
                         month: "2-digit",
                         year: "numeric",
