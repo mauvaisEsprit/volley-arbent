@@ -1,167 +1,176 @@
-/* Основной контейнер */
-.schedule-container {
-  padding: 2rem;
-  background-color: #f9f9f9;
+/* ─────── ПАЛИТРА ─────── */
+:root {
+  --clr-bg: #0f172a;
+  --clr-card: #1e293b;
+  --clr-inner: #1e293b;
+  --clr-border: #334155;
+
+  --clr-primary: #3b82f6;
+  --clr-primary-dark: #1d4ed8;
+
+  --clr-accent: #22d3ee;
+
+  --clr-text-main: #e2e8f0;
+  --clr-text-soft: #94a3b8;
+
+  --shadow-card: 0 10px 18px rgba(0, 0, 0, 0.4);
 }
+
+.planning-container {
+  background: linear-gradient(120deg, #303448 0%, #505f9c 50%, #040a33 100%);
+  background-size: 200% 200%;
+  animation: gradientFlow 20s ease-in-out infinite;
+  color: black;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ─────── ОСНОВНОЙ КОНТЕЙНЕР ─────── */
+/*.schedule-container {
+  background: linear-gradient(120deg, #303448 0%, #505f9c 50%, #040a33 100%);
+  background-size: 200% 200%;
+  animation: gradientFlow 20s ease-in-out infinite;
+  color: #f8fafc;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}*/
 
 .schedule-title {
-  font-size: 2rem;
-  font-weight: bold;
+  font-size: 2.25rem;
+  font-weight: 800;
   text-align: center;
   margin: 2rem 0 1.5rem;
-  color: #333;
+  background: linear-gradient(90deg, var(--clr-primary), var(--clr-accent));
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
-/* Сетка карточек */
+.schedule-title-icon {
+  color: white;
+}
+
+/* ─────── СЕТКА КАРТОЧЕК ─────── */
 .cards-grid {
   display: grid;
   gap: 1.5rem;
   padding: 2rem 1rem;
   justify-content: center;
-  grid-template-columns: 1fr; /* по умолчанию — 1 карточка */
+  grid-template-columns: 1fr;
 }
 
-/* Десктоп (≥1024px) — 2 карточки в ряд */
 @media (min-width: 1024px) {
   .cards-grid {
     grid-template-columns: repeat(2, minmax(300px, 1fr));
   }
 }
 
-/* Планшеты (768-1023px) — 1 карточка */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .cards-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Мобилки (<768px) — 1 карточка */
-@media (max-width: 767px) {
-  .cards-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-
-/* карточка дня */
+/* ─────── КАРТОЧКА ДНЯ ─────── */
 .card {
-  background:#fff;
-  border-radius:16px;
-  padding:1.1rem;
-  box-shadow:0 4px 16px rgba(0,0,0,.08);
-  transition:.25s;
+  background: var(--clr-card);
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--clr-border);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.card.active{border:2px solid #0077cc}
 
-/* таблица в раскрытии — ДЕСКТОП‑РЕЖИМ */
-.creneaux-inner-table{
-  width:100%;
-  border-collapse:collapse;
-  table-layout:fixed;      /* чтобы колонки делили ширину 100% */
-  font-size:.92rem;
+.card-day {
+  margin-bottom: 10px;
 }
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
+}
+
+.card.active {
+  border-color: var(--clr-primary);
+}
+
+/* ─────── ТАБЛИЦА (DESKTOP) ─────── */
+.creneaux-inner-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 0.95rem;
+  color: var(--clr-text-main);
+}
+
 .creneaux-inner-table th,
-.creneaux-inner-table td{
-  padding:8px 10px;
-  border:1px solid #e1e5ec;
-  text-align:center;
-
-  /* переносим длинные слова, убираем nowrap */
-  white-space:normal;
-  word-break:break-word;
+.creneaux-inner-table td {
+  padding: 10px 12px;
+  border: 1px solid var(--clr-border);
+  text-align: center;
+  background: var(--clr-inner);
 }
 
-/* зебра‑строки */
-.creneaux-inner-table tbody tr:nth-child(even){
-  background:#f7faff;
+.creneaux-inner-table th {
+  background: var(--clr-primary-dark);
+  color: #fff;
 }
-.creneaux-inner-table th{background:#0077cc;color:#fff}
 
-/* ─── МОБИЛЬНЫЙ ≤768 px: превращаем таблицу в список ─── */
-@media(max-width:768px){
-  /* скрываем <thead> */
-  .creneaux-inner-table thead{display:none}
+/* ─────── МОБИЛЬНАЯ ВЕРСИЯ ─────── */
+@media (max-width: 768px) {
+  .creneaux-inner-table thead {
+    display: none;
+  }
 
-  /* делаем каждую <tr> «карточкой» */
   .creneaux-inner-table,
   .creneaux-inner-table tbody,
-  .creneaux-inner-table tr{
-    display:block;
-    width:100%;
-  }
-  .creneaux-inner-table tr{
-    margin-bottom:.9rem;
-    background:#fff;
-    border-radius:12px;
-    box-shadow:0 1px 6px rgba(0,0,0,.06);
-    overflow:hidden;
-  }
-
-  /* превращаем <td> в строки label‑value */
-  .creneaux-inner-table td{
-    display:flex;
-    justify-content:space-between;
-    padding:.55rem .9rem;
-    border:none;
-    border-bottom:1px solid #f0f0f0;
-    font-size:.95rem;
-  }
-  .creneaux-inner-table td:last-child{border-bottom:none}
-
-  /* подпись (label) берём из data‑label */
-  .creneaux-inner-table td::before{
-    content:attr(data-label);
-    font-weight:600;
-    color:#555;
-    margin-right:.8rem;
-  }
-}
-
-
-/* ───── ОБЩИЙ СТИЛЬ ДЛЯ КАЖДОГО CRÉNEAU ───── */
-
-/* Десктоп: добавим карточный стиль к каждой строке */
-@media(min-width:769px) {
-  .creneaux-inner-table tbody tr {
-    background: #f9fbff;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-    margin-bottom: 12px;
-    overflow: hidden;
-    display: table-row; /* важный фикс */
-  }
-
-  /* сделаем чуть скруглённые края у первой и последней ячеек */
-  .creneaux-inner-table td:first-child {
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-  }
-  .creneaux-inner-table td:last-child {
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-  }
-}
-
-/* Мобилка: уже в карточках — улучшим визуал */
-@media(max-width:768px) {
   .creneaux-inner-table tr {
-    background: #f9fbff;
-    border: 1px solid #e5ecf3;
-    border-left: 4px solid #0077cc;
+    display: block;
+    width: 100%;
+  }
+
+  .creneaux-inner-table tr {
+    margin-bottom: 1rem;
+    background: var(--clr-card);
+    border-radius: 12px;
+    box-shadow: var(--shadow-card);
+    border-left: 4px solid var(--clr-primary);
     padding: 0.6rem;
   }
 
   .creneaux-inner-table td {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.6rem 1rem;
+    border-bottom: 1px solid #475569;
+    color: var(--clr-text-main);
     background: transparent;
-    font-size: 0.95rem;
-    color: #333;
+  }
+
+  .creneaux-inner-table td:last-child {
+    border-bottom: none;
   }
 
   .creneaux-inner-table td::before {
-    color: #0077cc;
+    content: attr(data-label);
     font-weight: 600;
+    color: var(--clr-accent);
+    margin-right: .8rem;
   }
-  
-  
 }
 
+/* ─────── АНИМАЦИЯ ПУЛЬСА ─────── */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow: 0 0 16px rgba(34, 211, 238, 0.6);
+  }
+}
+
+/* ─────── ЭФФЕКТ НА ССЫЛКИ, ЕСЛИ НУЖНО ─────── */
+a.pulse-link {
+  animation: pulse 2.4s infinite ease-in-out;
+  display: inline-block;
+  color: var(--clr-accent);
+  font-weight: 600;
+  text-decoration: none;
+}

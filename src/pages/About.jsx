@@ -5,7 +5,7 @@ import Hero from '../assets/4R5KFUBYIRD23OJOG4NCZ6FWEA.avif';
 
 const About = () => {
   return (
-    <>
+    <div className='about-container'>
       <Images images={Hero} text="À propos du Club" buttonText="Découvrir" />
       <section className="about-club">
         <h1 className="about-title">À propos du Club</h1>
@@ -38,7 +38,7 @@ const About = () => {
           </p>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

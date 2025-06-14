@@ -1,6 +1,11 @@
+.about-container {
+  background: linear-gradient(120deg, #303448 0%, #505f9c 50%, #040a33 100%);
+  background-size: 200% 200%;
+  animation: gradientFlow 20s ease-in-out infinite;
+}
 .about-club {
   max-width: 900px;
-  margin: 40px auto 80px;
+  margin: 40px auto 0;
   padding: 70px 50px;
   background: linear-gradient(135deg, #f0f8ff, #e6f2fa);
   border-radius: 24px;
@@ -109,7 +114,7 @@
 @media (max-width: 992px) {
   .about-club {
     padding: 60px 40px;
-    margin: 30px auto 70px;
+    margin: 30px auto 0;
   }
 
   .about-title {
@@ -142,7 +147,7 @@
 @media (max-width: 600px) {
   .about-club {
     padding: 50px 25px;
-    margin: 20px 15px 60px;
+    margin: 20px 15px 0;
     border-radius: 20px;
     box-shadow:
       0 14px 30px rgba(0, 119, 204, 0.15),

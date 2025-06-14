@@ -1,5 +1,7 @@
 .faq-page {
-  background: linear-gradient(to right, #f5f7fa, #c3cfe2);
+ background: linear-gradient(120deg, #303448 0%, #505f9c 50%, #040a33 100%);
+  background-size: 200% 200%;
+  animation: gradientFlow 20s ease-in-out infinite;
   min-height: 100vh;
   padding: 60px 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

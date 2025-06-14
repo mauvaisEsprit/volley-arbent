@@ -1,5 +1,7 @@
 .contact-section {
-  background: linear-gradient(to bottom right, #f9f9f9, #eaeaea);
+  background: linear-gradient(120deg, #303448 0%, #505f9c 50%, #040a33 100%);
+  background-size: 200% 200%;
+  animation: gradientFlow 20s ease-in-out infinite;
   padding: 60px 20px;
   font-family: 'Segoe UI', sans-serif;
 }

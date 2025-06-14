@@ -1,7 +1,12 @@
 /* Основной стиль */
 .news-list {
-  padding: 2rem 1rem;
-  background-color: #f9f9f9;
+  background: linear-gradient(120deg, #303448 0%, #505f9c 50%, #040a33 100%);
+  background-size: 200% 200%;
+  animation: gradientFlow 20s ease-in-out infinite;
+  color: #f8fafc;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
 }
 
 .news-list__container {

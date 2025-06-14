@@ -48,7 +48,7 @@ export default function Planning() {
   };
 
   return (
-    <div>
+    <div className="planning-container">
       <Images
         images={Hero}
         text="Créneaux d'entraînement et calendrier"
@@ -56,7 +56,7 @@ export default function Planning() {
       />
 
       <div className="schedule-container">
-        <h2 className="schedule-title">📅 Créneaux d'entraînement</h2>
+        <h2 className="schedule-title"><span className="schedule-title-icon">📅</span> Créneaux d'entraînement</h2>
 
         <div className="cards-grid">
           {WEEKDAYS.map((day) => {
@@ -123,7 +123,7 @@ export default function Planning() {
         </div>
       </div>
 
-      <h2 className="schedule-title">📅 Calendrier</h2>
+      <h2 className="schedule-title"><span className="schedule-title-icon">📅</span> Calendrier</h2>
       <MatchCalendar />
     </div>
   );
