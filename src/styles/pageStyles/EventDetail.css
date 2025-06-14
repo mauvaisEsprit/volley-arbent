@@ -23,6 +23,27 @@
   }
 }
 
+.back-button {
+  background: linear-gradient(90deg, #1976d2, #4caf50);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  transition: background 0.3s ease;
+}
+
+.back-button:hover {
+  background: linear-gradient(90deg, #135ba1, #3c8c3a);
+}
+
+.back-button:active {
+  transform: scale(0.97);
+}
+
 /* ─────────────── заголовок ─────────────── */
 .event-detail h1 {
   font-size: clamp(1.8rem, 4vw, 2.4rem);
@@ -114,26 +135,7 @@
   }
 }
 
-.back-button {
-  background: linear-gradient(90deg, #1976d2, #4caf50);
-  color: white;
-  border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  cursor: pointer;
-  margin-bottom: 1.5rem;
-  transition: background 0.3s ease;
-}
 
-.back-button:hover {
-  background: linear-gradient(90deg, #135ba1, #3c8c3a);
-}
-
-.back-button:active {
-  transform: scale(0.97);
-}
 
 @media (prefers-color-scheme: dark) {
   .back-button {

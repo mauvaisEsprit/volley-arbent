@@ -214,7 +214,7 @@ export default function Home() {
       </ul>
     )}
     <Link to="/planning" className="home-btn-link">
-      Voir tout le planning
+      Voir tous les creneaux
     </Link>
   </section>
 
@@ -238,6 +238,9 @@ export default function Home() {
         })}
       </p>
     )}
+    <Link to="/planning" className="home-btn-link">
+      Voir tous les evénements
+    </Link>
   </section>
 
   <section className="home-section home-partenaires container">
