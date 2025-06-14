@@ -171,7 +171,7 @@ export default function Home() {
               <span className="home-news-date">
                 {" "}
                 —{" "}
-                {new Date(item.updatedAt).toLocaleString("fr-FR", {
+                {new Date(item.createdAt).toLocaleString("fr-FR", {
                   weekday: "long",
                   day: "numeric",
                   month: "long",

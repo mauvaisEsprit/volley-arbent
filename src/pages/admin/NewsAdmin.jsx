@@ -137,7 +137,7 @@ export default function NewsAdmin() {
           )}
 
           <div className="admin-news-list">
-            {news.map(({ slug, title, updatedAt, image, content }) => (
+            {news.map(({ slug, title, createdAt, image, content }) => (
               <div key={slug} className="admin-news-card">
                 {image && (
                   <div className="admin-image-wrapper">
@@ -147,7 +147,7 @@ export default function NewsAdmin() {
                 <div className="admin-news-details">
                   <h3 className="admin-news-title">{title}</h3>
                   <p className="admin-news-date">
-                    {new Date(updatedAt).toLocaleString("fr-FR", {
+                    {new Date(createdAt).toLocaleString("fr-FR", {
                       day: "2-digit",
                       month: "2-digit",
                       year: "numeric",
