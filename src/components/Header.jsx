@@ -10,7 +10,7 @@ export default function Header() {
 
   return (
     <header>
-      <div className="header-left">
+      <div className="header-left"> 
         <LogoImage />
       </div>
       <div className="header-center">
