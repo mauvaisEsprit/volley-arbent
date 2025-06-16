@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import "../styles/pageStyles/Planning.css";
 import Images from "../components/Images";
@@ -18,6 +19,27 @@ const WEEKDAYS = [
 export default function Planning() {
   const [activeDay, setActiveDay] = useState(null);
   const [groupedCreneaux, setGroupedCreneaux] = useState({});
+
+const location = useLocation();
+
+  const creneauxRef = useRef(null);
+  const evenementsRef = useRef(null);
+
+  const scrollWithOffset = (el) => {
+  const y = el.getBoundingClientRect().top + window.pageYOffset - 150; 
+  window.scrollTo({ top: y, behavior: "smooth" });
+};
+
+  useEffect(() => {
+  const scrollTo = location.state?.scrollTo;
+
+  if (scrollTo === "creneaux" && creneauxRef.current) {
+    scrollWithOffset(creneauxRef.current);
+  }
+  if (scrollTo === "evenements" && evenementsRef.current) {
+    scrollWithOffset(evenementsRef.current);
+  }
+}, [location.state]);
 
   useEffect(() => {
     fetch("https://volleyback.onrender.com/api/creneaux")
@@ -55,7 +77,7 @@ export default function Planning() {
         buttonText="Découvrir"
       />
 
-      <div className="schedule-container">
+      <div ref={creneauxRef} id="creneaux" className="schedule-container">
         <h2 className="schedule-title"><span className="schedule-title-icon">📅</span> Créneaux d'entraînement</h2>
 
         <div className="cards-grid">
@@ -122,9 +144,11 @@ export default function Planning() {
           })}
         </div>
       </div>
-
+      
+      <section ref={evenementsRef} id="evenements" className="schedule-events">
       <h2 className="schedule-title"><span className="schedule-title-icon">📅</span> Calendrier</h2>
-      <MatchCalendar />
+      <MatchCalendar />*
+      </section>
     </div>
   );
 }

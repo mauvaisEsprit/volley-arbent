@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef  } from "react";
 import "../styles/pageStyles/NewsList.css";
 import Images from "../components/Images";
 import Hero from '../assets/photo.avif'; // Assuming you have a photo.avif in the assets folder
@@ -12,6 +12,24 @@ const NewsList = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+
+
+  const creneauxRef = useRef(null);
+
+  const scrollWithOffset = (el) => {
+  const y = el.getBoundingClientRect().top + window.pageYOffset - 130; 
+  window.scrollTo({ top: y, behavior: "smooth" });
+};
+ 
+
+  useEffect(() => {
+  const scrollTo = location.state?.scrollTo;
+
+  if (scrollTo === "news" && creneauxRef.current) {
+    scrollWithOffset(creneauxRef.current);
+  }
+  
+}, [location.state]);
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -52,7 +70,7 @@ const NewsList = () => {
   return (
     <>
       <Images images={Hero} text="Actualités" buttonText="Découvrir" />
-      <section className="news-list">
+      <section  ref={creneauxRef} id="news" className="news-list">
         <div className="news-list__container">
           <h1 className="news-list__title">Actualités du club</h1>
 

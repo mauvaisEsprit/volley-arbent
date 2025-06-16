@@ -1,12 +1,9 @@
-
+import Hero from "../assets/photo.avif"; 
 import Images from "../components/Images";
 import "../styles/pageStyles/Inscription.css";
 
 
 export default function Inscription() {
-  const imageHome =
-    "https://ca-times.brightspotcdn.com/dims4/default/2aaf5f0/2147483647/strip/true/crop/4256x2832+0+0/resize/1200x798!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F52%2Ff7%2F283a4f1343e19226def7445faf7d%2Fhttps-delivery.gettyimages.com%2Fdownloads%2F171247618.jpg";
-
   const docs = [
     { file: "/public/Fiche adhésion 2024-2025.pdf", label: "Fiche d'adhésion" },
     { file: "/public/FFvolley_qs_sport_sportifs_mineurs_2024-25 (2).pdf", label: " Formulaire d'inscription des mineurs" },
@@ -18,8 +15,9 @@ export default function Inscription() {
 
 
   return (
+    <>
+    <Images images={Hero} text="Formulaires d'inscription" buttonText="Découvrir" />
     <div className="page">
-      <Images images={imageHome} text="Arbent Volley" buttonText="Découvrir" />
 
       <h2 className="title">Formulaires d'inscription</h2>
 
@@ -36,8 +34,7 @@ export default function Inscription() {
           />
         </details>
       ))}
-
-    
     </div>
+    </>
   );
 }

@@ -1,10 +1,8 @@
 import "../styles/pageStyles/Home.css";
 import Images from "../components/Images";
 import Partenaires from "../components/Partenaires";
-import { motion, AnimatePresence } from "framer-motion";
-import ScrollUpButton from "../components/ScrollUpButton";
 import { useState, useEffect } from "react";
-import Hero from '../assets/photo.avif'; // Assuming you have a photo.avif in the assets folder
+import Hero from "../assets/photo.avif"; // Assuming you have a photo.avif in the assets folder
 import { Link } from "react-router-dom";
 
 export default function Home() {
@@ -45,12 +43,12 @@ export default function Home() {
     return targetDate;
   }
 
-  useEffect(() => {
+  /*useEffect(() => {
     const timeout = setTimeout(() => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }, 600);
     return () => clearTimeout(timeout);
-  }, []);
+  }, []);*/
 
   useEffect(() => {
     async function fetchNextSlots() {
@@ -138,146 +136,138 @@ export default function Home() {
   }, []);
 
   return (
-   <main className="home">
+    <main className="home">
+      <Images
+        images={imageHome}
+        text="Bienvenue au Club de Volley d'Arbent"
+        buttonText="Découvrir"
+        className="home-hero"
+      />
 
-  <Images
-    images={imageHome}
-    text="Bienvenue au Club de Volley d'Arbent"
-    buttonText="Découvrir"
-    className="home-hero"
-/>
+      <section className="home-section home-intro container">
+        <h1 className="home-title">Bienvenue sur le site officiel du club !</h1>
+        <p className="home-description">
+          Rejoignez-nous pour vivre le volley avec passion, camaraderie et
+          esprit sportif.
+        </p>
+      </section>
 
-  <section className="home-section home-intro container">
-    <h1 className="home-title">Bienvenue sur le site officiel du club !</h1>
-    <p className="home-description">
-      Rejoignez-nous pour vivre le volley avec passion, camaraderie et
-      esprit sportif.
-    </p>
-  </section>
+      <section className="home-section home-news container">
+        <h2 className="home-subtitle">Actualités</h2>
+        <ul className="home-news-list">
+          {news.length === 0 ? (
+            <li className="home-news-item">Aucune actualité disponible.</li>
+          ) : (
+            news.map((item) => (
+              <li key={item._id || item.id} className="home-news-item">
+                <Link to={`/news/${item.slug}`} className="home-news-link">
+                  📅 <strong>{item.title}</strong>
+                </Link>{" "}
+                {item.date && (
+                  <span className="home-news-date">
+                    {" "}
+                    —{" "}
+                    {new Date(item.createdAt).toLocaleString("fr-FR", {
+                      weekday: "long",
+                      day: "numeric",
+                      month: "long",
+                      year: "numeric",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })}
+                  </span>
+                )}
+              </li>
+            ))
+          )}
+        </ul>
+        <Link to="/news" state={{ scrollTo: "news" }} className="home-btn-link">
+          Voir toutes les actualités
+        </Link>
+      </section>
 
-  <section className="home-section home-news container">
-    <h2 className="home-subtitle">Actualités</h2>
-    <ul className="home-news-list">
-      {news.length === 0 ? (
-        <li className="home-news-item">Aucune actualité disponible.</li>
-      ) : (
-        news.map((item) => (
-          <li key={item._id || item.id} className="home-news-item">
-            📅{" "}
-            <Link to={`/news/${item.slug}`} className="home-news-link">
-              <strong>{item.title}</strong>
-            </Link>{" "}
-            {item.date && (
-              <span className="home-news-date">
-                {" "}
-                —{" "}
-                {new Date(item.createdAt).toLocaleString("fr-FR", {
-                  weekday: "long",
-                  day: "numeric",
-                  month: "long",
-                  year: "numeric",
-                  hour: "2-digit",
-                  minute: "2-digit",
-                })}
-              </span>
-            )}
-          </li>
-        ))
-      )}
-    </ul>
-    <Link to="/news" className="home-btn-link">
-      Voir toutes les actualités
-    </Link>
-  </section>
-
-  <section className="home-section home-schedule container">
-    <h2 className="home-subtitle">Prochains créneaux</h2>
-    {nextSlots.length === 0 ? (
-      <p className="home-empty-text">Aucun créneau à venir.</p>
-    ) : (
-      <ul className="home-schedule-list">
-        {nextSlots.map((slot) => (
-          <li key={slot._id || slot.id} className="home-schedule-item">
-            📅{" "}
-            <Link to="/planning" className="home-schedule-link">
-              {slot.nextOccurrence.toLocaleString("fr-FR", {
-                weekday: "long",
-                day: "numeric",
-                month: "long",
-                hour: "2-digit",
-                minute: "2-digit",
-              })}{" "}
-              — {slot.concerned} ({slot.location})
-            </Link>
-          </li>
-        ))}
-      </ul>
-    )}
-    <Link to="/planning" className="home-btn-link">
-      Voir tous les creneaux
-    </Link>
-  </section>
-
-  <section className="home-section home-match container">
-    <h2 className="home-subtitle">Prochain événement</h2>
-    {!nextMatch ? (
-      <p className="home-empty-text">Aucun match ou tournoi à venir.</p>
-    ) : (
-      <p className="home-match-info">
-        {nextMatch.type === "match" ? "🏐 Match :" : "🏆 Tournoi :"}{" "}
-        <Link to={`/events/${nextMatch.slug}`} className="home-match-link">
-          <strong>{nextMatch.title}</strong>
-        </Link>{" "}
-        —{" "}
-        {new Date(nextMatch.start).toLocaleString("fr-FR", {
-          weekday: "long",
-          day: "numeric",
-          month: "long",
-          hour: "2-digit",
-          minute: "2-digit",
-        })}
-      </p>
-    )}
-    <Link to="/planning" className="home-btn-link">
-      Voir tous les evénements
-    </Link>
-  </section>
-
-  <section className="home-section home-partenaires container">
-    <h2 className="home-subtitle">Nos partenaires</h2>
-
-    {isMobile && (
-      <button
-        className="home-btn-toggle-partenaires"
-        onClick={() => setShowPartenaires(!showPartenaires)}
-      >
-        {showPartenaires ? "Masquer" : "Afficher"} les partenaires
-      </button>
-    )}
-
-    <AnimatePresence initial={false}>
-      {showPartenaires && (
-        <motion.div
-          className="home-partenaires-content"
-          key="partenaires"
-          initial={{ height: 0, opacity: 0 }}
-          animate={{ height: "auto", opacity: 1 }}
-          transition={{
-            height: { duration: 0.6 },
-            opacity: { duration: 0.9 },
-          }}
-          exit={{ height: 0, opacity: 0 }}
-          style={{ overflow: "hidden" }}
+      <section className="home-section home-schedule container">
+        <h2 className="home-subtitle">Prochains créneaux</h2>
+        {nextSlots.length === 0 ? (
+          <p className="home-empty-text">Aucun créneau à venir.</p>
+        ) : (
+          <ul className="home-schedule-list">
+            {nextSlots.map((slot) => (
+              <li key={slot._id || slot.id} className="home-schedule-item">
+                📅{" "}
+                <Link to="/planning" className="home-schedule-link">
+                  {slot.nextOccurrence.toLocaleString("fr-FR", {
+                    weekday: "long",
+                    day: "numeric",
+                    month: "long",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })}{" "}
+                  — {slot.concerned} ({slot.location})
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
+        <Link
+          to="/planning"
+          state={{ scrollTo: "creneaux" }}
+          className="home-btn-link"
         >
-          <Partenaires />
-        </motion.div>
-      )}
-    </AnimatePresence>
-  </section>
+          Voir tous les créneaux
+        </Link>
+      </section>
 
-  <ScrollUpButton className="home-scroll-up" />
+      <section className="home-section home-match container">
+        <h2 className="home-subtitle">Prochain événement</h2>
+        {!nextMatch ? (
+          <p className="home-empty-text">Aucun match ou tournoi à venir.</p>
+        ) : (
+          <p className="home-match-info">
+            {nextMatch.type === "match" ? "🏐 Match :" : "🏆 Tournoi :"}{" "}
+            <Link to={`/events/${nextMatch.slug}`} className="home-match-link">
+              <strong>{nextMatch.title}</strong>
+            </Link>{" "}
+            —{" "}
+            {new Date(nextMatch.start).toLocaleString("fr-FR", {
+              weekday: "long",
+              day: "numeric",
+              month: "long",
+              hour: "2-digit",
+              minute: "2-digit",
+            })}
+          </p>
+        )}
+        <Link
+          to="/planning"
+          state={{ scrollTo: "evenements" }}
+          className="home-btn-link"
+        >
+          Voir tous les événements
+        </Link>
+      </section>
 
-</main>
+      <section className="home-section home-partenaires container">
+  <h2 className="home-subtitle">Nos partenaires</h2>
 
+  {isMobile && (
+    <button
+      className="home-btn-toggle-partenaires"
+      onClick={() => setShowPartenaires(!showPartenaires)}
+    >
+      {showPartenaires ? "Masquer" : "Afficher"} les partenaires
+    </button>
+  )}
+
+  {showPartenaires && (
+    <div className="home-partenaires-content">
+      <Partenaires />
+    </div>
+  )}
+</section>
+
+
+      
+    </main>
   );
 }

@@ -5,6 +5,7 @@
   min-height: 100vh;
   position: relative;
   overflow: hidden;
+  margin-top: 10px;
 }
 
 .news-list__container {

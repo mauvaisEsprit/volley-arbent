@@ -91,6 +91,22 @@ export default function Footer() {
                 À propos
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                to="/inscription"
+                onClick={(e) => handleLinkClick(e, "/inscription")}
+              >
+                Inscription
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/login"
+                onClick={(e) => handleLinkClick(e, "/login")}
+              >
+                Connexion
+              </NavLink>
+            </li>
             
           </ul>
           <LogoImage />
