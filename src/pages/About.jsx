@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/pageStyles/About.css'; 
 import Images from '../components/Images';
-import Hero from '../assets/4R5KFUBYIRD23OJOG4NCZ6FWEA.avif';
+import Hero from '../assets/photo.avif'; // Assuming you have a photo.avif in the assets folder
 
 const About = () => {
   return (

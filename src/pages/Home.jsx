@@ -4,7 +4,7 @@ import Partenaires from "../components/Partenaires";
 import { motion, AnimatePresence } from "framer-motion";
 import ScrollUpButton from "../components/ScrollUpButton";
 import { useState, useEffect } from "react";
-import Hero from "../assets/4R5KFUBYIRD23OJOG4NCZ6FWEA.avif";
+import Hero from '../assets/photo.avif'; // Assuming you have a photo.avif in the assets folder
 import { Link } from "react-router-dom";
 
 export default function Home() {

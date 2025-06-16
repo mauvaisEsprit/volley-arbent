@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import "../styles/pageStyles/Planning.css";
 import Images from "../components/Images";
 import MatchCalendar from "../pages/Calendrier";
-import Hero from "../assets/4R5KFUBYIRD23OJOG4NCZ6FWEA.avif";
+import Hero from '../assets/photo.avif'; // Assuming you have a photo.avif in the assets folder
 
 const WEEKDAYS = [
   "Lundi",

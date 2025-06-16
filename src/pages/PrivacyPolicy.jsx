@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/pageStyles/PrivacyPolicy.css";
 import Images from "../components/Images";
-import Hero from "../assets/4R5KFUBYIRD23OJOG4NCZ6FWEA.avif";
+import Hero from '../assets/photo.avif'; // Assuming you have a photo.avif in the assets folder
 import { useLocation } from "react-router-dom";
 
 export default function PrivacyPolicy() {
