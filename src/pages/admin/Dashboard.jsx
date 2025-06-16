@@ -6,6 +6,7 @@ import Messages from "../admin/Messages";
 import NewsAdmin from "./NewsAdmin";
 import PartenairesAdmin from "../admin/PartenairesAdmin";
 import CreneauxAdmin from "../admin/CreneauxAdmin";
+import TarifsAdmin from "../admin/TarifsAdmin";
 import "../../styles/pageStyles/Dashboard.css";
 import {
   FaPlus,
@@ -38,6 +39,8 @@ export default function Dashboard() {
         return <PartenairesAdmin />;
       case "creneaux":
         return <CreneauxAdmin />;
+      case "tarifs":
+        return <TarifsAdmin />;
       case "messages":
         return <Messages />;
       default:
@@ -53,6 +56,7 @@ export default function Dashboard() {
     { key: "partenaires", icon: <FaRegNewspaper />, label: "Partenaires" },
     { key: "creneaux", icon: <FaCalendarAlt />, label: "Créneaux" },
     { key: "messages", icon: <FaEnvelopeOpenText />, label: "Messages" },
+    { key: "tarifs", icon: <FaRegNewspaper />, label: "Tarifs" },
   ];
 
   return (

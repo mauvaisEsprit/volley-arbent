@@ -1,0 +1,127 @@
+/* Общий контейнер страницы */
+.prices-page {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+  background: #fff;
+}
+
+/* Заголовок страницы */
+.prices-page__title {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 900;
+  color: #0a3d62;
+  margin-bottom: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+/* Статусы загрузки и ошибки */
+.prices-page__loading,
+.prices-page__error,
+.prices-page__empty {
+  text-align: center;
+  font-size: 1.25rem;
+  color: #ff4757;
+  margin-top: 3rem;
+  font-weight: 600;
+}
+
+/* Список тарифов */
+.prices-list {
+  list-style: none;
+  padding-left: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+/* Один тариф */
+.prices-list__item {
+  background: #f0f4f8;
+  border-radius: 12px;
+  padding: 1.8rem 1.5rem;
+  box-shadow: 0 6px 12px rgb(10 61 98 / 0.1);
+  transition: box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 280px;
+}
+
+.prices-list__item:hover {
+  box-shadow: 0 10px 20px rgb(10 61 98 / 0.2);
+}
+
+/* Название тарифа */
+.prices-list__name {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #0652dd;
+  margin-bottom: 0.6rem;
+  text-transform: capitalize;
+}
+
+/* Описание тарифа */
+.prices-list__description {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 1.2rem;
+  line-height: 1.4;
+  flex-grow: 1;
+}
+
+/* Список категорий и цен внутри тарифа */
+.prices-list__items {
+  list-style: none;
+  padding-left: 0;
+  margin-top: auto;
+  border-top: 1px solid #dcdde1;
+  padding-top: 1rem;
+}
+
+/* Один пункт категории+цена */
+.prices-list__item-detail {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 1.05rem;
+  padding: 0.4rem 0;
+  color: #192a56;
+  border-bottom: 1px solid #dcdde1;
+}
+
+.prices-list__item-detail:last-child {
+  border-bottom: none;
+}
+
+/* Категория */
+.prices-list__category {
+  color: #40739e;
+  text-transform: capitalize;
+}
+
+/* Цена */
+.prices-list__price {
+  color: #2f3640;
+  font-weight: 700;
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 480px) {
+  .prices-page__title {
+    font-size: 2.4rem;
+  }
+
+  .prices-list {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .prices-list__item {
+    min-height: auto;
+  }
+}

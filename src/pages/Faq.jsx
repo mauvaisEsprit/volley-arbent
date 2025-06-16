@@ -7,7 +7,7 @@ const faqData = [
   {
     question: "Comment puis-je m'inscrire au club ?",
     answer:
-      "Vous pouvez vous inscrire directement lors des entraînements ou via notre formulaire d’inscription en ligne. N'oubliez pas de fournir un certificat médical valide.",
+      "Vous pouvez vous inscrire directement lors des entraînements. N'oubliez pas de fournir un certificat médical valide.",
   },
   {
     question: "Quels sont les créneaux d'entraînement ?",

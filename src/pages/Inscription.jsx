@@ -8,12 +8,16 @@ export default function Inscription() {
     { file: "/pdf/Fiche adhésion 2024-2025.pdf", label: "Fiche d'adhésion" },
     {
       file: "/pdf/FFvolley_qs_sport_sportifs_mineurs_2024-25 (2).pdf",
-      label: "Formulaire d'inscription des mineurs",
+      label: "Questinnaire d'inscription des mineurs",
     },
     {
       file: "/pdf/Formulaire_demande_licences_2024_2025 (1).pdf",
       label: "Formulaire de demande de licences",
     },
+    {
+      file: "/pdf/FFvolley_CERTIFICAT_MEDICAL_A (1).pdf",
+      label: "Certificat médical",
+    }
   ];
 
   return (
@@ -48,7 +52,7 @@ export default function Inscription() {
             </li>
           </ul>
           <p className="note">
-            🛈 <strong>Pas besoin de certificat médical</strong> si je suis
+           💡 <strong>Pas besoin de certificat médical</strong> si je suis
             mineur, que je joue dans ma catégorie d’âge et que j’ai répondu
             « non » au questionnaire de santé.
           </p>

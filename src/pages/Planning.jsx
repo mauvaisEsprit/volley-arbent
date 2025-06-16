@@ -147,7 +147,7 @@ const location = useLocation();
       
       <section ref={evenementsRef} id="evenements" className="schedule-events">
       <h2 className="schedule-title"><span className="schedule-title-icon">📅</span> Calendrier</h2>
-      <MatchCalendar />*
+      <MatchCalendar />
       </section>
     </div>
   );

@@ -67,6 +67,10 @@ export default function Navbar() {
                 Inscription
               </Link>
 
+              <Link to="/tarifs" onClick={(e) => handleLinkClick(e, "/tarifs")}>
+                Tarifs
+              </Link>
+
               <Link to="/login" onClick={(e) => handleLinkClick(e, "/login")}>
                 Login
               </Link>

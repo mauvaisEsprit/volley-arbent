@@ -1,0 +1,327 @@
+.price-admin {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 30px 25px;
+  background: #f9fafb;
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+}
+
+.price-admin__title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #333;
+  text-align: center;
+}
+
+.price-admin__form-title,
+.price-admin__list-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #444;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 6px;
+}
+
+.price-admin__error {
+  color: #e74c3c;
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* ======== ФОРМА ======== */
+.price-admin__form {
+  background: white;
+  padding: 25px 20px 30px;
+  border-radius: 10px;
+  box-shadow: inset 0 0 8px #ddd;
+  margin-bottom: 40px;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 30px;
+  align-items: start;
+  box-sizing: border-box;
+}
+
+/* Лейблы занимают всю ширину формы */
+.price-admin__label {
+  grid-column: span 2;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #555;
+  display: block;
+}
+
+/* Чтобы инпуты были под лейблами и занимали всю ширину */
+.price-admin__input,
+.price-admin__textarea {
+  width: 100%;
+  padding: 12px 15px;
+  margin-top: 6px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.3s ease;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.price-admin__input:focus,
+.price-admin__textarea:focus {
+  border-color: #3b82f6;
+  outline: none;
+}
+
+/* Описание (textarea) занимает обе колонки */
+.price-admin__textarea {
+  grid-column: span 2;
+}
+
+/* Items - контейнер и заголовок */
+.price-admin__items {
+  grid-column: span 2;
+  margin-bottom: 20px;
+}
+
+.price-admin__items-title {
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #444;
+}
+
+/* Ряд с инпутами категории и цены + кнопка удалить */
+.price-admin__item-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Инпуты категории и цены */
+.price-admin__item-input {
+  padding: 10px 14px;
+  font-size: 1rem;
+  border-radius: 7px;
+  border: 2px solid #ddd;
+  transition: border-color 0.3s ease;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.price-admin__item-input:focus {
+  border-color: #3b82f6;
+  outline: none;
+}
+
+.price-admin__item-input--category {
+  flex-grow: 1;
+  min-width: 150px;
+}
+
+.price-admin__item-input--price {
+  width: 110px;
+  min-width: 90px;
+}
+
+/* Кнопка удалить рядом с инпутами */
+.price-admin__btn--delete {
+  flex-shrink: 0;
+  background-color: #ef4444;
+  padding: 8px 14px;
+}
+
+/* Кнопка добавить item */
+.price-admin__btn--add {
+  background-color: #10b981;
+  margin-top: 10px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.price-admin__btn--add:hover {
+  background-color: #0f9d77;
+}
+
+/* Кнопки действий под формой */
+.price-admin__form-actions {
+  grid-column: span 2;
+  display: flex;
+  gap: 15px;
+  justify-content: flex-start;
+}
+
+.price-admin__btn {
+  width: 10rem;
+  cursor: pointer;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  transition: background-color 0.25s ease;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.price-admin__btn--edit {
+  background-color: #ffd900;
+  margin-bottom: 10px;
+}
+
+.price-admin__btn--submit {
+  background-color: #3b82f6;
+  width: 130px;
+}
+
+.price-admin__btn--submit:hover {
+  background-color: #2563eb;
+}
+
+.price-admin__btn--cancel {
+  background-color: #6b7280;
+  width: 130px;
+}
+
+.price-admin__btn--cancel:hover {
+  background-color: #4b5563;
+}
+
+/* ======== СПИСОК ======== */
+.price-admin__list-title {
+  margin-bottom: 20px;
+}
+
+.price-admin__list {
+  list-style: none;
+  padding: 0;
+}
+
+.price-admin__list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 15px 18px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.05);
+  margin-bottom: 14px;
+  transition: box-shadow 0.25s ease;
+}
+
+.price-admin__list-item:hover {
+  box-shadow: 0 5px 18px rgb(0 0 0 / 0.1);
+}
+
+.price-admin__list-item-info {
+  max-width: 70%;
+  color: #333;
+}
+
+.price-admin__list-item-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.price-admin__list-item-desc {
+  font-style: italic;
+  color: #6b7280;
+}
+
+.price-admin__list-item-sublist {
+  margin-top: 8px;
+  padding-left: 18px;
+  list-style-type: disc;
+  color: #444;
+}
+
+.price-admin__list-item-sublist-item {
+  margin-bottom: 4px;
+  font-size: 0.95rem;
+}
+
+.price-admin__list-item-actions button {
+  margin-left: 8px;
+}
+
+.price-admin__loading,
+.price-admin__empty {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #777;
+  margin-top: 15px;
+}
+
+/* ======== Адаптив ======== */
+@media (max-width: 600px) {
+  .price-admin__form {
+    grid-template-columns: 1fr;
+    padding: 15px 10px;
+  }
+
+  .price-admin__label,
+  .price-admin__textarea,
+  .price-admin__items,
+  .price-admin__form-actions {
+    grid-column: span 1 !important;
+  }
+
+  .price-admin__item-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .price-admin__item-input--category,
+  .price-admin__item-input--price {
+    width: 100% !important;
+    min-width: auto !important;
+  }
+
+  .price-admin__btn--remove {
+    width: 100%;
+    margin-top: 0;
+    padding: 10px 0;
+  }
+
+  /* Кнопки формы подгоняем */
+  .price-admin__form-actions {
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .price-admin__btn--submit,
+  .price-admin__btn--cancel {
+    width: 48%;
+    min-width: 140px;
+  }
+
+  /* Убираем слишком большие отступы */
+  .price-admin {
+    padding: 20px 15px;
+  }
+}

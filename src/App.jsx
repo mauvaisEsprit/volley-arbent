@@ -22,6 +22,8 @@ import ProtectedRoute from '../src/pages/admin/ProtectedRoute';
 import Dashboard from '../src/pages/admin/Dashboard';
 import CreneauxAdmin from './pages/admin/CreneauxAdmin';
 import Inscription from './pages/Inscription';
+import Tarifs from './pages/Tarifs';
+
 
 export default function App() {
   return (
@@ -36,6 +38,7 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/inscription" element={<Inscription />} />
+        <Route path="/tarifs" element={<Tarifs />} />
         <Route path="/login" element={<Login />} />
         <Route path="/mentions-legales" element={<MentionsLegales />} />
         <Route path="/politique-de-confidentialite" element={<PrivacyPolicy />} />
