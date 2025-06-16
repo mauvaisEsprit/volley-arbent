@@ -251,14 +251,22 @@
 }
 
 .home-btn-toggle-partenaires {
-  background: transparent;
-  color: var(--clr-primary);
-  border: 2px solid var(--clr-primary);
+  background: var(--clr-primary);
+  color: white;
+  padding: 0.7rem 1.8rem;
+  border-radius: 999px;
+  font-weight: 600;
+  box-shadow: 0 6px 14px var(--clr-shadow-primary);
+  transition: background var(--tr), box-shadow var(--tr);
+  border: none;
+  cursor: pointer;
+  width: 100%;
 }
 
 .home-btn-toggle-partenaires:hover {
-  background: var(--clr-primary);
-  color: #fff;
+  background: var(--clr-primary-dark);
+  box-shadow: 0 8px 20px var(--clr-shadow-primary);
+  transform: translateY(-3px);
 }
 
 /* ============ MATCH INFO ============ */
