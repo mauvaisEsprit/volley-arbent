@@ -49,16 +49,6 @@
   z-index: 1;
 }
 
-/* Встроенный шум через data URI */
-.home::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAMAAAC67D+PAAAAQlBMVEX///8AAAD7+/v5+fn09PT4+Pj39/fz8/Pv7+/u7u7r6+vn5+fj4+Pi3t7e2tra1tbW0tLSwsLCxsbGqqqqgoKB/f3+SkpKZmZmZAAAAAXRSTlMAQObYZgAAAD1JREFUeJxjYIABRiYmBiYmBgZ2dgYGBgZmRmYGBgYGRgZGRkZGJkZGBiYmJiZWRmZGBgYGLm5uYGBgYGBoYABAMAenQJP+Wz5kAAAAASUVORK5CYII=");
-  opacity: 0.035;
-  pointer-events: none;
-  z-index: 2;
-}
 
 /* Layout helper — унифицирует контейнеры */
 .home .container {

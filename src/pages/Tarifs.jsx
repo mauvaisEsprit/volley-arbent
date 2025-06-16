@@ -34,7 +34,7 @@ export default function Tarifs() {
 
   return (
     <>
-      <Images images={Hero} text="Tarifs" buttonText="Découvrir" />
+      <Images images={Hero} text="Nos tarifs" buttonText="Découvrir" />
       {/* Компонент для администрирования тарифов */}
       <Prices />
       {/* Секция со статьями */}

@@ -62,11 +62,7 @@ useEffect(() => {
         };
       });
 
-      console.table(formatted.map(({ title, color, extendedProps }) => ({
-        title,
-        type: extendedProps.type,
-        color,
-      })));
+      
 
       setEvents(formatted);
     } catch (err) {

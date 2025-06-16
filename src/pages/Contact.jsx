@@ -32,7 +32,7 @@ const Contact = ({ initialData = {} }) => {
         return res.json();
       })
       .then((data) => {
-        console.log("Message envoyé", data);
+        console.log("Message envoyé avec succès:", data);
         setFormData({ name: "", email: "", message: "" }); // очистка формы
         alert("Votre message a été envoyé avec succès !");
       })
