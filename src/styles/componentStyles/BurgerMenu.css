@@ -140,7 +140,7 @@
     text-shadow: 0 0 0.6vh rgba(255, 255, 255, 0.7);
   }
   50% {
-    transform: scale(1.12);
+    transform: scale(1.25);
     text-shadow: 0 0 1.4vh rgba(255, 255, 255, 1);
   }
 }
