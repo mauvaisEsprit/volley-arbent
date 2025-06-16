@@ -8,7 +8,7 @@ export default function Inscription() {
     { file: "/pdf/Fiche adhésion 2024-2025.pdf", label: "Fiche d'adhésion" },
     {
       file: "/pdf/FFvolley_qs_sport_sportifs_mineurs_2024-25 (2).pdf",
-      label: "Questinnaire d'inscription des mineurs",
+      label: "Questionnaire d'inscription des mineurs",
     },
     {
       file: "/pdf/Formulaire_demande_licences_2024_2025 (1).pdf",
