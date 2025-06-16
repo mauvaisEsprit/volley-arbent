@@ -129,7 +129,7 @@ export default function PriceAdmin() {
         </h2>
 
         <label className="price-admin__label">
-          Nom du pack :
+          Nom du Pass :
           <input
             type="text"
             name="name"
@@ -152,7 +152,7 @@ export default function PriceAdmin() {
         </label>
 
         <div className="price-admin__items">
-          <h3 className="price-admin__items-title">Items (catégorie + prix)</h3>
+          <h3 className="price-admin__items-title">Catégorie + prix</h3>
           {formData.items.map((item, i) => (
             <div key={i} className="price-admin__item-row">
               <input

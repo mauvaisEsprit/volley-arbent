@@ -185,9 +185,23 @@
   gap: 6px;
 }
 
+.price-admin__btn--remove {
+  background-color: #ef4444;
+  width: 130px;
+  padding: 10px 0;
+}
+
+.price-admin__btn--remove:hover {
+  background-color: #dc2626;
+}
+
 .price-admin__btn--edit {
   background-color: #ffd900;
   margin-bottom: 10px;
+}
+
+.price-admin__btn--edit:hover {
+  background-color: #ffc700;
 }
 
 .price-admin__btn--submit {
