@@ -76,7 +76,7 @@
 .dropdown-menu {
   position: absolute;
   top: 100%;
-  left: 0;
+  right: -20px;
   min-width: 150px;
   background: linear-gradient(135deg, #005f99, #3399ff);
   border: 1px solid #333;

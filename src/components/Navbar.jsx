@@ -49,6 +49,23 @@ export default function Navbar() {
               >
                 Contact
               </Link>
+              <Link
+                to="/mentions-legales"
+                onClick={(e) => handleLinkClick(e, "/mentions-legales")}
+              >
+                Mentions légales
+              </Link>
+              <Link
+                to="/politique-de-confidentialite"
+                onClick={(e) =>
+                  handleLinkClick(e, "/politique-de-confidentialite")
+                }
+              >
+                Politique de confidentialité
+              </Link>
+              <Link to="/inscription" onClick={(e) => handleLinkClick(e, "/inscription")}>
+                Inscription
+              </Link>
 
               <Link to="/login" onClick={(e) => handleLinkClick(e, "/login")}>
                 Login
