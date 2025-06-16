@@ -1,13 +1,14 @@
 import Hero from "../assets/photo.avif"; 
+import PdfLogo from "../assets/pdfLogo.png";
 import Images from "../components/Images";
 import "../styles/pageStyles/Inscription.css";
 
 
 export default function Inscription() {
   const docs = [
-    { file: "/public/Fiche adhésion 2024-2025.pdf", label: "Fiche d'adhésion" },
-    { file: "/public/FFvolley_qs_sport_sportifs_mineurs_2024-25 (2).pdf", label: " Formulaire d'inscription des mineurs" },
-    { file: "/public/Formulaire_demande_licences_2024_2025 (1).pdf", label: "Formulaire de demande de licences"},
+    { file: "/public/pdf/Fiche adhésion 2024-2025.pdf", label: "Fiche d'adhésion" },
+    { file: "/public/pdf/FFvolley_qs_sport_sportifs_mineurs_2024-25 (2).pdf", label: " Formulaire d'inscription des mineurs" },
+    { file: "/public/pdf/Formulaire_demande_licences_2024_2025 (1).pdf", label: "Formulaire de demande de licences"},
   ];
 
 
@@ -24,7 +25,7 @@ export default function Inscription() {
       {docs.map((doc) => (
         <details key={doc.file} className="card">
           <summary>
-            <img src="/icons/pdf-icon.svg" alt="" width={24} height={24} />
+            <img src={PdfLogo} alt="" width={24} height={24} />
             {doc.label}
           </summary>
           <embed
