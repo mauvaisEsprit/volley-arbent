@@ -195,7 +195,7 @@ export default function Home() {
             {nextSlots.map((slot) => (
               <li key={slot._id || slot.id} className="home-schedule-item">
                 📅{" "}
-                <Link to="/planning" className="home-schedule-link">
+                <Link to="/planning" state={{ scrollTo: "creneaux" }} className="home-schedule-link">
                   {slot.nextOccurrence.toLocaleString("fr-FR", {
                     weekday: "long",
                     day: "numeric",
@@ -225,7 +225,7 @@ export default function Home() {
         ) : (
           <p className="home-match-info">
             {nextMatch.type === "match" ? "🏐 Match :" : "🏆 Tournoi :"}{" "}
-            <Link to={`/events/${nextMatch.slug}`} className="home-match-link">
+            <Link to={`/events/${nextMatch.slug}`}  className="home-match-link">
               <strong>{nextMatch.title}</strong>
             </Link>{" "}
             —{" "}

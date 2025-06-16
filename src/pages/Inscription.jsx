@@ -6,9 +6,9 @@ import "../styles/pageStyles/Inscription.css";
 
 export default function Inscription() {
   const docs = [
-    { file: "/public/pdf/Fiche adhésion 2024-2025.pdf", label: "Fiche d'adhésion" },
-    { file: "/public/pdf/FFvolley_qs_sport_sportifs_mineurs_2024-25 (2).pdf", label: " Formulaire d'inscription des mineurs" },
-    { file: "/public/pdf/Formulaire_demande_licences_2024_2025 (1).pdf", label: "Formulaire de demande de licences"},
+    { file: "/pdf/Fiche adhésion 2024-2025.pdf", label: "Fiche d'adhésion" },
+    { file: "/pdf/FFvolley_qs_sport_sportifs_mineurs_2024-25 (2).pdf", label: " Formulaire d'inscription des mineurs" },
+    { file: "/pdf/Formulaire_demande_licences_2024_2025 (1).pdf", label: "Formulaire de demande de licences"},
   ];
 
 
