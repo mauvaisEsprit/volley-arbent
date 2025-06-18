@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/componentStyles/TarifsAdmin.css";
 import PriceAdmin from "../admin/PriceAdmin";
+import { toast } from "react-toastify";
 
 const API_URL = "https://volleyback.onrender.com/api/articles";
 
@@ -118,8 +119,10 @@ export default function TarifsManager() {
       }
 
       handleCancel();
+      toast.success(editId ? "Article modifié avec succès" : "Article ajouté avec succès");
     } catch (err) {
       alert(err.message);
+      toast.error(err.message);
     }
   };
 

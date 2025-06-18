@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/componentStyles/NewsAdmin.css";
 import { FaRegNewspaper } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 export default function NewsAdmin() {
   const [news, setNews] = useState([]);
@@ -58,9 +59,11 @@ export default function NewsAdmin() {
       if (!res.ok) throw new Error("Erreur de suppression");
 
       setNews((prev) => prev.filter((item) => item.slug !== slug));
+      toast.success("Actualité supprimée avec succès");
     } catch (err) {
       console.error(err);
       alert("Erreur lors de la suppression.");
+      toast.error("Erreur lors de la suppression de l'actualité");
     }
   };
 
@@ -115,9 +118,11 @@ export default function NewsAdmin() {
         prev.map((item) => (item.slug === updated.slug ? updated : item))
       );
       setEditingNews(null);
+      toast.success("Actualité mise à jour avec succès");
     } catch (err) {
       console.error(err);
       alert("Erreur lors de la mise à jour.");
+      toast.error("Erreur lors de la mise à jour de l'actualité");
     }
   };
 

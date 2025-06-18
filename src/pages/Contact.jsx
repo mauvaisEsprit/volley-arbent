@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../styles/pageStyles/Contact.css";
 import Images from "../components/Images";
 import Hero from '../assets/photo.avif'; // Assuming you have a photo.avif in the assets folder
+import { toast } from "react-toastify";
 
 const Contact = ({ initialData = {} }) => {
   const [formData, setFormData] = useState({
@@ -34,11 +35,13 @@ const Contact = ({ initialData = {} }) => {
       .then((data) => {
         console.log("Message envoyé avec succès:", data);
         setFormData({ name: "", email: "", message: "" }); // очистка формы
-        alert("Votre message a été envoyé avec succès !");
+  
+        toast.success("Message envoyé avec succès");
       })
       .catch((err) => {
         console.error(err);
-        alert("Erreur lors de l'envoi du message");
+        
+        toast.error("Erreur lors de l'envoi du message");
       });
   };
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/componentStyles/Messages.css";
+import { toast } from "react-toastify";
 
 export default function Messages() {
   const [messages, setMessages] = useState([]);
@@ -65,8 +66,10 @@ export default function Messages() {
       setShowModal(false);
       setReplyText("");
       setReplyingToId(null);
+      toast.success("Réponse envoyée avec succès !");
     } catch {
       alert("Erreur lors de l’envoi de la réponse.");
+      toast.error("Erreur lors de l'envoi de la réponse.");
     } finally {
       setSendingId(null);
     }
@@ -86,8 +89,10 @@ export default function Messages() {
       );
       if (!res.ok) throw new Error();
       setMessages((prev) => prev.filter((m) => m._id !== id));
+      toast.success("Message supprimé avec succès !");
     } catch {
       alert("Erreur lors de la suppression.");
+      toast.error("Erreur lors de la suppression du message.");
     }
   };
 
@@ -115,6 +120,9 @@ export default function Messages() {
               <div className="message-reply">
                 <strong>Réponse de l'admin :</strong>
                 <p className="reply-text">{msg.replyText}</p>
+                <span className="message-date">
+                {new Date(msg.updatedAt).toLocaleString("fr-FR")}
+              </span>
               </div>
             )}
 

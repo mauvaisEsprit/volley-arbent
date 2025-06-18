@@ -1,6 +1,7 @@
 // src/pages/admin/CreneauxAdmin.jsx
 import { useEffect, useState } from "react";
 import "../../styles/componentStyles/CreneauxAdmin.css";
+import { toast } from "react-toastify";
 
 /* ────────── вспомогательные константы ────────── */
 const WEEKDAYS = [
@@ -50,8 +51,10 @@ export default function CreneauxAdmin() {
         },
       });
       setCreneaux((prev) => prev.filter((c) => c._id !== id));
+      toast.success("Créneau supprimé avec succès");
     } catch {
       alert("Erreur lors de la suppression");
+      toast.error("Erreur lors de la suppression du création");
     }
   };
 
@@ -200,8 +203,12 @@ function CreneauForm({ initial, onClose, onSave }) {
       if (!res.ok) throw new Error();
       const saved = await res.json();
       onSave(saved);
+      toast.success(
+        `Créneau ${initial ? "modifié" : "ajouté"} avec succès`
+      );
     } catch {
       alert("Erreur lors de l’enregistrement");
+      toast.error("Erreur lors de l'enregistrement du créneau");
     } finally {
       setSaving(false);
     }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import PartenairesForm from "./PartenairesForm";
 import "../../styles/componentStyles/PartenairesAdmin.css";
+import { toast } from "react-toastify";
 
 export default function PartenairesAdmin() {
   // ─────────────────────────────── State
@@ -41,8 +42,10 @@ export default function PartenairesAdmin() {
       );
       if (!res.ok) throw new Error();
       setPartners((prev) => prev.filter((p) => p._id !== id));
+      toast.success("Partenaire supprimé avec succès");
     } catch {
       alert("Erreur lors de la suppression");
+      toast.error("Erreur lors de la suppression du partenaire");
     }
   };
 

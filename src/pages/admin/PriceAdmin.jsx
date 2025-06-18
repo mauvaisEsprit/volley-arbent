@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/componentStyles/PriceAdmin.css";
+import { toast } from "react-toastify";
 
 const API_URL = "https://volleyback.onrender.com/api/tarifs";
 
@@ -7,6 +8,7 @@ export default function PriceAdmin() {
   const [tarifs, setTarifs] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  
 
   const [formData, setFormData] = useState({
     name: "",
@@ -85,8 +87,11 @@ export default function PriceAdmin() {
       setEditingId(null);
       fetchTarifs();
       setError(null);
+
+      toast.success(editingId ? "Tarif mis à jour avec succès" : "Tarif créé avec succès");
     } catch (e) {
       setError(e.message);
+      toast.error(e.message);
     }
   };
 
@@ -123,7 +128,7 @@ export default function PriceAdmin() {
 
       {error && <p className="price-admin__error">{error}</p>}
 
-      <form onSubmit={handleSubmit} className="price-admin__form">
+      <form onSubmit={handleSubmit}  className="price-admin__form">
         <h2 className="price-admin__form-title">
           {editingId ? "Modifier un tarif" : "Créer un nouveau tarif"}
         </h2>

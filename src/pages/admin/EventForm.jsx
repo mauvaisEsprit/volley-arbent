@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "../../styles/componentStyles/EventForm.css";
 import { FaCalendarPlus } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 export default function EventForm({ initialData = {} }) {
   const [formData, setFormData] = useState({
@@ -54,10 +55,13 @@ export default function EventForm({ initialData = {} }) {
           type: "",
           description: "",
         });
+        toast.success("Événement ajouté avec succès");
       })
+
       .catch((err) => {
         console.error(err);
         alert("Ошибка при отправке данных на сервер");
+        toast.error("Erreur lors de l'ajout de l'événement");
       });
   };
 

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "../../styles/componentStyles/NewsForm.css";
 import { FaPlus } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 export default function NewsForm({ initialData = {} }) {
   const [formData, setFormData] = useState({
@@ -50,11 +51,12 @@ export default function NewsForm({ initialData = {} }) {
           date: new Date().toISOString().split("T")[0],
           image: "",
         });
-        // Здесь можно обновить состояние, очистить форму, показать сообщение и т.п.
+        toast.success("Actualité ajoutée avec succès");
       })
       .catch((err) => {
         console.error(err);
         alert("Ошибка при отправке данных на сервер");
+        toast.error("Erreur lors de l'envoi de l'actualité");
       });
   };
 

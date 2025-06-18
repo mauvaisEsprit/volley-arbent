@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/componentStyles/EventList.css";
 import { FaCalendarAlt } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 export default function EventList() {
   const [events, setEvents] = useState([]);
@@ -50,8 +51,10 @@ export default function EventList() {
       });
       if (!res.ok) throw new Error("Ошибка удаления");
       setEvents(events.filter((event) => event.slug !== slug));
+      toast.success("Evénement supprimé avec succès");
     } catch (err) {
       alert(err.message);
+      toast.error("Erreur lors de la suppression de l'événement");
     }
   };
 
@@ -107,8 +110,10 @@ export default function EventList() {
       setEditEnd("");
       setEditType("");
       setEditImage("");
+      toast.success("Événement mis à jour avec succès");
     } catch (err) {
       alert(err.message);
+      toast.error("Erreur lors de la mise à jour de l'événement");
     }
   };
 

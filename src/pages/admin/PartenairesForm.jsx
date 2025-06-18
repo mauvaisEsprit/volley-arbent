@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "../../styles/componentStyles/PartenairesForm.css";
+import { toast } from "react-toastify";
 
 /**
  * Formulaire (dans une modale) pour créer OU modifier un partenaire.
@@ -52,8 +53,10 @@ export default function PartenairesForm({ partner = null, onSave, onClose }) {
       await res.json();
 
       onSave?.();
+      toast.success(`Partenaire ${partner ? "modifié" : "ajouté"} avec succès`);
     } catch {
       alert("Erreur lors de l'enregistrement");
+      toast.error("Erreur lors de l'enregistrement du partenaire");
     } finally {
       setSaving(false);
     }
