@@ -198,7 +198,7 @@
   }
 
   .admin-input-date {
-    padding: 0.85rem 1rem;
+  padding: 0.85rem 1rem;
   border: 1px solid #ccc;
   border-radius: 10px;
   font-size: 1rem;
@@ -207,5 +207,21 @@
   width: 100%;
   max-width: 75%;
   box-sizing: border-box;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-news-card {
+    margin: 0 1rem;
+  }
+
+  .admin-news-list {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .admin-btn {
+    padding: 0.5rem;
+    font-size: 0.9rem;
   }
 }

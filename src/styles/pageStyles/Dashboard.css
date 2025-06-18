@@ -32,6 +32,18 @@
   margin-top: 120px;
 }
 
+@media (min-width: 1023px) and (max-width: 1280px) {
+  .admin-sidebar {
+    margin-top: 120px;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 1022px) {
+  .admin-sidebar {
+    margin-top: 75px;
+  }
+}
+
 .admin-title {
   text-align: center;
   font-size: 1.3rem;
