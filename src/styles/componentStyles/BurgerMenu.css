@@ -162,6 +162,6 @@
   .fullscreen-menu nav {
     grid-template-columns: 1fr;
     width: 90%;
-    margin-bottom: 100px;
+    
   }
 }
