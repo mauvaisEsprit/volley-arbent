@@ -2,8 +2,7 @@ import Hero from "../assets/photo.avif";
 import PdfLogo from "../assets/pdfLogo.png";
 import Images from "../components/Images";
 import "../styles/pageStyles/Inscription.css";
-import { useLocation } from "react-router-dom";
-import { Link } from "react-router-dom";
+
 
 export default function Inscription() {
   const docs = [
@@ -21,17 +20,6 @@ export default function Inscription() {
       label: "Certificat médical",
     }
   ];
-
-    const location = useLocation();
-    const handleLinkClick = (e, path) => {
-    if (location.pathname === path) {
-      e.preventDefault();
-      // отложим скролл, чтобы partenaires успел прогрузиться
-      setTimeout(() => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }, 1500); // можно поиграться с задержкой (зависит от анимации)
-    }
-  };
 
   return (
     <>
@@ -95,10 +83,7 @@ export default function Inscription() {
     </div>
   </details>
 ))}
-    <div className="privacy-back">
-          <Link to="/" onClick={(e) =>{
-            handleLinkClick(e, "/")} }>← Retour à l'accueil</Link>  
-        </div>
+
       </div>
     </>
   );

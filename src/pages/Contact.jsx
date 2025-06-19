@@ -3,9 +3,6 @@ import "../styles/pageStyles/Contact.css";
 import Images from "../components/Images";
 import Hero from '../assets/photo.avif'; // Assuming you have a photo.avif in the assets folder
 import { toast } from "react-toastify";
-import { useLocation } from "react-router-dom";
-import { Link } from "react-router-dom";
-
 const Contact = ({ initialData = {} }) => {
   const [formData, setFormData] = useState({
     name: initialData.name || "",
@@ -13,16 +10,6 @@ const Contact = ({ initialData = {} }) => {
     message: initialData.message || "",
   });
 
-    const location = useLocation();
-  const handleLinkClick = (e, path) => {
-  if (location.pathname === path) {
-    e.preventDefault();
-    // отложим скролл, чтобы partenaires успел прогрузиться
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }, 1500); // можно поиграться с задержкой (зависит от анимации)
-  }
-};
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -112,11 +99,6 @@ const Contact = ({ initialData = {} }) => {
               Envoyer
             </button>
           </form>
-        </div>
-        <div className="privacy-back">
-          <Link to="/" onClick={(e) =>{
-            handleLinkClick(e, "/")} }>← Retour à l'accueil</Link>
-            
         </div>
       </section>
     </>

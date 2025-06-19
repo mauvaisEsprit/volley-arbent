@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import "../styles/pageStyles/Faq.css";
 import Images from "../components/Images";
 import Hero from '../assets/photo.avif'; // Assuming you have a photo.avif in the assets folder
-import { useLocation } from "react-router-dom";
-import { Link } from "react-router-dom";
+
 
 const faqData = [
   {
@@ -35,22 +34,13 @@ const faqData = [
 
 export default function FAQ() {
   const [activeIndex, setActiveIndex] = useState(null);
-     const location = useLocation();
-  const handleLinkClick = (e, path) => {
-  if (location.pathname === path) {
-    e.preventDefault();
-    // отложим скролл, чтобы partenaires успел прогрузиться
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }, 1500); // можно поиграться с задержкой (зависит от анимации)
-  }
-};
+
 
   const toggleIndex = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
  
-  
+
   return (
     <>
       <Images images={Hero} text="Foire Aux Questions" buttonText="Découvrir" />
@@ -77,11 +67,6 @@ export default function FAQ() {
           ))}
         </div>
       </div>
-      <div className="privacy-back">
-                <Link to="/" onClick={(e) =>{
-                  handleLinkClick(e, "/")} }>← Retour à l'accueil</Link>
-                  
-              </div>
     </main>
     </>
   );

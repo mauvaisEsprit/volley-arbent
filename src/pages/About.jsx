@@ -2,20 +2,10 @@ import React from 'react';
 import '../styles/pageStyles/About.css'; 
 import Images from '../components/Images';
 import Hero from '../assets/photo.avif'; // Assuming you have a photo.avif in the assets folder
-import { useLocation } from "react-router-dom";
-import { Link } from "react-router-dom";
+
 
 const About = () => {
-   const location = useLocation();
-  const handleLinkClick = (e, path) => {
-  if (location.pathname === path) {
-    e.preventDefault();
-    // отложим скролл, чтобы partenaires успел прогрузиться
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }, 1500); // можно поиграться с задержкой (зависит от анимации)
-  }
-};
+
   return (
     <div className='about-container'>
       <Images images={Hero} text="À propos du Club" buttonText="Découvrir" />
@@ -48,11 +38,6 @@ const About = () => {
           <p>
             Rejoignez-nous dans cette aventure sportive et humaine, et participez à l’écriture d’une histoire collective où chaque membre compte.
           </p>
-        </div>
-      <div className="privacy-back">
-          <Link to="/" onClick={(e) =>{
-            handleLinkClick(e, "/")} }>← Retour à l'accueil</Link>
-            
         </div>
       </section>
     </div>
