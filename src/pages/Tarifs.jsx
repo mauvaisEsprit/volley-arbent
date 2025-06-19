@@ -4,12 +4,25 @@ import "../styles/pageStyles/Tarifs.css";
 import Images from "../components/Images"; // компонент для шапки с картинкой и текстом
 import Prices from "../components/Prices";
 const API_URL = "https://volleyback.onrender.com/api/articles";
+import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Tarifs() {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [modalImage, setModalImage] = useState(null); // для модалки
+
+  const location = useLocation();
+  const handleLinkClick = (e, path) => {
+  if (location.pathname === path) {
+    e.preventDefault();
+    // отложим скролл, чтобы partenaires успел прогрузиться
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 1500); // можно поиграться с задержкой (зависит от анимации)
+  }
+};
 
   useEffect(() => {
     fetchArticles();
@@ -96,7 +109,12 @@ export default function Tarifs() {
             <img src={modalImage} alt="Grande vue" className="modal-image" />
           </div>
         </div>
+        
       )}
+      <div className="privacy-back">
+          <Link to="/" onClick={(e) =>{
+            handleLinkClick(e, "/")} }>← Retour à l'accueil</Link>  
+        </div>
     </>
   );
 }
