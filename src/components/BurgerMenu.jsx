@@ -93,6 +93,7 @@ export default function BurgerMenu() {
                 Login
               </Link>
             </nav>
+            <LogoImage />
           </div>
         </div>
       )}
