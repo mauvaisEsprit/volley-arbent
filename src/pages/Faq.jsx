@@ -49,7 +49,8 @@ export default function FAQ() {
   const toggleIndex = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
-
+ 
+  
   return (
     <>
       <Images images={Hero} text="Foire Aux Questions" buttonText="Découvrir" />
